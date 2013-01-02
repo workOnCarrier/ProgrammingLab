@@ -1,0 +1,11 @@
+#include "state/state.h"
+
+
+state::state()
+{
+}
+state::~state()
+{
+}
+
+
