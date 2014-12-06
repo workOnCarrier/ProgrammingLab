@@ -101,6 +101,7 @@ function doGet(){
   
 }
 function handleFirstNameSelection (e){
+  var startTime = new Date();  
   var app = UiApp.getActiveApplication();
   var value = e.parameter.fname;
   Logger.log('value selected is ' + value );
@@ -112,36 +113,34 @@ function handleFirstNameSelection (e){
   if ( lastNameSet == 1 && emailSet == 1 ){ setfn(app, selectObj) ; return app; }
   
   /////// process xml to populate the other boxes
-    var openedSS = SpreadsheetApp.openByUrl( spreadsheedUrl );
-        if ( openedSS == 0 ){Logger.log('openByUrl did not work');}
-    var sheetList1 = openedSS.getActiveSheet();
-        if ( sheetList1 == null ){Logger.log('gettting sheet did not work');}
-    var numItemList1 = sheetList1.getLastRow();//-1 is to exclude header row
-    var list1ItemArray = sheetList1.getRange(1,1,numItemList1,4).getValues();
+  var xmlStr     = e.parameter.appXml;
+  var document   = XmlService.parse(xmlStr);
+  var entries    = document.getRootElement().getChildren();
   
   if ( emailSet == 0 )    { app.getElementById('emailBox').clear(); }
   if ( lastNameSet == 0 ) { app.getElementById('lnameBox').clear(); }
 
-    for(var i=0; i<list1ItemArray.length; i++) {
-      Logger.log( list1ItemArray[i][lastNameCol-1].trim().toUpperCase() + ':'+  value + ' ' + lastNameSet);
-       if ( list1ItemArray[i][firstNameCol-1].trim().toUpperCase() == value )
+    for(var i=0; i < entries.length; i++) {
+      var entry = entries[i];
+      Logger.log( entry.getAttribute('fn').getValue().trim().toUpperCase() + ':'+  value + ' ' + lastNameSet);
+       if ( entry.getAttribute('fn').getValue().trim().toUpperCase() == value )
        {
          if ( lastNameSet == 0 && emailSet    == 0) { // nothing is set
-           var lnameb = app.getElementById('lnameBox').addItem(list1ItemArray[i][lastNameCol-1].trim().toUpperCase()); lnameb.setSelectedIndex(0);
-           var embox = app.getElementById('emailBox').addItem(list1ItemArray[i][emailCol-1].trim().toLowerCase()); embox.setSelectedIndex(0);
+           var lnameb = app.getElementById('lnameBox').addItem( entry.getAttribute('ln').getValue().trim().toUpperCase()); lnameb.setSelectedIndex(0);
+           var embox = app.getElementById('emailBox').addItem( entry.getAttribute('e').getValue().trim().toLowerCase()); embox.setSelectedIndex(0);
          } else if ( lastNameSet    == 1 && emailSet    == 1 ) { // both are set
            break;
          } else {
            if ( lastNameSet    == 1 ) { // last name is set, only email needs to be set
              var lastName = e.parameter.lname;
              if ( list1ItemArray[i][lastNameCol-1].trim().toUpperCase() == lastName ) {
-               var emailbox = app.getElementById('emailBox').addItem(list1ItemArray[i][emailCol-1].trim().toLowerCase() );
+               var emailbox = app.getElementById('emailBox').addItem(entry.getAttribute('e').getValue().trim().toLowerCase() );
                emailbox.setSelectedIndex(0);
              } else { continue; }
            } else if ( emailSet    == 1 ) { // email is set, only lastname needs to be set
              var emailValue = e.parameter.email_List;
              if ( list1ItemArray[i][emailCol-1].trim().toLowerCase() == emailValue ) {
-               var lnamebox = app.getElementById('lnameBox').addItem(list1ItemArray[i][lastNameCol-1].trim().toUpperCase() );
+               var lnamebox = app.getElementById('lnameBox').addItem( entry.getAttribute('ln').getValue().trim().toUpperCase() );
                lnamebox.setSelectedIndex(0);
              } else { continue; }
            }
@@ -150,11 +149,14 @@ function handleFirstNameSelection (e){
     }
   setfn(app, selectObj) ;
   /////// 
+  var endTime = new Date();
+  Logger.log ( 'Time taken = ' + ( (endTime.getSeconds()*1000+endTime.getMilliseconds()) - (startTime.getSeconds()*1000+startTime.getMilliseconds()) ));
     Logger.log('handle firstname selection invoked for '+ value );
   return app;
 }
 
 function handleLastNameSelection (e){
+  var startTime = new Date();
   var app = UiApp.getActiveApplication();
   var value = e.parameter.lname;
   Logger.log('value selected is ' + value );
@@ -165,34 +167,33 @@ function handleLastNameSelection (e){
   var emailSet     = getem ( selectObj );
   if ( firstNameSet == 1 && emailSet == 1 ){ setln(app,selectObj); return app; }
   /////// process xml to populate the other boxes
-    var openedSS = SpreadsheetApp.openByUrl( spreadsheedUrl );
-        if ( openedSS == 0 ){Logger.log('openByUrl did not work');}
-    var sheetList1 = openedSS.getActiveSheet();
-        if ( sheetList1 == null ){Logger.log('gettting sheet did not work');}
-    var numItemList1 = sheetList1.getLastRow();//-1 is to exclude header row
-    var list1ItemArray = sheetList1.getRange(1,1,numItemList1,4).getValues();
+  var xmlStr     = e.parameter.appXml;
+  var document   = XmlService.parse(xmlStr);
+  var entries    = document.getRootElement().getChildren();
   
   if ( emailSet == 0 )    { app.getElementById('emailBox').clear(); }
   if ( firstNameSet == 0 ) { app.getElementById('fnameBox').clear(); }
 
-    for(var i=0; i<list1ItemArray.length; i++) {
-       if ( list1ItemArray[i][lastNameCol-1].trim().toUpperCase() == value ) {
-         Logger.log( list1ItemArray[i][lastNameCol-1].trim().toUpperCase() + ':'+  value + ' ' + firstNameSet);
+    for(var i=0; i < entries.length; i++ ) {
+      var entry = entries[i];
+       //if ( list1ItemArray[i][lastNameCol-1].trim().toUpperCase() == value ) {
+      if ( entry.getAttribute('ln').getValue().trim().toUpperCase() == value ) {
+         Logger.log( entry.getAttribute('ln').getValue().trim().toUpperCase() + ':'+  value + ' ' + firstNameSet);
          if ( firstNameSet == 0 && emailSet    == 0) { Logger.log('nothing is set');// nothing is set
-           app.getElementById('fnameBox').addItem(list1ItemArray[i][firstNameCol-1].trim().toUpperCase() ).setSelectedIndex(0);
-           app.getElementById('emailBox').addItem(list1ItemArray[i][emailCol-1].trim().toLowerCase() ).setSelectedIndex(0);
+           app.getElementById('fnameBox').addItem( entry.getAttribute('fn').getValue().trim().toUpperCase() ).setSelectedIndex(0);
+           app.getElementById('emailBox').addItem( entry.getAttribute('e').getValue().trim().toLowerCase() ).setSelectedIndex(0);
          } else if ( firstNameSet    == 1 && emailSet    == 1 ) { // both are set
            break;
          } else {
            if ( firstNameSet    == 1 ) { // first name is set, only email needs to be set
              var firstName = e.parameter.fname;
-             if ( list1ItemArray[i][firstNameCol-1].trim().toUpperCase() == firstName ) {
-               app.getElementById('emailBox').addItem(list1ItemArray[i][emailCol-1].trim().toLowerCase() ).setSelectedIndex(0);
+             if ( entry.getAttribute('fn').trim().toUpperCase() == firstName ) {
+               app.getElementById('emailBox').addItem(entry.getAttribute('e').trim().toLowerCase() ).setSelectedIndex(0);
              } else { continue; }
            } else if ( emailSet    == 1 ) { // email is set, only firstname needs to be set
              var emailValue = e.parameter.email_List;
-             if ( list1ItemArray[i][emailCol-1].trim().toLowerCase() == emailValue ) {
-               app.getElementById('fnameBox').addItem(list1ItemArray[i][firstNameCol-1].trim().toUpperCase() ).setSelectedIndex(0);
+             if ( entry.getAttribute('e').trim().toLowerCase() == emailValue ) {
+               app.getElementById('fnameBox').addItem( entry.getAttribute('fn').trim().toUpperCase() ).setSelectedIndex(0);
              } else { continue; }
            }
          }
@@ -200,6 +201,8 @@ function handleLastNameSelection (e){
     }
   setln(app,selectObj);
   /////// 
+  var endTime = new Date();
+  Logger.log ( 'Time taken = ' + ( (endTime.getSeconds()*1000+endTime.getMilliseconds()) - (startTime.getSeconds()*1000+startTime.getMilliseconds()) ));
     Logger.log('handle lastname selection invoked for '+ value );
   return app;
 }
@@ -216,35 +219,34 @@ function handleEmailSelection (e){
   if ( firstNameSet == 1 && lastNameSet == 1 ){ setem( app, selectObj); return app; }
   Logger.log( " selected value : " + value );
   /////// process email selection impact on other controls
-    var openedSS = SpreadsheetApp.openByUrl( spreadsheedUrl );
-        if ( openedSS == 0 ){Logger.log('openByUrl did not work');}
-    var sheetList1 = openedSS.getActiveSheet();
-        if ( sheetList1 == null ){Logger.log('gettting sheet did not work');}
-    var numItemList1 = sheetList1.getLastRow();//-1 is to exclude header row
-    var list1ItemArray = sheetList1.getRange(1,1,numItemList1,4).getValues();
+  var xmlStr     = e.parameter.appXml;
+  var document   = XmlService.parse(xmlStr);
+  var entries    = document.getRootElement().getChildren();
+  
   Logger.log( " number of rows : " + numItemList1 ); Logger.log ( "lastnameset:" + lastNameSet + " firstNameSet:" + firstNameSet );
   
   if ( lastNameSet == 0 ) { app.getElementById('lnameBox').clear(); }
   if ( firstNameSet == 0 ) { app.getElementById('fnameBox').clear(); }
 
-  for(var i=0; i<list1ItemArray.length; i++) { 
-    Logger.log( list1ItemArray[i][emailCol-1] + ': email match :' + value );
-     if ( list1ItemArray[i][emailCol-1].trim().toLowerCase() == value ) { 
+  for(var i=0; i<entries.length; i++) { 
+    var entry = entries[i];
+    Logger.log( entry.getAttribute('e').getValue() + ': email match check against :' + value );
+     if ( entry.getAttribute('e').getValue().trim().toLowerCase() == value ) { 
        if ( firstNameSet == 0 && lastNameSet    == 0) { // nothing is set
-         app.getElementById('fnameBox').addItem(list1ItemArray[i][firstNameCol-1].trim().toUpperCase()).setSelectedIndex(0);
-         app.getElementById('lnameBox').addItem(list1ItemArray[i][lastNameCol-1].trim().toUpperCase()).setSelectedIndex(0);
+         app.getElementById('fnameBox').addItem( entry.getAttribute('fn').getValue().trim().toUpperCase()).setSelectedIndex(0);
+         app.getElementById('lnameBox').addItem( entry.getAttribute('ln').getValue().trim().toUpperCase()).setSelectedIndex(0);
        } else if ( firstNameSet    == 1 && lastNameSet    == 1 ) { // both are set
          break;
        } else {
-         if ( firstNameSet    == 1 ) { // first name is set, only latname needs to be set
+         if ( firstNameSet    == 1 ) { // first name is set, only lastname needs to be set
            var firstName = e.parameter.fname;
-           if ( list1ItemArray[i][firstNameCol-1].trim().toUpperCase() == firstName ) {
-             app.getElementById('lnameBox').addItem(list1ItemArray[i][lastNameCol-1].trim().toUpperCase()).setSelectedIndex(0);
+           if ( entry.getAttribute('fn').getValue().trim().toUpperCase() == firstName ) {
+             app.getElementById('lnameBox').addItem( entry.getAttribute('ln').getValue().trim().toUpperCase()).setSelectedIndex(0);
            } else { continue; }
          } else if ( lastNameSet    == 1 ) { // lastName is set, only firstname needs to be set
            var lastName = e.parameter.lname;
-             if ( list1ItemArray[i][lastNameCol-1].trim().toUpperCase() == lastName ) {
-               app.getElementById('fnameBox').addItem(list1ItemArray[i][firstNameCol-1].trim().toUpperCase()).setSelectedIndex(0);
+             if ( entry.getAttribute('ln').getValue().trim().toUpperCase() == lastName ) {
+               app.getElementById('fnameBox').addItem( entry.getAttribute('fn').getValue().trim().toUpperCase()).setSelectedIndex(0);
              } else { continue; }
          }
        }
@@ -335,26 +337,6 @@ function populateList ( emailListBox, FirstnameListbox, LastnameListBox , fromxm
   Logger.log ( 'populateList::: END populating controls ');
 }
 
-function populateList_old( emailListBox, FirstnameListbox, LastnameListBox, xml )
-{
-  Logger.log('populateList::: start');
-  var openedSS = openSpreadSheet( spreadsheedUrl );
-  var sheetList1 = openedSS.getActiveSheet();
-  if ( sheetList1 == null ){Logger.log('gettting sheet did not work');}
-
-  var numItemList1 = sheetList1.getLastRow()-1;//-1 is to exclude header row
-  //get the item array
-  var list1ItemArray = sheetList1.getRange(1,1,numItemList1,4).getValues();
-  
-  //Add the items in ListBox
-  for(var i=0; i<list1ItemArray.length; i++){
-    FirstnameListbox.addItem(list1ItemArray[i][firstNameCol-1]);
-    LastnameListBox.addItem(list1ItemArray[i][lastNameCol-1]);
-    emailListBox.addItem(list1ItemArray[i][emailCol-1]);
-  }
-//  Logger.log( ' checking global -->' + xmlDoc + '<--');
-  Logger.log('populateList::: end');
-}
 function populateXml ()
 {
   var openedSS = openSpreadSheet( spreadsheedUrl );
@@ -383,13 +365,6 @@ function populateXml ()
   xmlDoc = docstr;
 }
 
-function getfn ( selectObj ){    // '<sel><ent type="lns" val="0" /><ent type="fns" val="0" /><ent type="ems" value="0" /></sel>'
-  Logger.log('getfn: start' );
-  var value = getSelectedParameter ( selectObj, 'fns' );
-  Logger.log ('getfn: end' );
-  return value;
-}
-  
 function getSelectedParameter ( selectObj, identifier ){
   Logger.log ( 'getSelectedParameter : start with param - ' + identifier + ' and obj ' + selectObj );
   var document = XmlService.parse(selectObj);
@@ -403,6 +378,13 @@ function getSelectedParameter ( selectObj, identifier ){
     }
   }
   Logger.log('getSelectedParameter: end :: Value - '  + value );
+  return value;
+}
+
+function getfn ( selectObj ){    // '<sel><ent type="lns" val="0" /><ent type="fns" val="0" /><ent type="ems" value="0" /></sel>'
+  Logger.log('getfn: start' );
+  var value = getSelectedParameter ( selectObj, 'fns' );
+  Logger.log ('getfn: end' );
   return value;
 }
 
