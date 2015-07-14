@@ -1,2 +1,8 @@
+Books:
+
 Data Structures and Algorithms with Object-Oriented Design Patterns in C++ -- http://www.brpreiss.com/books/opus4/html/book.html
 
+
+Concepts:
+std::forward<T>
+std::is_same<T>
