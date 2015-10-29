@@ -1,0 +1,14 @@
+prlelThread=/home/genius3/work/github/ProgrammingLab/modernCpp/threads/prlelQSort flagger=r {
+    Makefile
+	Code Files=. filter="*.h"{
+		 LinrQSrt.h
+		 PrlelQSrt.h
+		 ThreadSafeStack.h
+	}
+	Test Files=. filter="test*.cpp"{
+		  testLinrQSrt.cpp
+		  testPrlelQSrt.cpp
+		  testThreadSafeStack.cpp
+		  testperformance.cpp
+	}
+}
