@@ -72,8 +72,16 @@ public:
 		return valPtr;
 	}
 
-	void pop ( T &value){
+	void pop ( T &value ) {
 		std::unique_lock<std::mutex>	lock(m_mutex);
+		value = m_queue.back();
+		m_queue.pop_back();
+	}
+	void try_pop( T&value ) {
+		std::unique_lock<std::mutex>	lock(m_mutex);
+		if ( m_queue.empty() ) {
+			return false;
+		}
 		value = m_queue.back();
 		m_queue.pop_back();
 	}
