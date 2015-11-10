@@ -10,3 +10,10 @@ Other considerations:
 futures concepts:
 	coroutines, active objects, asio -- competing implementations
 	http://braddock.com/~braddock/future/
+
+
+
+
+
+Misc: -- Ideas
+    SignalSlot mechanisms for simplifying application design
