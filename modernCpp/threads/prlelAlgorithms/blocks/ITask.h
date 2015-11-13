@@ -5,7 +5,7 @@
 
 class ITask{
 public:
-	virtual ~ITask() = 0;
+	virtual ~ITask() {};
 	virtual void execute() = 0;
 };
 

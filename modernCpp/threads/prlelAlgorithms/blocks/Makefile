@@ -9,7 +9,7 @@ CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
 
 TEST_INTERPRETER_SRC = textInterpreter.cpp specialTextTask.cpp textTask.cpp
-TEST_INTERPRETER_OBJ = textInterpreter.o specialTextTask.o textTask.o
+TEST_INTERPRETER_OBJ =  specialTextTask.o textTask.o textInterpreter.o
 
 TARGET = libblocks.so
 
@@ -17,11 +17,10 @@ all: $(TARGET)
 
 $(TARGET) : $(TEST_INTERPRETER_OBJ)
 	$(CC) -shared -o $(TARGET) $(LDFLAGS) $(TEST_INTERPRETER_OBJ)
-	cp $(TARGET) ../lib
+	cp $(TARGET) ../bin
 
 #.o.cpp:
 .cpp.o :
-	$(CC) --version
 	$(CC) -c $(CPPFLAGS) -o $@ $< > buildlog 2>&1
 
 ctags:
