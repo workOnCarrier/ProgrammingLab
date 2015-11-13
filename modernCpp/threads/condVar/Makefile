@@ -50,13 +50,13 @@ test2 : $(TESTCONCDS)
 	echo "test concurrent data structure : " $(TESTCONCDS)
 
 clean: 
-	rm -f core &
-	rm $(TARGET) &
-	rm $(OBJ) &
-	make $(CLEAN_CTAGS) &
-	rm $(TESTKEYINPUTSOURCE) &
-	rm $(TESTINPUTOBJ) &
-	rm $(TESTCONCDS)
-	rm $(TESTCONCDSOBJ)
+	-rm -f core
+	-rm $(TARGET)
+	-rm $(OBJ)
+	-make $(CLEAN_CTAGS)
+	-rm $(TESTKEYINPUTSOURCE)
+	-rm $(TESTINPUTOBJ)
+	-rm $(TESTCONCDS)
+	-rm $(TESTCONCDSOBJ)
 
 

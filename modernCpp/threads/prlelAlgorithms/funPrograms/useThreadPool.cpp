@@ -7,6 +7,8 @@
 #include <atomic>
 #include <memory>
 #include "JoinThreads.h"
+#include <thread>
+#include <chrono>
 
 class myThreadPool {
 
@@ -47,7 +49,14 @@ public:
 		}
 	}
 	void start(){
-		m_taskCreation.operator();
+		//std::thread mythread ( std::function<void()>(m_taskCreation) );
+		std::thread mythread ([&]()->void{ m_taskCreation.process();});
+		mythread.detach();
+		std::chrono::duration<int, std::centi>	sleepTime ( 20);
+		while ( m_taskCreation.isSupplyActive () ){
+			std::this_thread::sleep_for(sleepTime );
+		}
+		m_done = true;
 	}
 };
 int main ( int argc, char** argv )

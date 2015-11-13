@@ -7,7 +7,7 @@ class TextInterpreter : public IInterpreter < std::string >
 {
 public:
 	TextInterpreter ( );
-	virtual Task interpret ( std::string &textString );
+	virtual Task interpret ( std::string textString );
 private:
 };
 

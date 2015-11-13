@@ -27,7 +27,8 @@ class ThreadPool
 		}
 	} // void workerThread()
 public:
-	ThreadPool() : m_done(false), m_joiner(m_threads) {
+	ThreadPool(int threadCount = 0) : m_done(false), m_joiner(m_threads) {
+		if ( threadCount <= 0 )
 		unsigned const threadCount = std::thread::hardware_concurrency();
 		try{
 			for ( unsigned i=0; i < threadCount; i++ ){

@@ -10,7 +10,7 @@ public:
 	KeyInputSource():m_reading(true) {};
 
 	bool hasMoreData (){ return m_reading; }
-	DataType	getNextDataItem(){
+	std::string	getNextInput(){
 		DataType dataItem;
 		DataType upCasedataItem;
 		char	userInput = '\0';

@@ -8,7 +8,7 @@ TextInterpreter::TextInterpreter ( )
 {
 }
 
-Task TextInterpreter::interpret ( std::string &textString )
+Task TextInterpreter::interpret ( std::string textString )
 {
 	if (textString == "fun"){
 		return std::make_shared<SpecialTextTask>(SpecialTextTask(textString));

@@ -77,13 +77,14 @@ public:
 		value = m_queue.back();
 		m_queue.pop_back();
 	}
-	void try_pop( T&value ) {
+	bool try_pop( T&value ) {
 		std::unique_lock<std::mutex>	lock(m_mutex);
 		if ( m_queue.empty() ) {
 			return false;
 		}
 		value = m_queue.back();
 		m_queue.pop_back();
+		return true;
 	}
 
 	template < class... Args> void emplace ( Args&& ... args );

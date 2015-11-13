@@ -1,7 +1,7 @@
 #ifndef __JOINTHREADS_H__
 #define __JOINTHREADS_H__
 
-#include <thread.h>
+#include <thread>
 
 template <typename Container = std::vector<std::thread> >
 class JoinThreads{
