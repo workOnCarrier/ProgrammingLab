@@ -1,0 +1,16 @@
+Functionality needed:
+Form a hierarchy of objects with following features.
+	Each level can have a distinct set of childeren.
+	The number and type of children varies based on input data.
+	Each child provides a distinct funtionality.
+
+Solution _1_:
+	Child creation:
+		Child creation is abstracted from hierarchy maintenance.
+		At each level, you can instantiate a policy dependent on data (via childCreationPolicy factory).
+		Which combination of children need to be created is abstracted inside childCreationPolicy obtained from the factory.
+		The childCreatePolicy provides the interface to give the set of children in an STL container.
+		Actual child object creation logic is abstracted inside children factory.
+	Actual child objects:
+		All children are derived from a common Node class, allowing for use of polymorphism.
+		Additionally, given the different functionalities required, child objects can be combinatorial via policy based class design.
