@@ -31,11 +31,7 @@ public:
 	}
 	void try_sort_chunk ()
 	{
-		std::shared_ptr<chunkToSort>	chunk = m_chunks.pop();
-		if ( chunk )
-		{
-			sort_chunk(chunk);
-		}
+		sort_chunk ( m_chunks.pop() );
 	}
 	std::list<T> do_sort( std::list<T> & chunk )
 	{
@@ -72,9 +68,9 @@ public:
 		result.splice ( result.begin(), newLower.get() );
 		return result;
 	}
-	void sort_chunk ( std::shared_ptr<chunkToSort> & chunk )
+	void sort_chunk ( chunkToSort chunk )
 	{
-		chunk->m_promise->set_value(do_sort(chunk->m_data));
+		chunk.m_promise->set_value(do_sort(chunk.m_data));
 	}
 	void sort_thread ()
 	{

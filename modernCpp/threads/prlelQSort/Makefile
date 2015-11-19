@@ -2,7 +2,6 @@
 CC = /usr/bin/g++-4.8
 
 CFLAGS = -I. -I../hdr -I/usr/include/c++/4.8 -Wall
-#CPPFLAGS = -std=c++0x -I. -I../hdr -Wall -ggdb
 CPPFLAGS = -std=gnu++11 -I. -I../hdr -Wall -ggdb -pthread
 LDFLAGS = -L/usr/lib/gcc/i686-linux-gnu/4.8 -pthread -ggdb -Wall
 
@@ -11,7 +10,6 @@ CLEAN_CTAGS = clean_tags
 
 all: $(TARGET) 
 .cpp.o:
-	$(CC) --version
 	$(CC) -c $(CPPFLAGS) -o $@ $< > buildlog 2>&1
 
 ctags:
@@ -54,13 +52,13 @@ all:
 	$(test3)
 
 clean: 
-	-rm -f core &
-	-rm $(TESTPRLELQSRT) &
-	-rm $(TESTPRLELQSRTOBJ) &
+	-rm -f core
+	-rm $(TESTPRLELQSRT)
+	-rm $(TESTPRLELQSRTOBJ)
 	-rm $(TESTLINEARQSORT)
 	-rm $(TESTLINEARQSORTOBJ)
-	-rm $(TESTPERF) &
-	-rm $(TESTPERFOBJ) &
-	-rm $(TEST_TS_STACK) &
-	-rm $(TEST_TS_STACKOBJ) &
-	-make $(CLEAN_CTAGS) &
+	-rm $(TESTPERF)
+	-rm $(TESTPERFOBJ)
+	-rm $(TEST_TS_STACK)
+	-rm $(TEST_TS_STACKOBJ)
+	-make $(CLEAN_CTAGS)
