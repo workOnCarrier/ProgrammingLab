@@ -20,3 +20,7 @@ Potential tool sets:
 # Python	-- quick prototyping
 # C++		-- I know how to code in this
 # scala		-- just because I wish to learn it
+
+Target Environment:
+Windows	-- 7, 2008 Server : release tasks
+Linux	-- Ubuntu, Redhat : Development environment

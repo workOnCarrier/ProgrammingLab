@@ -2,7 +2,7 @@
 CC = /usr/bin/g++-4.8
 
 CFLAGS = -I. -Wall
-CPPFLAGS = -std=c++0x -I. -I../blocks -I../ -Wall -ggdb -c
+CPPFLAGS = -std=c++0x -I. -I../blocks -I../include -Wall -ggdb -c
 LDFLAGS = -lpthread -ggdb -Wall -L../bin -lblocks 
 
 CTAGS = ctags --recurse=yes
