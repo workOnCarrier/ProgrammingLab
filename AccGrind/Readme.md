@@ -14,7 +14,7 @@ Vision:
 		# Nolio adoption will make the deployment task automation - duplicate work.
 		# If I increase the productivity of the team much more, it increases the probability of decreasing the size of the team -- that includes me.
 	Conclusion:
-		Considering, improving my days to day work has +ve impact on my daily routine.
+		Improving my days to day work has +ve impact on my daily routine.
 		Executing this project will improve my technical skills to unprecended levels.
 		I have a basic principle, "I am ready to do any kind of work, that makes my office projects successful". I am paid to do that.
 		While I increase the team efficiency, if management decided to let go of me, its's management's loss.
@@ -74,4 +74,4 @@ The plugins support good citizenship -- they comply with minimum functional requ
 The core is responsible for text handling and passing on the user input to the plugin.
 The plugin implements the desired functionality.
 For remote actions, agent in the target machine is a sensible design.
-
+For each plugin loaded, the logging is for the file 'plugin-name.log' -- how do I get it?

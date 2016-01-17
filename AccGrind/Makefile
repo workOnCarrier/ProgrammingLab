@@ -10,13 +10,11 @@ CLEAN_CTAGS = clean_tags
 TEST_INTERPRETER_SRC = 
 TEST_INTERPRETER_OBJ = 
 
-TARGET = automate
 
-all: $(TARGET) 
-
-$(TARGET) : $(TEST_INTERPRETER_OBJ)
-	$(CC) -o $(TARGET) $(LDFLAGS) $(TEST_INTERPRETER_OBJ)
-	cp $(TARGET) ../bin
+all:
+	make -C interface
+	make -C framework
+	make -C plugins
 
 #.o.cpp:
 .cpp.o :
@@ -30,6 +28,6 @@ $(CLEAN_CTAGS) :
  
 clean: 
 	-rm -f core
-	-rm $(TARGET)
-	-rm $(TEST_INTERPRETER_OBJ)
+	-make -C framework clean
+	-make -C plugins clean
 	-make $(CLEAN_CTAGS)
