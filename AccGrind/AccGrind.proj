@@ -1,0 +1,40 @@
+
+framework=/home/genius3/work/github/ProgrammingLab/AccGrind/framework CD=. filter="*.cpp" {
+ InputRouter.cpp
+ HostInputHandler.cpp
+ main.cpp
+}
+
+headers=/home/genius3/work/github/ProgrammingLab/AccGrind/include CD=. filter="*.h" {
+ InputRouter.h
+ HostInterpret.h
+ HostInputHandler.h
+ PluginLoader.h
+ ThreadSafeStack.h
+ keyInputSource.h
+}
+
+interImpl=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.cpp" {
+}
+interface=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.h" {
+ IInterpreter.h
+ IInputHandler.h
+ ITask.h
+ JoinThreads.h
+ ThreadGuard.h
+ taskCreater.h
+}
+
+textEcho=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins/textEcho  CD=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins/textEcho  filter="*" {
+ Makefile
+ specialTextTask.cpp
+ specialTextTask.h
+ textInterpreter.cpp
+ textInterpreter.h
+ textTask.cpp
+ textTask.h
+}
+
+doc=/home/genius3/work/github/ProgrammingLab/AccGrind filter="*.md" {
+ Readme.md
+}
