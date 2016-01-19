@@ -27,14 +27,14 @@ namespace AccGrind {
     Task HostInputHandler::getHostTaskFrom ( std::string & usrInput ) {
         Task newTask;
         std::cout << "Input handled : " << usrInput << std::endl;
-        newTask = m_interpreter->interpret ( usrInput );
+        newTask = m_interpreter.interpret ( usrInput );
         return newTask;
     }
     void HostInputHandler::getOptions ( std::vector<std::string> & usrOptionVector ) {
-        m_interpreter->getOptions(usrOptionVector);
+        m_interpreter.getOptions(usrOptionVector);
     }
     void HostInputHandler::scheduleTask ( Task task){
-        m_hostTaskQueue.add ( task );
+        //m_hostTaskQueue.add ( task );
     }
     bool HostInputHandler::plugin_handleInput ( std::string&  ){
         return false

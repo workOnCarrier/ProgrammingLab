@@ -7,10 +7,12 @@ namespace AccGrind{
     }
     HostInterpret::~HostInterpret (){
     }
-    Task HostInterpret::interpret ( std::string &textString ) {
+    Task HostInterpret::interpret ( IInterpreter::InputType &textString ) {
         Task newTask;
         int optionNo = getOptionFromUsrInput(textString);
-        newTask = m_options[optionNo]->getTask(textSTring);
+        if ( optionNo < m_options.size() ){
+            newTask = m_options[optionNo]->getTask(textSTring);
+        }
         return newTask;
     }
     int HostInterpret::getOptionFromUsrInput ( std::string& ) {
@@ -19,7 +21,7 @@ namespace AccGrind{
     }
     void HostInterpret::getOptions ( std::vector<std::string>& usrOptionVector) const {
 #pragma message ("TBD:->HostInterpret::getOptions - hardcoded values to be updated later")
-        usrOptionVector.push_back("Host::1: continue");
+        usrOptionVector.push_back("Host::1: echo");
         usrOptionVector.push_back("Host::2: continue");
     }
 }

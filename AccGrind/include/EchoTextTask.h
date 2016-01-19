@@ -8,6 +8,7 @@ namespace AccGrind{
         ~EchoTextTask ();
         virtual void execute();
     private:
+        std::string m_argumentStr;
     };
 }
 #endif // __ECHOTEXTTASK_H__

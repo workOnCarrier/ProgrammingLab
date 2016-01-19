@@ -8,8 +8,8 @@ LDFLAGS = -lpthread -ggdb -Wall
 CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
 
-AccGrind_SRC = main.cpp HostInputHandler.cpp InputRouter.cpp
-AccGrind_OBJ = main.o HostInputHandler.o InputRouter.o
+AccGrind_SRC = main.cpp HostInputHandler.cpp InputRouter.cpp HostInterpret.cpp EchoTextOption.cpp EchoTextTask.cpp
+AccGrind_OBJ = main.o HostInputHandler.o InputRouter.o HostInterpret.o EchoTextOption.o EchoTextTask.o
 
 TARGET = AccGrind
 

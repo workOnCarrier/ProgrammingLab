@@ -2,14 +2,16 @@
 #define __HOSTINTERPRET_H__
 
 #include "IInterpreter.h"
+#include "IOption.h"
 #include "ITask.h"
 
 namespace AccGrind{
-    class HostInterpret : public IInterpret<std::string>{
+    class HostInterpret : public IInterpreter<std::string>{
     public:
         HostInterpret ();
-        ~HostInterpret ();
-	virtual Task interpret ( std::string &) ;
+        virtual ~HostInterpret ();
+	    virtual Task interpret ( IInterpreter::InputType &) ;
+        virtual void getOptions ( std::vector<std::string>& ) const ;
     private:
         int getOptionFromUsrInput ( std::string& );
         std::vector<std::shared_ptr<IOption>>   m_options;

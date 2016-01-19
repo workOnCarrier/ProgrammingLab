@@ -2,7 +2,8 @@
 #define __HOSTINPUTHANDLER_H__
 
 #include "IInputHandler.h"
-
+#include "HostInterpret.h"
+#include "ITask.h"
 namespace AccGrind {
     class HostInputHandler : public IInputHandler {
     public:

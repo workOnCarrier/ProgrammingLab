@@ -4,11 +4,12 @@
 #include "ITask.h"
 
 namespace AccGrind{
-    template <typename InputType>
+    template <typename T>
     class IInterpreter {
     public:
+        typedef T InputType ;
         virtual ~IInterpreter () {}
-        virtual Task interpret ( InputType textString ) = 0;
+        virtual Task interpret ( InputType &textString ) = 0;
         virtual void getOptions ( std::vector<std::string>& ) const =0;
     };
 }
