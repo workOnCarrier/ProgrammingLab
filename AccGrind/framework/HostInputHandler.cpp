@@ -6,19 +6,37 @@ namespace AccGrind {
     HostInputHandler::HostInputHandler () {
     }
     HostInputHandler::~HostInputHandler () {}
+
     bool HostInputHandler::handleInput ( std::string& usrInput ) {
-        std::cout << "Input handled : " << usrInput << std::endl;
-        std::vector<std::string>  optionVector;
-        this->getOptions(optionVector);
-        for ( auto a:optionVector ) {
-            std::cout << a.c_str() << std::endl;
+        Task task = getHostTaskFrom ( usrInput );
+        if ( task ) {
+            scheduleTask( task );
+            std::vector<std::string>  optionVector;
+            this->getOptions(optionVector);
+            for ( auto a:optionVector ) {
+                std::cout << a.c_str() << std::endl;
+            }
+        }else{
+            if ( false == plugin_handleInput ( usrInput ) ) {
+                // report error -- invalid input
+                return false;
+            }
         }
         return true;
     }
+    Task HostInputHandler::getHostTaskFrom ( std::string & usrInput ) {
+        Task newTask;
+        std::cout << "Input handled : " << usrInput << std::endl;
+        newTask = m_interpreter->interpret ( usrInput );
+        return newTask;
+    }
     void HostInputHandler::getOptions ( std::vector<std::string> & usrOptionVector ) {
-        usrOptionVector.push_back("Host:: 1: continue");
-        usrOptionVector.push_back("Host:: 2: continue");
-        usrOptionVector.push_back("Host:: 3: continue");
-        usrOptionVector.push_back("Host:: 4: continue");
+        m_interpreter->getOptions(usrOptionVector);
+    }
+    void HostInputHandler::scheduleTask ( Task task){
+        m_hostTaskQueue.add ( task );
+    }
+    bool HostInputHandler::plugin_handleInput ( std::string&  ){
+        return false
     }
 }

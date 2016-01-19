@@ -9,6 +9,7 @@ namespace AccGrind{
     public:
         virtual ~IInterpreter () {}
         virtual Task interpret ( InputType textString ) = 0;
+        virtual void getOptions ( std::vector<std::string>& ) const =0;
     };
 }
 #endif // __IINTERPRETER_H__

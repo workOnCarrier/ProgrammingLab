@@ -9,8 +9,10 @@ namespace AccGrind{
     public:
         HostInterpret ();
         ~HostInterpret ();
-	virtual Task interpret ( InputType textString ) ;
+	virtual Task interpret ( std::string &) ;
     private:
+        int getOptionFromUsrInput ( std::string& );
+        std::vector<std::shared_ptr<IOption>>   m_options;
     };
 }
 #endif // __HOSTINTERPRET_H__

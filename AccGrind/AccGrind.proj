@@ -1,7 +1,10 @@
 
 framework=/home/genius3/work/github/ProgrammingLab/AccGrind/framework CD=. filter="*.cpp" {
  InputRouter.cpp
+ HostInterpret.cpp
  HostInputHandler.cpp
+ EchoTextOption.cpp
+ EchoTextTask.cpp
  main.cpp
 }
 
@@ -12,6 +15,8 @@ headers=/home/genius3/work/github/ProgrammingLab/AccGrind/include CD=. filter="*
  PluginLoader.h
  ThreadSafeStack.h
  keyInputSource.h
+ EchoTextOption.h
+ EchoTextTask.h
 }
 
 interImpl=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.cpp" {
@@ -19,6 +24,7 @@ interImpl=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filte
 interface=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.h" {
  IInterpreter.h
  IInputHandler.h
+ IOption.h
  ITask.h
  JoinThreads.h
  ThreadGuard.h
