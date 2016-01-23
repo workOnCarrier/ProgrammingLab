@@ -6,6 +6,7 @@ My father is not a very tech savy person. He has a repair shop for tyres. His pr
  * Some customers take delivery and some do not take delivery.
  * At the end of the day, he has to tally the receipt, and update the books.
  * This takes significant time and effort.
+
 #### First phase will be to automate this.
 I used Google App Scripts, so I can modify the functionality remotely.
 
