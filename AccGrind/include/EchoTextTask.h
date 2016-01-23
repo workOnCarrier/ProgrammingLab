@@ -1,6 +1,6 @@
 #ifndef __ECHOTEXTTASK_H__
 #define __ECHOTEXTTASK_H__
-
+#include "ITask.h"
 namespace AccGrind{
     class EchoTextTask : public ITask {
     public:

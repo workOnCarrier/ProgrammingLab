@@ -2,6 +2,7 @@
 #define __IINTERPRETER_H__
 
 #include "ITask.h"
+#include <vector>
 
 namespace AccGrind{
     template <typename T>
@@ -9,7 +10,7 @@ namespace AccGrind{
     public:
         typedef T InputType ;
         virtual ~IInterpreter () {}
-        virtual Task interpret ( InputType &textString ) = 0;
+        virtual Task interpret ( InputType &) = 0;
         virtual void getOptions ( std::vector<std::string>& ) const =0;
     };
 }

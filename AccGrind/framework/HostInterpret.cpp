@@ -1,4 +1,6 @@
+#include "EchoTextOption.h"
 #include "HostInterpret.h"
+#include <string>
 
 namespace AccGrind{
     HostInterpret::HostInterpret (){
@@ -11,7 +13,7 @@ namespace AccGrind{
         Task newTask;
         int optionNo = getOptionFromUsrInput(textString);
         if ( optionNo < m_options.size() ){
-            newTask = m_options[optionNo]->getTask(textSTring);
+            newTask = m_options[optionNo]->getTask(textString);
         }
         return newTask;
     }

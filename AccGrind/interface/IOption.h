@@ -6,13 +6,12 @@
 namespace AccGrind {
     class IOption{
     public:
-        IOption( std::string &optionString );
-        ~IOption ();
+        IOption( ) {}
+        virtual ~IOption () {}
 
-        virtual std::string getOptionString ( )const;
+        virtual std::string getOptionString ( )const = 0;
         virtual Task        getTask ( std::string& ) const = 0;
     private:
-        std::string     m_optionString;
     };
 }
 #endif // __IOPTION_H__

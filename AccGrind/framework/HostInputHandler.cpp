@@ -11,11 +11,6 @@ namespace AccGrind {
         Task task = getHostTaskFrom ( usrInput );
         if ( task ) {
             scheduleTask( task );
-            std::vector<std::string>  optionVector;
-            this->getOptions(optionVector);
-            for ( auto a:optionVector ) {
-                std::cout << a.c_str() << std::endl;
-            }
         }else{
             if ( false == plugin_handleInput ( usrInput ) ) {
                 // report error -- invalid input
@@ -26,7 +21,6 @@ namespace AccGrind {
     }
     Task HostInputHandler::getHostTaskFrom ( std::string & usrInput ) {
         Task newTask;
-        std::cout << "Input handled : " << usrInput << std::endl;
         newTask = m_interpreter.interpret ( usrInput );
         return newTask;
     }
@@ -35,8 +29,10 @@ namespace AccGrind {
     }
     void HostInputHandler::scheduleTask ( Task task){
         //m_hostTaskQueue.add ( task );
+        std::cout << "About to execute the task " << std::endl;
+        task->execute();
     }
     bool HostInputHandler::plugin_handleInput ( std::string&  ){
-        return false
+        return false;
     }
 }

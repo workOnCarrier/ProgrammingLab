@@ -4,6 +4,7 @@
 #include "IInterpreter.h"
 #include "IOption.h"
 #include "ITask.h"
+#include <vector>
 
 namespace AccGrind{
     class HostInterpret : public IInterpreter<std::string>{

@@ -2,7 +2,7 @@
 CC = /usr/bin/g++-4.8
 
 CFLAGS = -I. -Wall
-CPPFLAGS = -std=c++0x -I. -I../blocks -Wall -ggdb -fpic -c
+CPPFLAGS = -std=c++0x -I. -I../../interface -Wall -ggdb -fpic -c
 LDFLAGS = -lpthread -ggdb -Wall
 
 CTAGS = ctags --recurse=yes
@@ -30,7 +30,7 @@ $(CLEAN_CTAGS) :
 	rm tags
  
 clean: 
-	-rm -f core
+	-rm -f core buildlog 
 	-rm $(TARGET)
 	-rm ../lib/$(TARGET)
 	-rm $(TEST_INTERPRETER_OBJ)

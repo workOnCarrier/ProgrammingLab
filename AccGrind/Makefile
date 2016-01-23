@@ -12,7 +12,6 @@ TEST_INTERPRETER_OBJ =
 
 
 all:
-	make -C interface
 	make -C framework
 	make -C plugins
 

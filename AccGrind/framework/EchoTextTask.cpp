@@ -1,4 +1,5 @@
 #include "EchoTextTask.h"
+#include <iostream>
 
 
 namespace AccGrind{
@@ -7,6 +8,6 @@ namespace AccGrind{
     EchoTextTask::~EchoTextTask (){
     }
     void EchoTextTask::execute(){
-        std::cout << m_argumentStr << std::endl;
+        std::cout << "Echo Task ::" <<  m_argumentStr << std::endl;
     }
 }
