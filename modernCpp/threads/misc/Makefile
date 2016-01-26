@@ -1,23 +1,30 @@
 
-CC = g++
+CC = /usr/bin/g++-4.8
 
-CFLAGS = -I. -I../hdr -Wall
-CPPFLAGS = -std=c++0x -I. -I../hdr -Wall -ggdb
-LDFLAGS = -lpthread -ggdb -Wall
+CFLAGS = -I. -I../hdr -I/usr/include/c++/4.8 -Wall
+CPPFLAGS = -std=gnu++11 -I. -I../hdr -Wall -ggdb -pthread
+LDFLAGS = -L/usr/lib/gcc/i686-linux-gnu/4.8 -pthread -ggdb -Wall
 
 CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
 
-SRC = first.cpp
-OBJ = first.o 
+SRC_1 = first.cpp
+OBJ_1 = first.o 
 
-TARGET = misc1
+TARGET_1 = misc1
+TARGET_2 = atomic
+CLEAN = clean
 
-all: $(TARGET) 
+SRC_2 = atomic.cpp
+OBJ_2 = atomic.o 
 
-$(TARGET) : $(OBJ)
-	$(CC) -o $(TARGET) $(LDFLAGS) $(OBJ)
+all: $(TARGET_1)  $(TARGET_2) 
 
+$(TARGET_1) : $(OBJ_1)
+	$(CC) -o $(TARGET_1) $(LDFLAGS) $(OBJ_1)
+
+$(TARGET_2) : $(OBJ_2)
+	$(CC) -o $(TARGET_2) $(LDFLAGS) $(OBJ_2)
 #.o.cpp:
 .cpp.o:
 	$(CC) --version
@@ -26,37 +33,11 @@ $(TARGET) : $(OBJ)
 ctags:
 	$(CTAGS)
 
-$(CLEAN) : 
-	rm $(TARGET) 
+$(CLEAN) : $(CLEAN_CTAGS)
+	-rm $(TARGET_1)  $(OBJ_1)
+	-rm $(TARGET_2)  $(OBJ_2)
+	-rm -f core
 
 $(CLEAN_CTAGS) :
-	rm tags
+	-rm tags
  
-
-TESTKEYINPUTSOURCE = testKIS
-TESTINPUTOBJ = testKeyInputSource.o
-$(TESTKEYINPUTSOURCE): $(TESTINPUTOBJ)  keyInputSource.h
-	$(CC) -o $(TESTKEYINPUTSOURCE) $(LDFLAGS) $(TESTINPUTOBJ)  >> buildlog 2>&1
-
-TESTCONCDS = testConcDS
-TESTCONCDSOBJ = testConcurrentDS.o
-$(TESTCONCDS) : $(TESTCONCDSOBJ) concurrentDS.h
-	$(CC) -o $(TESTCONCDS) $(LDFLAGS) $(TESTCONCDSOBJ) >> buildlog 2>&1
-	
-test1: $(TESTKEYINPUTSOURCE)
-	echo "tests key input by user : testKIS"
-
-test2 : $(TESTCONCDS)
-	echo "test concurrent data structure : " $(TESTCONCDS)
-
-clean: 
-	rm -f core &
-	rm $(TARGET) &
-	rm $(OBJ) &
-	make $(CLEAN_CTAGS) &
-	rm $(TESTKEYINPUTSOURCE) &
-	rm $(TESTINPUTOBJ) &
-	rm $(TESTCONCDS)
-	rm $(TESTCONCDSOBJ)
-
-
