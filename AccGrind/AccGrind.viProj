@@ -1,11 +1,14 @@
 
-framework=/home/genius3/work/github/ProgrammingLab/AccGrind/framework CD=. filter="*.cpp" {
- InputRouter.cpp
- HostInterpret.cpp
- HostInputHandler.cpp
+framework=/home/genius3/work/github/ProgrammingLab/AccGrind/framework CD=. filter="*.cpp buildlog" {
  EchoTextOption.cpp
  EchoTextTask.cpp
+ HostInputHandler.cpp
+ HostInterpret.cpp
+ InputRouter.cpp
+ StartMyServOption.cpp
+ StartServiceTask.cpp
  main.cpp
+ buildlog
 }
 
 headers=/home/genius3/work/github/ProgrammingLab/AccGrind/include CD=. filter="*.h" {
@@ -17,6 +20,8 @@ headers=/home/genius3/work/github/ProgrammingLab/AccGrind/include CD=. filter="*
  keyInputSource.h
  EchoTextOption.h
  EchoTextTask.h
+ StartMyServOption.h
+ StartServiceTask.h
 }
 
 interImpl=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.cpp" {
@@ -43,4 +48,11 @@ textEcho=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins/textEcho  CD=
 
 doc=/home/genius3/work/github/ProgrammingLab/AccGrind filter="*.md" {
  Readme.md
+}
+
+
+misc=/home/genius3/work/github/ProgrammingLab/AccGrind/trial CD=. filter="*" {
+ Makefile
+ buildlog
+ regExTrial.cpp
 }

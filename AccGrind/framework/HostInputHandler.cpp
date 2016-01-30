@@ -29,7 +29,6 @@ namespace AccGrind {
     }
     void HostInputHandler::scheduleTask ( Task task){
         //m_hostTaskQueue.add ( task );
-        std::cout << "About to execute the task " << std::endl;
         task->execute();
     }
     bool HostInputHandler::plugin_handleInput ( std::string&  ){
