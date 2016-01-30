@@ -1,5 +1,6 @@
 ## Vision:
-	This project is to accelerate the usual grind in my office work. Hence the name "AccGrind"  (ACCelerated GRIND)
+	This project is to accelerate the usual grind in my office work.
+    Hence the name "AccGrind"  (ACCelerated GRIND)
 	I can focus on real thought provoking work if the usual rut work can be either made faster or best automated.
 
 ### Why I want to do this project:

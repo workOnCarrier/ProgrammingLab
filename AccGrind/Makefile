@@ -12,8 +12,9 @@ TEST_INTERPRETER_OBJ =
 
 
 all:
-	make -C framework
-	make -C plugins
+	-make -C framework
+	-make -C plugins
+	-make ctags
 
 #.o.cpp:
 .cpp.o :
