@@ -4,16 +4,18 @@
 #include "specialTextTask.h"
 #include "textTask.h"
 
-TextInterpreter::TextInterpreter ( ) {
-}
+namespace AccGrindPlugin {
+    TextInterpreter::TextInterpreter ( ) {
+    }
 
-TextInterpreter::~TextInterpreter ( ) {
-}
+    TextInterpreter::~TextInterpreter ( ) {
+    }
 
-Task TextInterpreter::interpret ( std::string textString ) {
-	if (textString == "fun"){
-		return std::make_shared<SpecialTextTask>(SpecialTextTask(textString));
-	}else {
-		return std::make_shared<TextTask>(TextTask(textString));
-	}
+    Task TextInterpreter::interpret ( std::string textString ) {
+        if (textString == "fun"){
+            return std::make_shared<SpecialTextTask>(SpecialTextTask(textString));
+        }else {
+            return std::make_shared<TextTask>(TextTask(textString));
+        }
+    }
 }

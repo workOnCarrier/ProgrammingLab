@@ -11,17 +11,18 @@ CLEAN_CTAGS = clean_tags
 TEST_INTERPRETER_SRC = textInterpreter.cpp specialTextTask.cpp textTask.cpp
 TEST_INTERPRETER_OBJ =  specialTextTask.o textTask.o textInterpreter.o
 
-TARGET = libblocks.so
+TARGET = libtextEcho.so
 
 all: $(TARGET) 
 
 $(TARGET) : $(TEST_INTERPRETER_OBJ)
 	$(CC) -shared -o $(TARGET) $(LDFLAGS) $(TEST_INTERPRETER_OBJ)
-	cp $(TARGET) ../bin
+	cp $(TARGET) ../../bin
 
 #.o.cpp:
 .cpp.o :
-	$(CC) -c $(CPPFLAGS) -o $@ $< > buildlog 2>&1
+	echo "$(CC) -c $(CPPFLAGS) -o $@ $< "> buildlog 2>&1
+	$(CC) -c $(CPPFLAGS) -o $@ $< >> buildlog 2>&1
 
 ctags:
 	$(CTAGS)
@@ -32,6 +33,6 @@ $(CLEAN_CTAGS) :
 clean: 
 	-rm -f core buildlog 
 	-rm $(TARGET)
-	-rm ../lib/$(TARGET)
+	-rm ../../bin/$(TARGET)
 	-rm $(TEST_INTERPRETER_OBJ)
 	-make $(CLEAN_CTAGS)

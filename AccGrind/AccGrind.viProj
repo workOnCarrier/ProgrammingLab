@@ -36,14 +36,20 @@ interface=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filte
  taskCreater.h
 }
 
-textEcho=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins/textEcho  CD=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins/textEcho  filter="*" {
+
+plugins=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins CD=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins filter="Makefile" {
  Makefile
- specialTextTask.cpp
- specialTextTask.h
- textInterpreter.cpp
- textInterpreter.h
- textTask.cpp
- textTask.h
+  textEcho=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins/textEcho  CD=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins/textEcho  filter="*" {
+  Makefile
+  buildlog
+  specialTextTask.cpp
+  specialTextTask.h
+  textInterpreter.cpp
+  textInterpreter.h
+  textTask.cpp
+  textTask.h
+  libmain.cpp
+ }
 }
 
 doc=/home/genius3/work/github/ProgrammingLab/AccGrind filter="*.md" {
