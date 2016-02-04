@@ -8,8 +8,8 @@ LDFLAGS = -lpthread -ggdb -Wall
 CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
 
-TEST_INTERPRETER_SRC = textInterpreter.cpp specialTextTask.cpp textTask.cpp
-TEST_INTERPRETER_OBJ =  specialTextTask.o textTask.o textInterpreter.o
+TEST_INTERPRETER_SRC = textInterpreter.cpp specialTextTask.cpp textTask.cpp libmain.cpp
+TEST_INTERPRETER_OBJ =  specialTextTask.o textTask.o textInterpreter.o libmain.o
 
 TARGET = libtextEcho.so
 

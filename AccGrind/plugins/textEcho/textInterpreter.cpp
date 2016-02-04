@@ -18,4 +18,7 @@ namespace AccGrindPlugin {
             return std::make_shared<TextTask>(TextTask(textString));
         }
     }
+     void TextInterpreter::getOptions ( std::vector<std::string>& vectorObj) const {
+         vectorObj.push_back("test");
+     }
 }

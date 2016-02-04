@@ -1,8 +1,10 @@
-#include "IInputHandler.h"
+#include "libmain.h"
+#include <string>
+#include "textInterpreter.h"
 
-extern "C"{
-
-AccGrind::IInputHandler getInputHandler ( );
-
+using namespace AccGrindPlugin;
+AccGrind::IInterpreter<std::string>* getPluginInputHandler () {
+    return new TextInterpreter ();
 }
+
 
