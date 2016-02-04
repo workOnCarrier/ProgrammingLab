@@ -22,18 +22,19 @@ headers=/home/genius3/work/github/ProgrammingLab/AccGrind/include CD=. filter="*
  EchoTextTask.h
  StartMyServOption.h
  StartServiceTask.h
+ IInputHandler.h
 }
 
 interImpl=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.cpp" {
 }
 interface=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.h" {
  IInterpreter.h
- IInputHandler.h
  IOption.h
  ITask.h
  JoinThreads.h
  ThreadGuard.h
  taskCreater.h
+ libmain.h
 }
 
 
@@ -61,4 +62,5 @@ misc=/home/genius3/work/github/ProgrammingLab/AccGrind/trial CD=. filter="*" {
  Makefile
  buildlog
  regExTrial.cpp
+ testdlOpen.cpp
 }
