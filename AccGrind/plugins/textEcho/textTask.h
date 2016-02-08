@@ -7,7 +7,7 @@ using namespace AccGrind;
 namespace AccGrindPlugin{
     class TextTask : public ITask {
     public:
-        TextTask( std::string &string);
+        TextTask( std::string const &string);
         virtual void execute() ;
     private:
         std::string		m_textValue;

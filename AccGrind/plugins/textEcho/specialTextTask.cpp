@@ -3,7 +3,7 @@
 
 namespace AccGrindPlugin{
 
-    SpecialTextTask::SpecialTextTask( std::string &textVal)
+    SpecialTextTask::SpecialTextTask( std::string const &textVal)
     :m_textValue(textVal) { }
     void SpecialTextTask::execute()
     {

@@ -19,7 +19,7 @@ all: $(TARGET_1) $(TARGET_2)
 $(TARGET_2) : $(DL_OPEN_OBJ)
 	$(CC)  $(LDFLAGS) $(DL_OPEN_OBJ)  -ldl  -o $(TARGET_2)
 	cp ../bin/libtextEcho.so .
-	./$(TARGET_2) >> execLog_2
+	./$(TARGET_2) 
 	-rm ./libtextEcho.so
 
 $(TARGET_1) : $(REGEX_OBJ)
@@ -40,8 +40,6 @@ clean:
 	-rm buildlog execLog_1 execLog_2
 	-rm $(TARGET_1)
 	-rm $(TARGET_2)
-	-rm ../bin/$(TARGET_1)
-	-rm ../bin/$(TARGET_2)
 	-rm $(REGEX_OBJ)
 	-rm $(DL_OPEN_OBJ)
 	-make $(CLEAN_CTAGS)

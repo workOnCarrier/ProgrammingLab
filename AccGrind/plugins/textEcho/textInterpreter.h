@@ -12,7 +12,7 @@ namespace AccGrindPlugin {
     public:
         TextInterpreter ( );
         virtual ~TextInterpreter ( );
-        virtual Task interpret ( std::string &textString );
+        virtual Task interpret ( std::string const &textString );
         virtual void getOptions ( std::vector<std::string>& ) const ;
     private:
     };

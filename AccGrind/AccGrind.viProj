@@ -50,6 +50,7 @@ plugins=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins CD=/home/geniu
   textTask.cpp
   textTask.h
   libmain.cpp
+  testPlugin.cpp
  }
 }
 

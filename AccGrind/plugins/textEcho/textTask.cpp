@@ -4,7 +4,7 @@
 
 namespace AccGrindPlugin{
 
-    TextTask::TextTask( std::string &string)
+    TextTask::TextTask( std::string const &string)
     :m_textValue(string)
     { }
     void TextTask::execute()
