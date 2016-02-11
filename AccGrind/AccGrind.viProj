@@ -4,6 +4,8 @@ framework=/home/genius3/work/github/ProgrammingLab/AccGrind/framework CD=. filte
  EchoTextTask.cpp
  HostInputHandler.cpp
  HostInterpret.cpp
+ PluginLoader.cpp
+ PluginManager.cpp
  InputRouter.cpp
  StartMyServOption.cpp
  StartServiceTask.cpp
@@ -16,6 +18,7 @@ headers=/home/genius3/work/github/ProgrammingLab/AccGrind/include CD=. filter="*
  HostInterpret.h
  HostInputHandler.h
  PluginLoader.h
+ PluginManager.h
  ThreadSafeStack.h
  keyInputSource.h
  EchoTextOption.h
