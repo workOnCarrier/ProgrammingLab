@@ -1,0 +1,7 @@
+:Project [file] -- create/open a project file
+\c -- creates a project fold
+\r -- refreshes the file list for the fold where the cursor is
+\R -- recursively refreshes the file list for the contained projects also, where cursor is
+<enter> -- open the file under the cursor
+
+

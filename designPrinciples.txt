@@ -1,0 +1,24 @@
+Open Close Principle
+	Template Pattern
+	Strategy Pattern
+
+Dependency Inversion Principle
+	High Level and Low Level modules should depend upon Abstractions. Abstractions should not depend on detail. Detail should depend upon abstractions.
+	Pimple
+	Factories
+	Abstract Factories
+	Inversion of control containers
+
+Interface Segregation Principle
+	Clients should not be forced to depend upon the interfaces, that they don't use.
+	This is to avoid fat / polluted interfaces.
+
+Single responsibility principle
+	A class should only have one reason to change.
+	A class should handle only one responsibility
+
+Liskov's Substitution principle
+	Derived types should be completely substitutable for their base types.
+
+
+	

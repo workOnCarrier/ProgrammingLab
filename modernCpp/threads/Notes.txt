@@ -1,0 +1,19 @@
+To make datastructures threadsafe, you need to ensure following things :-
+	# Ensure, no thread gains access, while the invariants are broken
+	# Avoid race conditions, inherent in the interface, by providing functions complete operations rather than operation steps
+	# Pay attentions for behavior in exceptions to ensure invariants are not broken
+	# Minimize the opportunities of deadlock, by restricting the scope of locks and avoiding nested locks
+
+Other considerations:
+	When one thread is invoking one function in the interface, what other functions are safe to be invoked from other threads?
+
+futures concepts:
+	coroutines, active objects, asio -- competing implementations
+	http://braddock.com/~braddock/future/
+
+
+
+
+
+Misc: -- Ideas
+    SignalSlot mechanisms for simplifying application design
