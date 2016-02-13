@@ -1,9 +1,27 @@
 Books:
 
 Data Structures and Algorithms with Object-Oriented Design Patterns in C++ -- http://www.brpreiss.com/books/opus4/html/book.html
+
 The Structure and Interpretation of Computer Programs -- http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_start
+B:\life\study\Skiena.-.TheAlgorithmDesignManual.pdf
+
 
 
 Concepts:
 std::forward<T>
 std::is_same<T>
+
+std::facet
+std::future
+std::functional -- function target
+std::bind
+std::move
+std::tie -- from tuple
+std::ref -- from functional
+std::ignore
+std::get -- function template
+
+
+threading / concurrency
+std::async
+thread_local
