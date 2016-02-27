@@ -14,7 +14,20 @@ TARGET_2	= tryDlOpen
 DL_OPEN_SRC = testdlOpen.cpp
 DL_OPEN_OBJ = testdlOpen.o
 
-all: $(TARGET_1) $(TARGET_2)
+TARGET_3	= tryPluginList
+PLUGIN_OPEN_SRC = pluginList.cpp
+PLUGIN_OPEN_OBJ = pluginList.o
+
+all: $(TARGET_1) $(TARGET_3) $(TARGET_2)
+
+$(TARGET_3) : $(PLUGIN_OPEN_OBJ)
+	$(CC)  $(LDFLAGS) $(PLUGIN_OPEN_OBJ) -lboost_filesystem -lboost_system -o $(TARGET_3)
+	-cp ../bin/libtextEcho.so .
+	-touch dummy.so
+	./$(TARGET_3) 
+	-rm ./libtextEcho.so
+	-rm dummy.so
+
 
 $(TARGET_2) : $(DL_OPEN_OBJ)
 	$(CC)  $(LDFLAGS) $(DL_OPEN_OBJ)  -ldl  -o $(TARGET_2)
@@ -40,7 +53,9 @@ clean:
 	-rm buildlog execLog_1 execLog_2
 	-rm $(TARGET_1)
 	-rm $(TARGET_2)
+	-rm $(TARGET_3)
 	-rm $(REGEX_OBJ)
+	-rm $(PLUGIN_OPEN_OBJ)
 	-rm $(DL_OPEN_OBJ)
 	-make $(CLEAN_CTAGS)
 	-rm -f core
