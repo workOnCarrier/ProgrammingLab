@@ -12,9 +12,16 @@ int main (){
     return 0;
 }
 bool fileNameIsPlugin ( string &fileName ){
-    if( string::npos != fileName.rfind(".so")){
+    string::size_type pos = fileName.find(".so");
+    if( string::npos != pos ){
         // potentially a valid library
-        cout << " valid library " << fileName << endl;
+        if ( fileName.length() == pos + 3 ){
+        // check if the files has format .so
+            cout << "potentially valid .SO library " << fileName << endl;
+        }else{
+        // check if the files has format .so.#*
+            cout << "potentially valid .SO.## library " << fileName << endl;
+        }
     }
     return true;
 }
