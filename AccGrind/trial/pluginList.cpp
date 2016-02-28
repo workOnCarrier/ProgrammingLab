@@ -15,15 +15,16 @@ bool fileNameIsPlugin ( string &fileName ){
     string::size_type pos = fileName.find(".so");
     if( string::npos != pos ){
         // potentially a valid library
-        if ( fileName.length() == pos + 3 ){
-        // check if the files has format .so
-            cout << "potentially valid .SO library " << fileName << endl;
-        }else{
-        // check if the files has format .so.#*
-            cout << "potentially valid .SO.## library " << fileName << endl;
-        }
+//        if ( fileName.length() == pos + 3 ){
+//        // check if the files has format .so
+//            cout << "potentially valid .SO library " << fileName << endl;
+//        }else{
+//        // check if the files has format .so.#*
+//            cout << "potentially valid .SO.## library " << fileName << endl;
+//        }
+        return true;
     }
-    return true;
+    return false;
 }
 vector<string>  getSoList(){
     vector<string> soList;

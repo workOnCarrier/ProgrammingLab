@@ -9,7 +9,7 @@ using namespace std;
 
 int main () {
     void* libHandle;
-    IInterpreter<string>* interpretObj;
+    AccGrind::IInterpreter<std::string>* interpretObj;
     libHandle = dlopen ( "./libtextEcho.so", RTLD_NOW );
     if ( !libHandle ){
         cout << "Could not load library:" << dlerror() << endl;
@@ -20,20 +20,29 @@ int main () {
     typedef void* (*getHandlers)();
 
     dlerror();
-    getHandlers handler =  (getHandlers) dlsym(libHandle, "getPluginInputHandler");
+    getHandlers handler =  (getHandlers) dlsym(libHandle, PLUGINHANDLER);
     const char* findFunctionError = dlerror();
     if ( findFunctionError ){
         cout << "Cannot load the symbol 'getPluginInputHandler' due to :"<< findFunctionError << endl;
     }else{
         cout << "Successfully loaded the symbol 'getPluginInputHandler'"<< endl;
     }
-    AccGrind::IInterpreter<std::string>* interruptObj = (AccGrind::IInterpreter<std::string>*)  handler( );
-    if ( NULL == interruptObj ){
+    interpretObj = (AccGrind::IInterpreter<std::string>*)  handler( );
+    if ( NULL == interpretObj ){
         cout << "Null pointer obtained from the symbol 'getPluginInputHandler'"<< endl;
     } else{
-        interruptObj ->interpret ( "fun" )->execute();
-        interruptObj ->interpret ( "some text" )->execute();
+        interpretObj ->interpret ( "fun" )->execute();
+        interpretObj ->interpret ( "some text" )->execute();
     }
 
+    typedef void (*deleteHandlers)(void*);
+    deleteHandlers delhandler =  (deleteHandlers ) dlsym(libHandle, "deletePluginInputHandler");
+    findFunctionError = dlerror();
+    if ( findFunctionError ){
+        cout << "Cannot load the symbol 'deletePluginInputHandler' due to :"<< findFunctionError << endl;
+    }else{
+        cout << "Successfully loaded the symbol 'detelePluginInputHandler'"<< endl;
+    }
+    delhandler(interpretObj);
     return 0;
 }

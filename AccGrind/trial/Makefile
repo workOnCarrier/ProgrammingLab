@@ -25,8 +25,8 @@ $(TARGET_3) : $(PLUGIN_OPEN_OBJ)
 	-cp ../bin/libtextEcho.so .
 	-touch dummy.so
 	./$(TARGET_3) 
-	#-rm ./libtextEcho.so
-	#-rm dummy.so
+	-rm ./libtextEcho.so
+	-rm dummy.so
 
 
 $(TARGET_2) : $(DL_OPEN_OBJ)

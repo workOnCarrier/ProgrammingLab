@@ -3,20 +3,20 @@ CC = /usr/bin/g++-4.8
 
 CFLAGS = -I. -I../include -I../interface -Wall
 CPPFLAGS = -std=c++0x -I. -I../include -I../interface -Wall -ggdb  -c
-LDFLAGS = -lpthread -ggdb -Wall
+LDFLAGS = -lpthread -ggdb -Wall -ldl -lboost_filesystem -lboost_system
 
 CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
 
-AccGrind_SRC = main.cpp HostInputHandler.cpp InputRouter.cpp HostInterpret.cpp EchoTextOption.cpp EchoTextTask.cpp StartMyServOption.cpp StartServiceTask.cpp
-AccGrind_OBJ = main.o HostInputHandler.o InputRouter.o HostInterpret.o EchoTextOption.o EchoTextTask.o StartMyServOption.o StartServiceTask.o
+AccGrind_SRC = main.cpp HostInputHandler.cpp InputRouter.cpp HostInterpret.cpp EchoTextOption.cpp EchoTextTask.cpp StartMyServOption.cpp StartServiceTask.cpp PluginLoader.cpp PluginManager.cpp
+AccGrind_OBJ = main.o HostInputHandler.o InputRouter.o HostInterpret.o EchoTextOption.o EchoTextTask.o StartMyServOption.o StartServiceTask.o PluginLoader.o PluginManager.o
 
 TARGET = AccGrind
 
 all: $(TARGET) 
 
 $(TARGET) : $(AccGrind_OBJ)
-	$(CC) -o $(TARGET) $(LDFLAGS) $(AccGrind_OBJ)
+	$(CC) -o $(TARGET) $(AccGrind_OBJ) $(LDFLAGS) 
 	cp $(TARGET) ../bin
 
 #.o.cpp:

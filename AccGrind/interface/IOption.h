@@ -10,7 +10,7 @@ namespace AccGrind {
         virtual ~IOption () {}
 
         virtual std::string getOptionString ( )const = 0;
-        virtual Task        getTask ( std::string& ) const = 0;
+        virtual Task        getTask ( std::string const& ) const = 0;
     private:
     };
 }

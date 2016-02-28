@@ -7,12 +7,12 @@
 namespace AccGrind{
     HostInterpret::HostInterpret (){
         // instantiate options
-        m_options.push_back ( std::make_shared<EchoTextOption>() );
-        m_options.push_back ( std::make_shared<StartMyServOption>() );
+        //m_options.push_back ( std::make_shared<EchoTextOption>() );
+        //m_options.push_back ( std::make_shared<StartMyServOption>() );
     }
     HostInterpret::~HostInterpret (){
     }
-    Task HostInterpret::interpret ( IInterpreter::InputType &textString ) {
+    Task HostInterpret::interpret ( IInterpreter::InputType const &textString ) {
         Task newTask;
         size_t optionNo = getOptionFromUsrInput(textString);
         if ( optionNo >=0 && optionNo < m_options.size() ){
@@ -20,7 +20,7 @@ namespace AccGrind{
         }
         return newTask;
     }
-    std::string getFirstPart ( std::string &usrInput){
+    std::string getFirstPart ( std::string const & usrInput){
         // assuming following behavior from users
         // different oformats from usrs are
         // _1_: " *## *"  -- 0 or more occurences of space
@@ -50,7 +50,7 @@ namespace AccGrind{
         }
         return firstPart ;
     }
-    int HostInterpret::getOptionFromUsrInput ( std::string& usrInput) {
+    int HostInterpret::getOptionFromUsrInput ( std::string const & usrInput) {
         int optionNumber = -1;
         std::string firstPart = getFirstPart ( usrInput);
         try{
@@ -65,5 +65,6 @@ namespace AccGrind{
         for ( auto option : m_options ){
             usrOptionVector.push_back ( option->getOptionString() );
         }
+        m_pluginManager.getOptions ( usrOptionVector );
     }
 }

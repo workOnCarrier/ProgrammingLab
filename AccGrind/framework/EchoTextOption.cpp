@@ -11,8 +11,9 @@ namespace AccGrind{
     std::string EchoTextOption::getOptionString ( )const {
         return m_optionString;
     }
-    Task        EchoTextOption::getTask ( std::string& usrInput) const {
-        Task newTask = std::make_shared<EchoTextTask>(usrInput);
+    Task        EchoTextOption::getTask ( std::string const & usrInput) const {
+        std::string  localUsrInput = usrInput;
+        Task newTask = std::make_shared<EchoTextTask>(localUsrInput);
         return newTask;
     }
 }

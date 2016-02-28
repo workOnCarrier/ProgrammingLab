@@ -13,8 +13,9 @@ namespace AccGrind {
     std::string StartMyServOption::getOptionString ( )const {
         return m_optionString;
     }
-    Task        StartMyServOption::getTask ( std::string& usrInput) const {
-        Task newTask = std::make_shared<StartServiceTask>(usrInput);
+    Task        StartMyServOption::getTask ( std::string const& usrInput) const {
+        std::string  localUsrInput = usrInput;
+        Task newTask = std::make_shared<StartServiceTask>( localUsrInput );
         return newTask;
     }
 }

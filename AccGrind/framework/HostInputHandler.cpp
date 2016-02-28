@@ -31,7 +31,7 @@ namespace AccGrind {
         //m_hostTaskQueue.add ( task );
         task->execute();
     }
-    bool HostInputHandler::plugin_handleInput ( std::string&  ){
+    bool HostInputHandler::plugin_handleInput ( std::string const&  ){
         return false;
     }
 }

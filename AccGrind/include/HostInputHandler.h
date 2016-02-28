@@ -14,7 +14,7 @@ namespace AccGrind {
     private:
         Task getHostTaskFrom ( std::string & );
         void scheduleTask ( Task );
-        bool plugin_handleInput ( std::string&  );
+        bool plugin_handleInput ( std::string const&  );
 
         HostInterpret m_interpreter;
     };

@@ -3,12 +3,14 @@
 #include "textInterpreter.h"
 #include "specialTextTask.h"
 #include "textTask.h"
+#include <iostream>
 
 namespace AccGrindPlugin {
     TextInterpreter::TextInterpreter ( ) {
     }
 
     TextInterpreter::~TextInterpreter ( ) {
+        std::cout << "deleting the interpreter object " << std::endl;
     }
 
     Task TextInterpreter::interpret ( std::string const &textString ) {

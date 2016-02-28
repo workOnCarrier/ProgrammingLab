@@ -5,17 +5,19 @@
 #include "IOption.h"
 #include "ITask.h"
 #include <vector>
+#include "PluginManager.h"
 
 namespace AccGrind{
     class HostInterpret : public IInterpreter<std::string>{
     public:
         HostInterpret ();
         virtual ~HostInterpret ();
-	    virtual Task interpret ( IInterpreter::InputType &) ;
+	    virtual Task interpret ( IInterpreter::InputType const &) ;
         virtual void getOptions ( std::vector<std::string>& ) const ;
     private:
-        int getOptionFromUsrInput ( std::string& );
+        int getOptionFromUsrInput ( std::string const & );
         std::vector<std::shared_ptr<IOption>>   m_options;
+        PluginManager                           m_pluginManager;
     };
 }
 #endif // __HOSTINTERPRET_H__

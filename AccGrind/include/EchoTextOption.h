@@ -10,7 +10,7 @@ namespace AccGrind{
         EchoTextOption ();
         virtual ~EchoTextOption ();
         virtual std::string getOptionString ( )const;
-        virtual Task        getTask ( std::string& ) const ;
+        virtual Task        getTask ( std::string const & ) const ;
     private:
         std::string     m_optionString;
     };

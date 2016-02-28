@@ -13,9 +13,11 @@ namespace AccGrind{
     private:
         void IdentifyPlugins();
         void LoadPlugins();
+        bool isFileNamePlugin ( std::string & );
 
         bool    m_PluginsEnumerated = false;
         bool    m_PluginsLoaded = false;
+        std::vector<std::string>    m_eligibleFiles;
     };
 }
 #endif // __PLUGINMANAGER_H__

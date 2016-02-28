@@ -4,6 +4,7 @@
 #include "IInterpreter.h"
 #include <map>
 #include <string>
+#include "libmain.h"
 
 namespace AccGrind{
 //***********************************
@@ -14,19 +15,23 @@ namespace AccGrind{
 //      the header in different platform dependent files keeping 
 //      rest of the code platform independent
 //***********************************
+#ifndef WIN32
+typedef void* LibHandle      ;
+typedef void* (*Handler)();
+typedef void (*Deleter)(void*);
+#endif
     class PluginLoader{
     public:
-        PluginLoader();
+        PluginLoader(std::string& pluginName);
         ~PluginLoader();
 
-        IInterpreter<string>*   load(std::string& pluginName);
-        void                    unload(std::string& pluginName);
+        IInterpreter<std::string>*   load();
     private:
-        struct {
-            LibHandle  pluginHandle;
-            IInterpreter<string>*   pluginInterpreter;
-        }PluginDetail;
-        std::map<std::string,PluginDetail>     m_pluginStore;
+        void           unload();
+
+        std::string    m_pluginName;
+        LibHandle      m_pluginHandle;
+        IInterpreter<std::string>*   m_interpretObj;
     };
 }
 #endif // __PLUGINLOADER_H__

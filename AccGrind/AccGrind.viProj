@@ -1,16 +1,17 @@
 
-framework=/home/genius3/work/github/ProgrammingLab/AccGrind/framework CD=. filter="*.cpp buildlog" {
+framework=/home/genius3/work/github/ProgrammingLab/AccGrind/framework CD=. filter="*.cpp buildlog Makefile" {
  EchoTextOption.cpp
  EchoTextTask.cpp
  HostInputHandler.cpp
  HostInterpret.cpp
+ InputRouter.cpp
  PluginLoader.cpp
  PluginManager.cpp
- InputRouter.cpp
  StartMyServOption.cpp
  StartServiceTask.cpp
  main.cpp
  buildlog
+ Makefile
 }
 
 headers=/home/genius3/work/github/ProgrammingLab/AccGrind/include CD=. filter="*.h" {
@@ -67,4 +68,5 @@ misc=/home/genius3/work/github/ProgrammingLab/AccGrind/trial CD=. filter="*" {
  buildlog
  regExTrial.cpp
  testdlOpen.cpp
+ pluginList.cpp
 }
