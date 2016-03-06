@@ -14,6 +14,10 @@ namespace AccGrind{
     }
     Task HostInterpret::interpret ( IInterpreter::InputType const &textString ) {
         Task newTask;
+        newTask  = m_pluginManager.interpret(textString);
+        if ( newTask ){
+            return newTask;
+        }
         size_t optionNo = getOptionFromUsrInput(textString);
         if ( optionNo >=0 && optionNo < m_options.size() ){
             newTask = m_options[optionNo]->getTask(textString);

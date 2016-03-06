@@ -3,6 +3,7 @@
 #include <dlfcn.h>
 #include <iostream>
 #include "libmain.h"
+#include <sstream>
 
 using namespace AccGrind;
 using namespace std;
@@ -33,6 +34,14 @@ int main () {
     } else{
         interpretObj ->interpret ( "fun" )->execute();
         interpretObj ->interpret ( "some text" )->execute();
+        std::vector<std::string>    pluginOptions;
+        interpretObj ->getOptions ( pluginOptions );
+        int num = 1;
+        for ( auto optionStr : pluginOptions ){
+            std::stringstream option  ;
+            option << num++ << "." << optionStr;
+            cout << " option string :" << option.str() << endl;
+        }
     }
 
     typedef void (*deleteHandlers)(void*);

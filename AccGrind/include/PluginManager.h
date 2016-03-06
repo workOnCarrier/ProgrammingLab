@@ -3,21 +3,44 @@
 #include <vector>
 #include <string>
 #include "IInputHandler.h"
+#include "PluginLoader.h"
+#include "ITask.h"
+#include <functional>
+
+#include <iostream>
+
+
 namespace AccGrind{
-    class PluginManager: public IInputHandler{
+    class PluginManager: public IInterpreter<std::string>{
     public:
+        typedef IInterpreter<std::string>::InputType    InputType;
         PluginManager();
         ~PluginManager();
-        virtual bool handleInput ( std::string& ) ;
-        virtual void getOptions ( std::vector<std::string> & ) ;
+        virtual Task interpret ( InputType const &) ;
+        virtual void getOptions ( std::vector<std::string> & ) const;
     private:
-        void IdentifyPlugins();
+        void IdentifyPlugins() const;
         void LoadPlugins();
-        bool isFileNamePlugin ( std::string & );
+        bool isFileNamePlugin ( std::string & ) const;
 
-        bool    m_PluginsEnumerated = false;
-        bool    m_PluginsLoaded = false;
-        std::vector<std::string>    m_eligibleFiles;
+        mutable bool    m_PluginsEnumerated = false;
+        mutable bool    m_PluginsLoaded = false;
+
+        mutable std::vector<std::string>    m_eligibleFiles;
+        std::vector<PluginLoader::Ptr>   m_plugins;
+        std::map<int,StringInterpreter*>    m_Interpreters;
+        // nested class of type ITask
+        class LoadPluginTask : public  ITask{
+        public:
+            LoadPluginTask ( std::function<void(void)>& function):m_executer(function){
+            }
+            virtual void execute() {
+                std::cout << "LoadPluginTask :: about to execute" << std::endl;
+                m_executer();
+            }
+        private:
+            std::function<void(void)>   m_executer;
+        };
     };
 }
 #endif // __PLUGINMANAGER_H__

@@ -24,7 +24,7 @@ namespace AccGrind {
         newTask = m_interpreter.interpret ( usrInput );
         return newTask;
     }
-    void HostInputHandler::getOptions ( std::vector<std::string> & usrOptionVector ) {
+    void HostInputHandler::getOptions ( std::vector<std::string> & usrOptionVector ) const {
         m_interpreter.getOptions(usrOptionVector);
     }
     void HostInputHandler::scheduleTask ( Task task){

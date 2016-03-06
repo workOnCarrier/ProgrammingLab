@@ -10,7 +10,7 @@ namespace AccGrind {
         IInputHandler (){}
         virtual ~IInputHandler () {}
         virtual bool handleInput ( std::string& )= 0;
-        virtual void getOptions ( std::vector<std::string> & ) = 0;
+        virtual void getOptions ( std::vector<std::string> & ) const = 0;
     private:
     };
 }

@@ -15,15 +15,18 @@ namespace AccGrind{
     }
     PluginLoader::~PluginLoader() {}
 
-    IInterpreter<std::string>*   PluginLoader::load() {
+    StringInterpreter*   PluginLoader::load() {
         if ( m_pluginHandle ){
             Handler handler = (Handler) dlsym ( m_pluginHandle, PLUGINHANDLER );
             const char* findFunctionError = dlerror();
             if ( findFunctionError ){
+                std::cout << "dlsym is returning error:"<< findFunctionError << std::endl;
                 // log error findFunctionError 
             }else{ }
-            AccGrind::IInterpreter<std::string>* m_interPretObj = reinterpret_cast<AccGrind::IInterpreter<std::string>*>(  handler( ) );
+            //AccGrind::IInterpreter<std::string>* m_interPretObj = reinterpret_cast<AccGrind::IInterpreter<std::string>*>(  handler( ) );
+            AccGrind::IInterpreter<std::string>* m_interPretObj = (AccGrind::IInterpreter<std::string>*)  handler( ) ;
             if  ( NULL == m_interPretObj ){
+                std::cout << "reinterpret cast is failing" << std::endl;
 #pragma message ( " TBD --> PluginLoader::load throw exception " )
             }
         }

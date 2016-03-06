@@ -3,6 +3,9 @@
 #include <boost/filesystem/path.hpp>
 //#include <boost/progress.hpp>
 #include "PluginManager.h"
+#include <sstream>
+
+#include <iostream>
 
 
 namespace AccGrind{
@@ -13,7 +16,7 @@ namespace fs = boost::filesystem;
     PluginManager::~PluginManager(){
         // unload all plugins
     }
-    void PluginManager::IdentifyPlugins(){
+    void PluginManager::IdentifyPlugins() const{
         if (m_PluginsEnumerated==true) return;
         // enumerate the plugins that can be loaded
         fs::path full_path ( fs::initial_path<fs::path>() );
@@ -45,7 +48,7 @@ namespace fs = boost::filesystem;
         }
         m_PluginsEnumerated = true;
     }
-    bool PluginManager::isFileNamePlugin ( std::string &fileName ){
+    bool PluginManager::isFileNamePlugin ( std::string &fileName ) const{
         // potential improvement opportunity -- use regular expressions
         std::string::size_type pos = fileName.find(".so");
         if( std::string::npos != pos ){
@@ -55,17 +58,39 @@ namespace fs = boost::filesystem;
         }
     }
     void PluginManager::LoadPlugins(){
+             int pluginPos = 1;
+            for ( auto plugin : m_eligibleFiles ){
+                //std::cout << "creating plugin loader for :"<< plugin << std::endl;
+                PluginLoader::Ptr pluginPtr = std::make_shared<PluginLoader>(plugin);
+                //std::cout << "invoking load on the plugin :"<< plugin << std::endl;
+                StringInterpreter* strInterPtr = pluginPtr->load();
+                //std::cout << "storing the plugin interface for:"<< plugin << std::endl;
+                m_Interpreters.insert ( std::make_pair(pluginPos++,strInterPtr) );
+                m_plugins.push_back ( pluginPtr );
+            }
+            m_PluginsLoaded = true ;
         // load the plugins as specified by the user
     }
-    bool PluginManager::handleInput ( std::string& ) {
-        // if plugins are not loaded
-        // ** expected csv value showing plugin numbers to load
-        // ** Load the plugins as required by the user
-        // else
-        // pass inputs to plugins using the plugin map
-        return false;
+    Task PluginManager::interpret ( InputType const &input ) {
+        if ( m_PluginsLoaded != true ){
+            // if plugins are not loaded
+            // ** expected csv value showing plugin numbers to load
+            // ** Load the plugins as required by the user
+            // else
+            // pass inputs to plugins using the plugin map
+            // ######
+            // as a temporary measure, load all plugins
+            auto loader = [&](void)->void {
+                //std::cout << "Loading plugins" << std::endl;
+                this->LoadPlugins();
+            };
+            std::function<void(void)>   loaderFunction(loader);
+            return std::make_shared<LoadPluginTask> ( loaderFunction );
+        }else{
+            return Task();
+        }
     }
-    void PluginManager::getOptions ( std::vector<std::string> &optionCapture ) {
+    void PluginManager::getOptions ( std::vector<std::string> &optionCapture ) const {
         // if plugins are not loaded
         if ( m_PluginsEnumerated != true ){
             // ** get names of all plugiuns
@@ -73,19 +98,30 @@ namespace fs = boost::filesystem;
             // ** these are options to be selected
             int num = 0;
             for ( auto plugin : m_eligibleFiles ){
-                std::string  option = "";
-                option += num;
-                option += plugin;
-                std::cout << " --- identified file name :" << option.c_str() << std::endl;
-                optionCapture.push_back ( option );
+                std::stringstream  option ;
+                option << num << ":";
+                option << plugin;
+                std::cout << " --- identified file name :" << option.str().c_str() << std::endl;
+                optionCapture.push_back ( option.str() );
             }
-            std::string optionAll = "";
-            optionAll += ++num;
-            optionAll += " All to be done ";
-            optionCapture.push_back ( optionAll );
+            std::stringstream optionAll ;
+            optionAll << ++num <<":" << " All to be done ";
+            optionCapture.push_back ( optionAll.str() );
+        } else if ( m_PluginsLoaded == true ) {
+            // ** get options from each of the plugins
+            for ( auto pair : m_Interpreters ) {
+                std::vector<std::string>    pluginOptions;
+                std::cout << " Getting options from plugin:" << std::endl;
+                pair.second->getOptions ( pluginOptions );
+                std::cout << " obtained options from plugin:" << pluginOptions.size() << std::endl;
+                for ( auto optionStr : pluginOptions ){
+                    std::stringstream option  ;
+                    option << pair.first << "." << optionStr;
+                    optionCapture.push_back ( option.str() );
+                }
+            }
+        } else {
+            throw "Plugins are enumerated but not loaded";
         }
-        // else
-        // ** get options from each of the plugins
-        // ** offset with counter of the plugin position
     }
 }

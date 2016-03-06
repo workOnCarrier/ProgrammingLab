@@ -10,7 +10,7 @@ namespace AccGrind {
         HostInputHandler ();
         ~HostInputHandler ();
         virtual bool handleInput ( std::string& );
-        virtual void getOptions ( std::vector<std::string> & );
+        virtual void getOptions ( std::vector<std::string> & )const;
     private:
         Task getHostTaskFrom ( std::string & );
         void scheduleTask ( Task );

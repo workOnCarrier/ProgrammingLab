@@ -20,18 +20,23 @@ typedef void* LibHandle      ;
 typedef void* (*Handler)();
 typedef void (*Deleter)(void*);
 #endif
+        typedef IInterpreter<std::string>   StringInterpreter;
+        typedef std::shared_ptr<StringInterpreter>  StringInterpreterPtr;
+
     class PluginLoader{
     public:
+        typedef std::shared_ptr<PluginLoader>   Ptr;
+
         PluginLoader(std::string& pluginName);
         ~PluginLoader();
 
-        IInterpreter<std::string>*   load();
+        StringInterpreter*       load();
     private:
         void           unload();
 
-        std::string    m_pluginName;
-        LibHandle      m_pluginHandle;
-        IInterpreter<std::string>*   m_interpretObj;
+        std::string             m_pluginName;
+        LibHandle               m_pluginHandle;
+        StringInterpreter*      m_interpretObj;
     };
 }
 #endif // __PLUGINLOADER_H__
