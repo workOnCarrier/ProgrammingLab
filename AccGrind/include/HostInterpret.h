@@ -15,7 +15,6 @@ namespace AccGrind{
 	    virtual Task interpret ( IInterpreter::InputType const &) ;
         virtual void getOptions ( std::vector<std::string>& ) const ;
     private:
-        int getOptionFromUsrInput ( std::string const & );
         std::vector<std::shared_ptr<IOption>>   m_options;
         PluginManager                           m_pluginManager;
     };

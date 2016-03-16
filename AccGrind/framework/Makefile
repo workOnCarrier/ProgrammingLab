@@ -8,8 +8,8 @@ LDFLAGS = -lpthread -ggdb -Wall -ldl -lboost_filesystem -lboost_system
 CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
 
-AccGrind_SRC = main.cpp HostInputHandler.cpp InputRouter.cpp HostInterpret.cpp EchoTextOption.cpp EchoTextTask.cpp StartMyServOption.cpp StartServiceTask.cpp PluginLoader.cpp PluginManager.cpp
-AccGrind_OBJ = main.o HostInputHandler.o InputRouter.o HostInterpret.o EchoTextOption.o EchoTextTask.o StartMyServOption.o StartServiceTask.o PluginLoader.o PluginManager.o
+AccGrind_SRC = main.cpp HostInputHandler.cpp InputRouter.cpp HostInterpret.cpp EchoTextOption.cpp EchoTextTask.cpp StartMyServOption.cpp StartServiceTask.cpp PluginLoader.cpp PluginManager.cpp genUtils.cpp
+AccGrind_OBJ = main.o HostInputHandler.o InputRouter.o HostInterpret.o EchoTextOption.o EchoTextTask.o StartMyServOption.o StartServiceTask.o PluginLoader.o PluginManager.o genUtils.o
 
 TARGET = AccGrind
 

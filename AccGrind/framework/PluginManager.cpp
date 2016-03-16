@@ -4,6 +4,7 @@
 //#include <boost/progress.hpp>
 #include "PluginManager.h"
 #include <sstream>
+#include "genUtils.h"
 
 #include <iostream>
 
@@ -73,12 +74,6 @@ namespace fs = boost::filesystem;
     }
     Task PluginManager::interpret ( InputType const &input ) {
         if ( m_PluginsLoaded != true ){
-            // if plugins are not loaded
-            // ** expected csv value showing plugin numbers to load
-            // ** Load the plugins as required by the user
-            // else
-            // pass inputs to plugins using the plugin map
-            // ######
             // as a temporary measure, load all plugins
             auto loader = [&](void)->void {
                 //std::cout << "Loading plugins" << std::endl;
@@ -87,6 +82,12 @@ namespace fs = boost::filesystem;
             std::function<void(void)>   loaderFunction(loader);
             return std::make_shared<LoadPluginTask> ( loaderFunction );
         }else{
+            std::string  pluginId = getFirstPart ( input) ;
+            UserInputSplit  optionSplit = getOptionFromUsrInput  ( input );
+           auto pos = m_Interpreters.find ( optionSplit.m_optionNo );
+            if ( pos != m_Interpreters.end() ){
+                return pos->second->interpret ( input );
+            }
             return Task();
         }
     }

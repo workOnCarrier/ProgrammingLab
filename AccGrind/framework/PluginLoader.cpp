@@ -23,9 +23,9 @@ namespace AccGrind{
                 std::cout << "dlsym is returning error:"<< findFunctionError << std::endl;
                 // log error findFunctionError 
             }else{ }
-            //AccGrind::IInterpreter<std::string>* m_interPretObj = reinterpret_cast<AccGrind::IInterpreter<std::string>*>(  handler( ) );
-            AccGrind::IInterpreter<std::string>* m_interPretObj = (AccGrind::IInterpreter<std::string>*)  handler( ) ;
-            if  ( NULL == m_interPretObj ){
+            //AccGrind::IInterpreter<std::string>* m_interpretObj = reinterpret_cast<AccGrind::IInterpreter<std::string>*>(  handler( ) );
+            m_interpretObj = (AccGrind::IInterpreter<std::string>*)  handler( ) ;
+            if  ( NULL == m_interpretObj ){
                 std::cout << "reinterpret cast is failing" << std::endl;
 #pragma message ( " TBD --> PluginLoader::load throw exception " )
             }

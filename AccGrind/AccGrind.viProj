@@ -9,6 +9,7 @@ framework=/home/genius3/work/github/ProgrammingLab/AccGrind/framework CD=. filte
  PluginManager.cpp
  StartMyServOption.cpp
  StartServiceTask.cpp
+ genUtils.cpp
  main.cpp
  buildlog
  Makefile
@@ -27,6 +28,7 @@ headers=/home/genius3/work/github/ProgrammingLab/AccGrind/include CD=. filter="*
  StartMyServOption.h
  StartServiceTask.h
  IInputHandler.h
+ genUtils.h
 }
 
 interImpl=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.cpp" {
@@ -69,4 +71,5 @@ misc=/home/genius3/work/github/ProgrammingLab/AccGrind/trial CD=. filter="*" {
  regExTrial.cpp
  testdlOpen.cpp
  pluginList.cpp
+ testOptionSplit.cpp
 }

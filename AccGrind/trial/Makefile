@@ -18,7 +18,16 @@ TARGET_3	= tryPluginList
 PLUGIN_OPEN_SRC = pluginList.cpp
 PLUGIN_OPEN_OBJ = pluginList.o
 
-all: $(TARGET_1) $(TARGET_3) $(TARGET_2)
+TARGET_4	= tryOptionSplit
+TEST_OPT_SRC = testOptionSplit.cpp
+TEST_OPT_OBJ = testOptionSplit.o
+
+
+all:  $(TARGET_4) $(TARGET_1) $(TARGET_3) $(TARGET_2)
+
+$(TARGET_4) : $(TEST_OPT_OBJ)
+	$(CC)  $(LDFLAGS) $(TEST_OPT_OBJ) -lboost_filesystem -lboost_system -o $(TARGET_4)
+	./$(TARGET_4)
 
 $(TARGET_3) : $(PLUGIN_OPEN_OBJ)
 	$(CC)  $(LDFLAGS) $(PLUGIN_OPEN_OBJ) -lboost_filesystem -lboost_system -o $(TARGET_3)
@@ -54,8 +63,10 @@ clean:
 	-rm $(TARGET_1)
 	-rm $(TARGET_2)
 	-rm $(TARGET_3)
+	-rm $(TARGET_4)
 	-rm $(REGEX_OBJ)
 	-rm $(PLUGIN_OPEN_OBJ)
 	-rm $(DL_OPEN_OBJ)
+	-rm $(TEST_OPT_OBJ)
 	-make $(CLEAN_CTAGS)
 	-rm -f core
