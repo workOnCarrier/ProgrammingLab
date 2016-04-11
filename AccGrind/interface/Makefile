@@ -1,16 +1,16 @@
 CC = /usr/bin/g++-4.8
 
 CFLAGS = -I. -Wall
-CPPFLAGS = -std=c++0x -I../include -I../blocks -Wall -ggdb -fpic -c
-LDFLAGS = -lpthread -ggdb -Wall
+CPPFLAGS = -std=c++0x -Wall -ggdb -fpic -c
+LDFLAGS = -shared -lpthread -ggdb -Wall
 
 CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
 
-TEST_INTERPRETER_SRC = 
-TEST_INTERPRETER_OBJ = 
+TEST_INTERPRETER_SRC = genUtils.cpp
+TEST_INTERPRETER_OBJ = genUtils.o
 
-TARGET = automate
+TARGET = libGenUtils.so
 
 all: $(TARGET) 
 
@@ -20,7 +20,8 @@ $(TARGET) : $(TEST_INTERPRETER_OBJ)
 
 #.o.cpp:
 .cpp.o :
-	$(CC) -c $(CPPFLAGS) -o $@ $< > buildlog 2>&1
+	echo "$(CC) $(CPPFLAGS) -o $@ $<" > buildlog 2>&1
+	$(CC) $(CPPFLAGS) -o $@ $< >> buildlog 2>&1
 
 ctags:
 	$(CTAGS)
@@ -33,3 +34,4 @@ clean:
 	-rm $(TARGET)
 	-rm $(TEST_INTERPRETER_OBJ)
 	-make $(CLEAN_CTAGS)
+	-rm buildlog

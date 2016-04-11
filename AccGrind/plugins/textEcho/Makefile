@@ -3,7 +3,7 @@ CC = /usr/bin/g++-4.8
 RANLIB = ranlib
 CFLAGS = -I. -Wall
 CPPFLAGS = -std=c++0x -I. -I../../interface -Wall -ggdb -fpic -c
-LDFLAGS = -lpthread -ggdb -Wall
+LDFLAGS = -L ../../bin -lGenUtils -lpthread -ggdb -Wall
 
 CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
@@ -29,7 +29,7 @@ $(TEST_TARGET) : $(PLUGIN_TEST_OBJ) $(TARGET)
 
 #.o.cpp:
 .cpp.o :
-	echo "$(CC) -c $(CPPFLAGS) -o $@ $< ">> buildlog 2>&1
+	echo "$(CC) -c $(CPPFLAGS) -o $@ $< "> buildlog 2>&1
 	$(CC) -c $(CPPFLAGS) -o $@ $< >> buildlog 2>&1
 
 ctags:

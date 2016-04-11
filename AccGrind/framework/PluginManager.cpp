@@ -61,11 +61,8 @@ namespace fs = boost::filesystem;
     void PluginManager::LoadPlugins(){
              int pluginPos = 1;
             for ( auto plugin : m_eligibleFiles ){
-                //std::cout << "creating plugin loader for :"<< plugin << std::endl;
                 PluginLoader::Ptr pluginPtr = std::make_shared<PluginLoader>(plugin);
-                //std::cout << "invoking load on the plugin :"<< plugin << std::endl;
                 StringInterpreter* strInterPtr = pluginPtr->load();
-                //std::cout << "storing the plugin interface for:"<< plugin << std::endl;
                 m_Interpreters.insert ( std::make_pair(pluginPos++,strInterPtr) );
                 m_plugins.push_back ( pluginPtr );
             }

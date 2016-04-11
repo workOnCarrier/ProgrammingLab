@@ -12,6 +12,7 @@ TEST_INTERPRETER_OBJ =
 
 
 all:
+	-make -C interface
 	-make -C framework
 	-make -C plugins
 	-make ctags
@@ -28,6 +29,7 @@ $(CLEAN_CTAGS) :
  
 clean: 
 	-rm -f core
+	-make -C interface clean
 	-make -C framework clean
 	-make -C plugins clean
 	-make $(CLEAN_CTAGS)

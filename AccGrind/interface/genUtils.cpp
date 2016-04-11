@@ -5,6 +5,7 @@
 
 
 namespace AccGrind{
+extern "C"{
 
     std::string getFirstPart ( std::string const & usrInput){
         // assuming following behavior from users
@@ -55,4 +56,10 @@ namespace AccGrind{
         }
         return optionSplit ;
     }
+    std::ostream& operator << ( std::ostream& stream, const UserInputSplit& usrInputSplit ){
+            stream << "Int part:" << usrInputSplit.m_optionNo << std::endl;
+            stream << "input part:" << usrInputSplit.m_optionInput << std::endl; 
+            return stream;
+    }
+}
 }

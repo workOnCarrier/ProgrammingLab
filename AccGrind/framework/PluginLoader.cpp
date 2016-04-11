@@ -1,6 +1,7 @@
 #include <dlfcn.h>
 #include "PluginLoader.h"
 #include <iostream>
+#include <stdexcept>
 
 namespace AccGrind{
 #ifndef WIN32
@@ -9,6 +10,11 @@ namespace AccGrind{
         if ( ! m_pluginHandle ){
             // log -- successfully not loaded library
 #pragma message (" potentially throw exception here " )
+            std::string errorStr = "Library";
+            errorStr += pluginName;
+            errorStr += " could not be loaded, due to :";
+            errorStr += dlerror();
+            throw std::runtime_error ( errorStr );
         }else{
             // log -- load library successful
         }

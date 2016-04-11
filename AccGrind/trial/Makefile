@@ -39,17 +39,19 @@ $(TARGET_3) : $(PLUGIN_OPEN_OBJ)
 
 
 $(TARGET_2) : $(DL_OPEN_OBJ)
-	$(CC)  $(LDFLAGS) $(DL_OPEN_OBJ)  -ldl  -o $(TARGET_2)
+	$(CC)  $(LDFLAGS) $(DL_OPEN_OBJ)  -ldl -L../bin -lGenUtils -o $(TARGET_2)
 	cp ../bin/libtextEcho.so .
-	./$(TARGET_2) 
+	-cp ../bin/libGenUtils.so .
+	-./$(TARGET_2) 
 	-rm ./libtextEcho.so
+	-rm ./libGenUtils.so 
 
 $(TARGET_1) : $(REGEX_OBJ)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(REGEX_OBJ)
 	#-./$(TARGET_1) >> execLog_1
 
 .cpp.o :
-	echo "$(CC) -c $(CPPFLAGS) -o $@ $< > buildlog 2>&1 "
+	echo "$(CC) -c $(CPPFLAGS) -o $@ $< "> buildlog 2>&1 
 	$(CC) -c $(CPPFLAGS) -o $@ $< >> buildlog 2>&1
 
 ctags:

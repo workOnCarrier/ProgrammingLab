@@ -4,6 +4,7 @@
 #include <iostream>
 #include "libmain.h"
 #include <sstream>
+#include "genUtils.h"
 
 using namespace AccGrind;
 using namespace std;
@@ -11,12 +12,26 @@ using namespace std;
 int main () {
     void* libHandle;
     AccGrind::IInterpreter<std::string>* interpretObj;
-    libHandle = dlopen ( "./libtextEcho.so", RTLD_NOW );
+//    string libname = "./libGenUtils.so";
+//    libHandle = dlopen ( libname.c_str() , RTLD_NOW );
+//    if ( !libHandle ){
+//        cout << "Could not load library:" << libname<< " due to:" << dlerror() << endl;
+//        exit (1);
+//    } else {
+//        cout << "Successfully  loaded the library:" << libname  << endl;
+//    }
+
+    std::string     testStr = "1:: this is fun";
+    auto output = getOptionFromUsrInput  ( testStr );
+    std::cout << output << endl;
+
+    string libname = "./libtextEcho.so";
+    libHandle = dlopen ( libname.c_str() , RTLD_NOW );
     if ( !libHandle ){
-        cout << "Could not load library:" << dlerror() << endl;
+        cout << "Could not load library " << libname <<  ":" << dlerror() << endl;
         exit (1);
     } else {
-        cout << "Successfully  loaded the library:" << endl;
+        cout << "Successfully  loaded the library:" << libname << endl;
     }
     typedef void* (*getHandlers)();
 
@@ -32,8 +47,8 @@ int main () {
     if ( NULL == interpretObj ){
         cout << "Null pointer obtained from the symbol 'getPluginInputHandler'"<< endl;
     } else{
-        interpretObj ->interpret ( "fun" )->execute();
-        interpretObj ->interpret ( "some text" )->execute();
+        interpretObj ->interpret ( "1:fun" )->execute();
+        interpretObj ->interpret ( "1:some text" )->execute();
         std::vector<std::string>    pluginOptions;
         interpretObj ->getOptions ( pluginOptions );
         int num = 1;

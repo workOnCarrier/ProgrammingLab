@@ -2,6 +2,7 @@
 #define __TEXTINTERPRETER__
 
 #include "IInterpreter.h"
+#include "IOption.h"
 
 using namespace AccGrind;
 
@@ -15,6 +16,7 @@ namespace AccGrindPlugin {
         virtual Task interpret ( std::string const &textString );
         virtual void getOptions ( std::vector<std::string>& ) const ;
     private:
+        std::vector<std::shared_ptr<IOption>>   m_options;
     };
 
 }

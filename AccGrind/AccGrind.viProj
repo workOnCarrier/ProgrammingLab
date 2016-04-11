@@ -1,7 +1,5 @@
 
 framework=/home/genius3/work/github/ProgrammingLab/AccGrind/framework CD=. filter="*.cpp buildlog Makefile" {
- EchoTextOption.cpp
- EchoTextTask.cpp
  HostInputHandler.cpp
  HostInterpret.cpp
  InputRouter.cpp
@@ -9,7 +7,6 @@ framework=/home/genius3/work/github/ProgrammingLab/AccGrind/framework CD=. filte
  PluginManager.cpp
  StartMyServOption.cpp
  StartServiceTask.cpp
- genUtils.cpp
  main.cpp
  buildlog
  Makefile
@@ -28,19 +25,22 @@ headers=/home/genius3/work/github/ProgrammingLab/AccGrind/include CD=. filter="*
  StartMyServOption.h
  StartServiceTask.h
  IInputHandler.h
- genUtils.h
 }
 
 interImpl=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.cpp" {
+  Makefile
 }
-interface=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.h" {
+interface=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.h Makefile *.cpp" {
  IInterpreter.h
  IOption.h
  ITask.h
  JoinThreads.h
  ThreadGuard.h
- taskCreater.h
+ genUtils.h
  libmain.h
+ taskCreater.h
+ Makefile
+ genUtils.cpp
 }
 
 

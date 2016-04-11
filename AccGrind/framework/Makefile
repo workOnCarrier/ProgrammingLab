@@ -3,13 +3,13 @@ CC = /usr/bin/g++-4.8
 
 CFLAGS = -I. -I../include -I../interface -Wall
 CPPFLAGS = -std=c++0x -I. -I../include -I../interface -Wall -ggdb  -c
-LDFLAGS = -lpthread -ggdb -Wall -ldl -lboost_filesystem -lboost_system
+LDFLAGS = -L../bin -lpthread -ggdb -Wall -ldl -lboost_filesystem -lboost_system -lGenUtils
 
 CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
 
-AccGrind_SRC = main.cpp HostInputHandler.cpp InputRouter.cpp HostInterpret.cpp EchoTextOption.cpp EchoTextTask.cpp StartMyServOption.cpp StartServiceTask.cpp PluginLoader.cpp PluginManager.cpp genUtils.cpp
-AccGrind_OBJ = main.o HostInputHandler.o InputRouter.o HostInterpret.o EchoTextOption.o EchoTextTask.o StartMyServOption.o StartServiceTask.o PluginLoader.o PluginManager.o genUtils.o
+AccGrind_SRC = main.cpp HostInputHandler.cpp InputRouter.cpp HostInterpret.cpp StartMyServOption.cpp StartServiceTask.cpp PluginLoader.cpp PluginManager.cpp
+AccGrind_OBJ = main.o HostInputHandler.o InputRouter.o HostInterpret.o StartMyServOption.o StartServiceTask.o PluginLoader.o PluginManager.o
 
 TARGET = AccGrind
 

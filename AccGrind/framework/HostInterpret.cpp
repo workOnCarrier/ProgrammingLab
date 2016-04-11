@@ -1,4 +1,3 @@
-#include "EchoTextOption.h"
 #include "HostInterpret.h"
 #include "StartMyServOption.h"
 #include <string>
@@ -7,9 +6,6 @@
 
 namespace AccGrind{
     HostInterpret::HostInterpret (){
-        // instantiate options
-        //m_options.push_back ( std::make_shared<EchoTextOption>() );
-        //m_options.push_back ( std::make_shared<StartMyServOption>() );
     }
     HostInterpret::~HostInterpret (){
     }
