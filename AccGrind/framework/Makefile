@@ -2,8 +2,9 @@
 CC = /usr/bin/g++-4.8
 
 CFLAGS = -I. -I../include -I../interface -Wall
-CPPFLAGS = -std=c++0x -I. -I../include -I../interface -Wall -ggdb  -c
-LDFLAGS = -L../bin -lpthread -ggdb -Wall -ldl -lboost_filesystem -lboost_system -lGenUtils
+CPPFLAGS = -std=c++0x -I. -I../include -I../interface -Wall   -ggdb  -c
+## http://www.informit.com/articles/article.aspx?p=22435
+LDFLAGS = -L../bin -lpthread -export-dynamic -ggdb -Wall -ldl -lboost_filesystem -lboost_system -lGenUtils
 
 CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
@@ -16,7 +17,7 @@ TARGET = AccGrind
 all: $(TARGET) 
 
 $(TARGET) : $(AccGrind_OBJ)
-	$(CC) -o $(TARGET) $(AccGrind_OBJ) $(LDFLAGS) 
+	$(CC)  $(AccGrind_OBJ) $(LDFLAGS) -o $(TARGET)
 	cp $(TARGET) ../bin
 
 #.o.cpp:

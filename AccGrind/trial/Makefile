@@ -1,7 +1,7 @@
 CC = /usr/bin/g++-4.8
 CFLAGS = -I. -I../include -I../interface -Wall
 CPPFLAGS = -std=c++0x -I. -I../include -I../interface -Wall -ggdb  -c
-LDFLAGS = -lpthread -ggdb -Wall -L../../bin
+LDFLAGS = -export-dynamic -lpthread -ggdb -Wall -L../../bin
 
 CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
@@ -41,10 +41,8 @@ $(TARGET_3) : $(PLUGIN_OPEN_OBJ)
 $(TARGET_2) : $(DL_OPEN_OBJ)
 	$(CC)  $(LDFLAGS) $(DL_OPEN_OBJ)  -ldl -L../bin -lGenUtils -o $(TARGET_2)
 	cp ../bin/libtextEcho.so .
-	-cp ../bin/libGenUtils.so .
 	-./$(TARGET_2) 
 	-rm ./libtextEcho.so
-	-rm ./libGenUtils.so 
 
 $(TARGET_1) : $(REGEX_OBJ)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(REGEX_OBJ)
