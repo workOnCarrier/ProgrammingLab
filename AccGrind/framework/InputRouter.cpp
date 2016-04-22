@@ -13,7 +13,7 @@ namespace AccGrind {
             m_InputHandler.getOptions(optionVector);
             int optionIndex = 0;
             for ( auto a:optionVector ) {
-                std::cout << "  "<< optionIndex++ << " :    " << a.c_str() << std::endl;
+                std::cout << "  "<< a.c_str() << std::endl;
             }
             std::cout << "---------> choose option with input :" ;
             std::string usrInput = m_InputSource.getNextInput();
