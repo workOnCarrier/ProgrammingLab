@@ -2,7 +2,7 @@
 #define __IOPTION_H__
 
 #include "ITask.h"
-
+#include <string>
 namespace AccGrind {
     class IOption{
     public:
