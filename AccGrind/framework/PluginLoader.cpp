@@ -1,4 +1,7 @@
+#ifndef WIN32
 #include <dlfcn.h>
+#else
+#endif
 #include "PluginLoader.h"
 #include <iostream>
 #include <stdexcept>
@@ -54,5 +57,56 @@ namespace AccGrind{
         std::cout << " Unloading the library:"<< m_pluginName.c_str() << std::endl;
         dlclose(m_pluginHandle);
     }
+#else
+        PluginLoader::PluginLoader(std::string& pluginName){
+			m_pluginHandle =  ::LoadLibrary ( pluginName.c_str() );
+			if (!m_pluginHandle) {
+				const DWORD dw = ::GetLastError();
+				LPVOID lpMsgBuf(0);
+				::FormatMessage( FORMAT_MESSAGE_ALLOCATE_BUFFER |
+									FORMAT_MESSAGE_FROM_SYSTEM |
+									FORMAT_MESSAGE_IGNORE_INSERTS,
+									NULL, dw, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+									(LPTSTR)& lpMsgBuf,
+									0, NULL );
+#pragma message ("Report error in log")
+				std::cout << __FUNCTION__ << " Can't load the pluggin because:" << (LPTSTR)lpMsgBuf << std::endl;
+			}
+		}
+        PluginLoader::~PluginLoader(){
+		}
+
+        StringInterpreter*       PluginLoader::load(){
+			if ( m_pluginHandle ){
+				FARPROC function = NULL;
+				try{
+					function = ::GetProcAddress( m_pluginHandle, PLUGINHANDLER );
+				}catch(...){}
+				if (!function){
+					const DWORD dw = ::GetLastError();
+					LPVOID lpMsgBuf(0);
+					::FormatMessage( FORMAT_MESSAGE_ALLOCATE_BUFFER |
+						FORMAT_MESSAGE_FROM_SYSTEM |
+						FORMAT_MESSAGE_IGNORE_INSERTS,
+						NULL, dw, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+						(LPTSTR)& lpMsgBuf,
+						0, NULL );
+#pragma message ("Report error in log")
+					std::cout << __FUNCTION__ << " Can't find the function pointer:" 
+								<< (LPTSTR)lpMsgBuf << std::endl;
+					::FreeLibrary(m_pluginHandle);
+				}else{ 
+					m_interpretObj   = (StringInterpreter*)function();
+				}
+			}else{
+#pragma message ("TBD :: PluginLoader::load -- throw an exception")
+
+			}
+			return  m_interpretObj ;
+		}
+        void           PluginLoader::unload(){
+
+		}
+    
 #endif //WIN32
 }
