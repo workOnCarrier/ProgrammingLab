@@ -5,6 +5,10 @@
 #include <map>
 #include <string>
 #include "libmain.h"
+#ifdef WIN32
+#include "windows.h"
+#else
+#endif
 
 namespace AccGrind{
 //***********************************
@@ -19,6 +23,10 @@ namespace AccGrind{
 typedef void* LibHandle      ;
 typedef void* (*Handler)();
 typedef void (*Deleter)(void*);
+#else
+typedef HMODULE LibHandle      ;
+typedef FARPROC (*Handler)();
+typedef FARPROC (*Deleter)(void*);
 #endif
         typedef IInterpreter<std::string>   StringInterpreter;
         typedef std::shared_ptr<StringInterpreter>  StringInterpreterPtr;
