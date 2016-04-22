@@ -23,8 +23,8 @@ namespace AccGrind{
         void LoadPlugins();
         bool isFileNamePlugin ( std::string & ) const;
 
-        mutable bool    m_PluginsEnumerated = false;
-        mutable bool    m_PluginsLoaded = false;
+        mutable bool    m_PluginsEnumerated ;
+        mutable bool    m_PluginsLoaded ;
 
         mutable std::vector<std::string>    m_eligibleFiles;
         std::vector<PluginLoader::Ptr>   m_plugins;
