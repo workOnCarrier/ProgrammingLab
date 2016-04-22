@@ -51,7 +51,11 @@ namespace fs = boost::filesystem;
     }
     bool PluginManager::isFileNamePlugin ( std::string &fileName ) const{
         // potential improvement opportunity -- use regular expressions
+#ifdef WIN32
+        std::string::size_type pos = fileName.find(".dll");
+#else
         std::string::size_type pos = fileName.find(".so");
+#endif        
         if( std::string::npos != pos ){
             return true;
         }else{
