@@ -13,6 +13,7 @@ TEST_INTERPRETER_OBJ =
 
 all:
 	make -C textEcho
+	make -C serviceMgmt
 
 #.o.cpp:
 .cpp.o :
@@ -27,4 +28,5 @@ $(CLEAN_CTAGS) :
 clean: 
 	-rm -f core
 	-make -C textEcho clean
+	-make -C serviceMgmt clean
 	-make $(CLEAN_CTAGS)

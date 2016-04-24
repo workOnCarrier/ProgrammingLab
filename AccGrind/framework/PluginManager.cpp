@@ -83,7 +83,6 @@ namespace fs = boost::filesystem;
             std::function<void(void)>   loaderFunction(loader);
             return std::make_shared<LoadPluginTask> ( loaderFunction );
         }else{
-            std::string  pluginId = getFirstPart ( input) ;
             UserInputSplit  optionSplit = getOptionFromUsrInput  ( input );
            auto pos = m_Interpreters.find ( optionSplit.m_optionNo );
             if ( pos != m_Interpreters.end() ){

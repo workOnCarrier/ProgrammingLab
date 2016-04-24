@@ -16,7 +16,7 @@ extern "C"{
         // _4_: " *##: [A-Za-z0-9]*"
         // _5_: " *## *[A-Za-z0-9]*"
         // from these formats, we need to take out the number ## 
-        const std::string   delimiters ("|: ;,");
+        const std::string   delimiters ("|: ;,.");
         std::string  firstPart ;
         int pos = 0;
         // skip leading spaces

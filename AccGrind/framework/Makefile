@@ -9,8 +9,8 @@ LDFLAGS = -L../bin -lpthread -export-dynamic -ggdb -Wall -ldl -lboost_filesystem
 CTAGS = ctags --recurse=yes
 CLEAN_CTAGS = clean_tags
 
-AccGrind_SRC = main.cpp HostInputHandler.cpp InputRouter.cpp HostInterpret.cpp StartMyServOption.cpp StartServiceTask.cpp PluginLoader.cpp PluginManager.cpp
-AccGrind_OBJ = main.o HostInputHandler.o InputRouter.o HostInterpret.o StartMyServOption.o StartServiceTask.o PluginLoader.o PluginManager.o
+AccGrind_SRC = main.cpp HostInputHandler.cpp InputRouter.cpp HostInterpret.cpp PluginLoader.cpp PluginManager.cpp
+AccGrind_OBJ = main.o HostInputHandler.o InputRouter.o HostInterpret.o PluginLoader.o PluginManager.o
 
 TARGET = AccGrind
 

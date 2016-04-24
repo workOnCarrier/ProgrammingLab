@@ -5,26 +5,20 @@ framework=/home/genius3/work/github/ProgrammingLab/AccGrind/framework CD=. filte
  InputRouter.cpp
  PluginLoader.cpp
  PluginManager.cpp
- StartMyServOption.cpp
- StartServiceTask.cpp
  main.cpp
  buildlog
  Makefile
 }
 
 headers=/home/genius3/work/github/ProgrammingLab/AccGrind/include CD=. filter="*.h" {
- InputRouter.h
- HostInterpret.h
  HostInputHandler.h
+ HostInterpret.h
+ IInputHandler.h
+ InputRouter.h
  PluginLoader.h
  PluginManager.h
  ThreadSafeStack.h
  keyInputSource.h
- EchoTextOption.h
- EchoTextTask.h
- StartMyServOption.h
- StartServiceTask.h
- IInputHandler.h
 }
 
 interImpl=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filter="*.cpp" {
@@ -41,6 +35,7 @@ interface=/home/genius3/work/github/ProgrammingLab/AccGrind/interface CD=. filte
  taskCreater.h
  Makefile
  genUtils.cpp
+ iosource.h
 }
 
 
@@ -57,6 +52,17 @@ plugins=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins CD=/home/geniu
   textTask.h
   libmain.cpp
   testPlugin.cpp
+ }
+ serviceMgmt=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins/serviceMgmt  CD=/home/genius3/work/github/ProgrammingLab/AccGrind/plugins/serviceMgmt  filter="*.cpp *.h Makefile buildlog" {
+  libmain.cpp
+  StartMyServOption.h
+  StartMyServOption.cpp
+  StartServiceTask.cpp
+  StartServiceTask.h
+  serviceInterpreter.h
+  serviceInterpreter.cpp
+  Makefile
+  buildlog
  }
 }
 

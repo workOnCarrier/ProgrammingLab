@@ -3,16 +3,17 @@
 
 #include <string>
 #include <cctype>
+#include "iosource.h"
 
 namespace AccGrind{
-    class KeyInputSource{
+    class KeyInputSource : public IOHandler{
     public:
         typedef std::string        DataType;
 
         KeyInputSource():m_reading(true) {};
 
-        bool hasMoreData (){ return m_reading; }
-        std::string    getNextInput(){
+        virtual bool hasMoreData (){ return m_reading; }
+        virtual std::string    getNextInput(){
             DataType dataItem;
             DataType upCasedataItem;
             char    userInput = '\0';
@@ -35,6 +36,9 @@ namespace AccGrind{
                 m_reading = false;
             }
             return dataItem;
+        }
+        virtual std::ostream&       getOutputStream() {
+            return std::cout ;
         }
     private:
         bool        m_reading;
