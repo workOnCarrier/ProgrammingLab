@@ -38,3 +38,4 @@ clean:
 	-rm $(TEST_INTERPRETER_OBJ)
 	-make $(CLEAN_CTAGS)
 	-rm buildlog
+	-rm ../bin/$(TARGET)
