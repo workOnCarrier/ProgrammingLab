@@ -8,19 +8,20 @@ namespace AccGrind {
     InputRouter::~InputRouter ( ){}
 
     void InputRouter::process (){
+        std::ostream& outStream = m_InputSource.getOutputStream();
         while ( m_InputSource.hasMoreData() ){
             std::vector<std::string>  optionVector;
             m_InputHandler.getOptions(optionVector);
             int optionIndex = 0;
             for ( auto a:optionVector ) {
-                std::cout << "  "<< a.c_str() << std::endl;
+                outStream << "  "<< a.c_str() << std::endl;
             }
-            std::cout << "---------> choose option with input :" ;
+            outStream << "---------> choose option with input :" ;
             std::string usrInput = m_InputSource.getNextInput();
-            std::cout << "------------------------- handling input :" << usrInput << std::endl;
+            outStream  << "------------------------- handling input :" << usrInput << std::endl;
             bool isInputHandled = m_InputHandler.handleInput ( usrInput );
             if ( !isInputHandled ){
-                std::cout << "Error: Input not supported -- stopping processing loop" << usrInput << std::endl;
+                outStream  << "Error: Input not supported -- stopping processing loop" << usrInput << std::endl;
                 break;
             }// else {continue; // the loop }
         }
