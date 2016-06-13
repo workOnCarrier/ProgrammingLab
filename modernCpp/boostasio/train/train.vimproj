@@ -1,0 +1,11 @@
+
+train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. filter="*.cpp Makefile build.log" {
+ blocked.cpp
+ dispatch.cpp
+ mutexbind.cpp
+ poll.cpp
+ post.cpp
+ workBlocked.cpp
+ Makefile
+ build.log
+}
