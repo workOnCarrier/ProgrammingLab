@@ -3,6 +3,7 @@ train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. fi
  blocked.cpp
  dispatch.cpp
  mutexbind.cpp
+ nonStrand.cpp
  poll.cpp
  post.cpp
  workBlocked.cpp

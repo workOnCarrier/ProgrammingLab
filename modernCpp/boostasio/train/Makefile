@@ -25,16 +25,22 @@ MUTEXBIND_OBJ =  mutexbind.o
 DISPATCH_SRC = dispatch.cpp
 DISPATCH_OBJ =  dispatch.o
 
+NONSTRAND_SRC = nonStrand.cpp
+NONSTRAND_OBJ = nonStrand.o
+
 TARGET_1 = 1_block
 TARGET_2 = 2_poll
 TARGET_3 = 3_workBlk
 TARGET_4 = 4_post
 TARGET_5 = 5_mutexbind
 TARGET_6 = 6_dispatch
+TARGET_7 = 7_nonStrand
 
 
-all: $(TARGET_1) $(TARGET_2) $(TARGET_3) $(TARGET_4) $(TARGET_5) $(TARGET_6)
-	 # $(TARGET_1) $(TARGET_2) $(TARGET_3) $(TARGET_4) $(TARGET_5) $(TARGET_6)
+all: $(TARGET_1) $(TARGET_2) $(TARGET_3) $(TARGET_4) $(TARGET_5)\
+	$(TARGET_6) \
+	$(TARGET_7)
+	 # $(TARGET_1) $(TARGET_2) $(TARGET_3) $(TARGET_4) $(TARGET_5) $(TARGET_6) $(TARGET_7)
 
 $(TARGET_1):  $(BLOCK_OBJ)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(BLOCK_OBJ) 2>&1 |tee > build.log  > less
@@ -59,6 +65,10 @@ $(DISPATCH_OBJ):$(DISPATCH_SRC)
 $(TARGET_6):  $(DISPATCH_OBJ)
 	$(CC) -o $(TARGET_6) $(LDFLAGS) $(DISPATCH_OBJ) 2>&1 |tee > build.log 
 
+$(NONSTRAND_OBJ): $(NONSTRAND_SRC)
+$(TARGET_7): $(NONSTRAND_OBJ)
+	$(CC) -o $(TARGET_7) $(LDFLAGS) $(NONSTRAND_OBJ) 2>&1 |tee > build.log 
+
 clean:
 	-rm -f $(TARGET_1) $(BLOCK_OBJ)
 	-rm -f $(TARGET_2) $(POLL_OBJ)
@@ -66,3 +76,4 @@ clean:
 	-rm -f $(TARGET_4) $(POST_OBJ)
 	-rm -f $(TARGET_5) $(MUTEXBIND_OBJ)
 	-rm -f $(TARGET_6) $(DISPATCH_OBJ)
+	-rm -f $(TARGET_7) $(NONSTRAND_OBJ)
