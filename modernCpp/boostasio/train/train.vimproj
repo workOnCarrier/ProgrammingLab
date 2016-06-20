@@ -7,6 +7,8 @@ train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. fi
  poll.cpp
  post.cpp
  workBlocked.cpp
+ strand.cpp
+ strandwrap.cpp
  Makefile
  build.log
 }

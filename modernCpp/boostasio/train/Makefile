@@ -28,6 +28,12 @@ DISPATCH_OBJ =  dispatch.o
 NONSTRAND_SRC = nonStrand.cpp
 NONSTRAND_OBJ = nonStrand.o
 
+STRAND_SRC = strand.cpp
+STRAND_OBJ = strand.o
+
+STRANDWRAP_SRC = strandwrap.cpp
+STRANDWRAP_OBJ = strandwrap.o
+
 TARGET_1 = 1_block
 TARGET_2 = 2_poll
 TARGET_3 = 3_workBlk
@@ -35,12 +41,14 @@ TARGET_4 = 4_post
 TARGET_5 = 5_mutexbind
 TARGET_6 = 6_dispatch
 TARGET_7 = 7_nonStrand
-
+TARGET_8 = 8_strand
+TARGET_9 = 9_strandwrap
 
 all: $(TARGET_1) $(TARGET_2) $(TARGET_3) $(TARGET_4) $(TARGET_5)\
-	$(TARGET_6) \
-	$(TARGET_7)
-	 # $(TARGET_1) $(TARGET_2) $(TARGET_3) $(TARGET_4) $(TARGET_5) $(TARGET_6) $(TARGET_7)
+	$(TARGET_6) $(TARGET_7) \
+	$(TARGET_8) \
+	$(TARGET_9)
+	 # $(TARGET_1) $(TARGET_2) $(TARGET_3) $(TARGET_4) $(TARGET_5) $(TARGET_6) $(TARGET_7) $(TARGET_8) $(TARGET_9)
 
 $(TARGET_1):  $(BLOCK_OBJ)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(BLOCK_OBJ) 2>&1 |tee > build.log  > less
@@ -69,6 +77,14 @@ $(NONSTRAND_OBJ): $(NONSTRAND_SRC)
 $(TARGET_7): $(NONSTRAND_OBJ)
 	$(CC) -o $(TARGET_7) $(LDFLAGS) $(NONSTRAND_OBJ) 2>&1 |tee > build.log 
 
+$(STRAND_OBJ): $(STRAND_SRC)
+$(TARGET_8): $(STRAND_OBJ)
+	$(CC) -o $(TARGET_8) $(LDFLAGS) $(STRAND_OBJ) 2>&1 |tee > build.log 
+
+$(STRANDWRAP_OBJ): $(STRANDWRAP_SRC)
+$(TARGET_9): $(STRANDWRAP_OBJ)
+	$(CC) -o $(TARGET_9) $(LDFLAGS) $(STRANDWRAP_OBJ) 2>&1 |tee > build.log 
+
 clean:
 	-rm -f $(TARGET_1) $(BLOCK_OBJ)
 	-rm -f $(TARGET_2) $(POLL_OBJ)
@@ -77,3 +93,5 @@ clean:
 	-rm -f $(TARGET_5) $(MUTEXBIND_OBJ)
 	-rm -f $(TARGET_6) $(DISPATCH_OBJ)
 	-rm -f $(TARGET_7) $(NONSTRAND_OBJ)
+	-rm -f $(TARGET_8) $(STRAND_OBJ)
+	-rm -f $(TARGET_9) $(STRANDWRAP_OBJ)
