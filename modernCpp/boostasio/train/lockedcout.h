@@ -4,7 +4,6 @@
 #include <mutex>
 #include <ostream>
 
-class LcoutWrap ;
 
 class Lcout {
 public:
@@ -15,39 +14,16 @@ public:
 
        
     template<typename T>
-    friend LcoutWrap& operator<< ( Lcout &stream, const T& tObj ){
-        LcoutWrap lcoutwrap(stream);
-        stream.m_stream << tObj;
-        return lcoutwrap;
+    friend Lcout& operator<< ( Lcout &stream, const T& tObj ){
+        stream.m_stream << tObj << '\n';
+        return stream;
     }
 
    
-    friend LcoutWrap ;
 private:
     std::ostream    &m_stream;
     std::mutex  m_mutex;
     bool        m_status;
-};
-class LcoutWrap { //:public Lcout{
-        public:
-        ~LcoutWrap (){
-            //m_lcoutObj.m_stream << std::end;
-            std::cout << "                                      deleting lcout wrapper" << std::endl;
-        }
-        LcoutWrap ( Lcout &lcoutObj )
-            :// Lcout(lcoutObj) ,
-                m_lockedRef (lcoutObj.m_mutex)
-             , m_lcoutObj(lcoutObj)
-        {}
-        private:
-        std::lock_guard<std::mutex> m_lockedRef;
-        Lcout           &m_lcoutObj;
-
-        template<typename T>
-        friend LcoutWrap& operator<< ( LcoutWrap &stream, const T& tObj ){
-            stream.m_lcoutObj.m_stream << tObj;
-            return stream;
-        }
 };
  
 #endif // __LOCKEDCOUT_H__

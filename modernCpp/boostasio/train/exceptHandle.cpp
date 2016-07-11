@@ -6,10 +6,10 @@
 #include <memory>
 #include "lockedcout.h"
 
-// namespace basio = boost::asio;
+namespace basio = boost::asio;
 
-// void workerThread ( basio::io_service &ioserv , int counter){
-// }
+void workerThread ( basio::io_service &ioserv , int counter){
+}
 
 Lcout lcout(std::cout);
 int main ( int argc, char** argv ){

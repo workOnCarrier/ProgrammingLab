@@ -1,14 +1,16 @@
 
-train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. filter="*.cpp Makefile build.log" {
+train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. filter="*.h *.cpp Makefile build.log" {
+ lockedcout.h
  blocked.cpp
  dispatch.cpp
+ exceptHandle.cpp
  mutexbind.cpp
  nonStrand.cpp
  poll.cpp
  post.cpp
- workBlocked.cpp
  strand.cpp
  strandwrap.cpp
+ workBlocked.cpp
  Makefile
  build.log
 }
