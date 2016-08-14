@@ -1,13 +1,14 @@
 CC = g++-5
 
-CPPFLAGS = -std=c++0x -I. -I../hdr -Wall -ggdb -D_GLIBCXX_USE_CXX11_ABI=0
+CPPFLAGS = -std=c++0x -I. -I../hdr -Wall -ggdb \
+	-I ../../../framewrk/usr/local/include 
 # -I../../../framework/include
 LDFLAGS =	-ggdb -lboost_system  \
-			-L../../../framewrk/lib/libcurl.a  \
-			-L../../../framewrk/lib -lgtest \
-			-L../../../framewrk/lib -lgtest_main \
-			-L../../../framewrk/lib -lgmock  \
-			-L../../../framewrk/lib -lgmock_main \
+			-L../../../framewrk/usr/local/lib \
+			-lgtest \
+			-lgtest_main \
+			-lgmock  \
+			-lgmock_main \
 			-lstdc++ -lpthread 
 # LDFLAGS =   -ggdb -lboost_system -lpthread -lcurl -lgtest -lgmock  -lstdc++
 
@@ -18,10 +19,11 @@ LDFLAGS =	-ggdb -lboost_system  \
 SRC = first.cpp
 OBJ = first.o
 
-TARGET = 1_first
+TARGET_1 = 1_first
 
-$(TARGET):  $(OBJ)
-	$(CC) -o $(TARGET)  $(OBJ) $(LDFLAGS) > build.log 2>&1
+$(TARGET_1):  $(OBJ)
+	$(CC) -o $(TARGET_1)  $(OBJ) $(LDFLAGS) > build.log 2>&1
 
 clean:
-	-rm -f $(TARGET) $(OBJ)
+	-rm -f $(TARGET_1) $(OBJ)
+	-rm -f build.log
