@@ -4,7 +4,11 @@ class Soundex{
 public:
     Soundex(){}
     std::string encode ( std::string const & input) {
-        return input;
+        return zeroPadding ( input );
+    }
+private:
+    std::string zeroPadding ( std::string const &input ) {
+        return input + "000" ;
     }
 };
 // #include "gmock/gmock.h"
@@ -12,12 +16,17 @@ public:
 TEST ( SoundexEncoding, RetainSoleLetterOfOneLetterWord_1 ){
     Soundex soundex;
     std::string encoded = soundex.encode("A");
-    ASSERT_EQ ( encoded, "A");
+    ASSERT_EQ ( encoded, "A000");
     // triangulating -- generalizing
-    ASSERT_EQ ( soundex.encode("B"), "B");
+    ASSERT_EQ ( soundex.encode("B"), "B000");
 }
 TEST ( SoundexEncoding, RetainSoleLetterOfOneLetterWord_2 ){
     Soundex soundex;
     std::string encoded = soundex.encode("B");
-    ASSERT_EQ ( encoded, "B");
+    ASSERT_EQ ( encoded, "B000");
+}
+TEST ( SoundexEncoding, PadWithZerosToEnxureThreeDigits ){
+    Soundex soundex;
+    std::string encoded = soundex.encode("I");
+    ASSERT_EQ ( encoded, "I000" );
 }
