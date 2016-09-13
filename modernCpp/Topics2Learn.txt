@@ -1,0 +1,41 @@
+Core language usability enhancements 
+5.1 Initializer lists
+5.2 Uniform initialization
+5.3 Type inference
+5.4 Range-based for-loop
+5.5 Lambda functions and expressions
+5.6 Alternative function syntax
+5.7 Object construction improvement
+5.8 Explicit overrides and final
+5.9 Null pointer constant
+5.10 Strongly typed enumerations
+5.11 Right angle bracket
+5.12 Explicit conversion operators
+5.13 Alias templates
+5.14 Unrestricted unions
+6 Core language functionality improvements 
+6.1 Variadic templates
+6.2 New string literals
+6.3 User-defined literals
+6.4 Multithreading memory model
+6.5 Thread-local storage
+6.6 Explicitly defaulted and deleted special member functions
+6.7 Type long long int
+6.8 Static assertions
+6.9 Allow sizeof to work on members of classes without an explicit object
+6.10 Control and query object alignment
+6.11 Allow garbage collected implementations
+
+C++ standard library changes 
+7.1 Upgrades to standard library components
+7.2 Threading facilities
+7.3 Tuple types
+7.4 Hash tables
+7.5 Regular expressions
+7.6 General-purpose smart pointers
+7.7 Extensible random number facility
+7.8 Wrapper reference
+7.9 Polymorphic wrappers for function objects
+7.10 Type traits for metaprogramming
+7.11 Uniform method for computing the return type of function objects
+
