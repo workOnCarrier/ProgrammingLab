@@ -91,7 +91,7 @@ $(TARGET_9): $(STRANDWRAP_OBJ)
 
 $(EXCEPTHANDLE_OBJ): $(EXCEPTHANDLE_SRC)
 $(TARGET_10): $(EXCEPTHANDLE_OBJ)
-	$(CC) -o $(TARGET_10) $(LDFLAGS) $(EXCEPTHANDLE_OBJ) 2>&1 |tee > build.log 
+	$(CC) -o $(TARGET_10) $(LDFLAGS) -lboost_thread $(EXCEPTHANDLE_OBJ) 2>&1 |tee > build.log 
 
 clean:
 	-rm -f $(TARGET_1) $(BLOCK_OBJ)

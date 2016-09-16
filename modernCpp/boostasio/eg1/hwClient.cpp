@@ -82,4 +82,30 @@ int ConnectEndPoint4DomainName() {
     return 0;
 }
 
+void writeToSocket_withWriteSome (asio::ip::tcp::socket &socketObj ){
+    std::string     bufferObj = "Hello World \n boost asio based networking software";
+    std::size       totalWritten = 0;
 
+    while ( totalWritten != bufferObj.length() ){
+        totalWritten = socketObj.write_some ( bufferObj.c_str()+totalWritten,
+                                        bufferObj.length()-totalWritten );
+    }
+}
+// alternatives exist to write_some
+// 1_ send ()-- overloaded to 3 forms
+// 2_ write () -- also has an overload
+int function_WriteToSocket_user(){
+    std::string raw_ip  = NetworkCommon::rawIP;
+    unsigned portNo     = NetworkCommon::port ;
+    asio::io_service    serviceObj;
+    try{
+        asio::ip::tcp::endpoint  endPointObj ( asio::ip::address::from_strin(raw_ip), portNo );
+        asio::ip::tcp::socket   socketObj ( serviceObj, endPointObj.protocol() );
+        socketObj.connect ( endPointObj );
+        writeToSocket_withWriteSome ( socketObj );
+    }catch(system::system_error &err){
+        cout << "Error occurred! " << err.what() << std::endl;
+        return err.code().value();
+    }
+    return 0;
+}
