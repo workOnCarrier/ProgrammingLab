@@ -10,13 +10,13 @@ SRC_1 = test_lambda.cpp
 OBJ_1 = test_lambda.o
 
 # SRC_1 = 1.cpp
-SRC_2 = 2.cpp
-OBJ_2 = 2.o
+SRC_2 = trying_assert.cpp
+OBJ_2 = trying_assert.o
 
 TARGET_1 = try
-TARGET_2 = test
+TARGET_2 = test_assert
 
-all: $(TARGET_1) #$(TARGET_2)
+all: $(TARGET_1) $(TARGET_2)
 
 $(TARGET_1):  $(OBJ_1)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(OBJ_1) > buildlog 2>&1
