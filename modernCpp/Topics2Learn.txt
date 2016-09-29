@@ -39,3 +39,6 @@ C++ standard library changes
 7.10 Type traits for metaprogramming
 7.11 Uniform method for computing the return type of function objects
 
+----- general references
+type-traits 
+-- how is unique_ptr safe compared to auto_ptr
