@@ -149,6 +149,16 @@ namespace OCP {
 		for ( auto product : filtered ) {
 			cout << product << endl;
 		}
+
+		cout << "this is a combined filter for color and size" << endl;
+		colorSpec 	greenColorSpec(color::green);
+		sizeSpec 	largeSizeSpec(size::large);
+		andSpec		andSpecObj ( greenColorSpec, largeSizeSpec );
+
+		Items  complexFilter = bfObj.filter ( productList, andSpecObj );
+		for ( auto product : complexFilter  ) {
+			cout << product << endl;
+		}
 	}
 }
 
