@@ -6,15 +6,15 @@ LDFLAGS =   -ggdb -lboost_system -lpthread
 .cpp.o:
 		$(CC) -c $(CPPFLAGS) -o $@ $<  > buildlog 2>&1
 
-SRC_1 = test_lambda.cpp
-OBJ_1 = test_lambda.o
+SRC_1 = SRP.cpp
+OBJ_1 = SRP.o
 
 # SRC_1 = 1.cpp
-SRC_2 = trying_assert.cpp
-OBJ_2 = trying_assert.o
+SRC_2 = OCP.cpp
+OBJ_2 = OCP.o
 
-TARGET_1 = try
-TARGET_2 = test_assert
+TARGET_1 = srp
+TARGET_2 = ocp
 
 all: $(TARGET_1) $(TARGET_2)
 
