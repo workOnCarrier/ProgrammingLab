@@ -12,8 +12,11 @@ futures concepts:
 	http://braddock.com/~braddock/future/
 
 
+future implementations:
+	techniques -- that allow for enforcing contracts to enforce , express and validate order of execution etc.
 
 
 
 Misc: -- Ideas
     SignalSlot mechanisms for simplifying application design
+
