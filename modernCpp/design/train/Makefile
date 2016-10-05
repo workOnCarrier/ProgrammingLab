@@ -15,11 +15,15 @@ OBJ_2 = OCP.o
 SRC_3 = Monad.cpp
 OBJ_3 = Monad.o
 
+SRC_4 = mixin.cpp
+OBJ_4 = mixin.o
+
 TARGET_1 = srp
 TARGET_2 = ocp
 TARGET_3 = monad
+TARGET_4 = myMixin
 
-all: $(TARGET_1) $(TARGET_2) $(TARGET_3)
+all: $(TARGET_1) $(TARGET_2) $(TARGET_3) $(TARGET_4)
 
 $(TARGET_1):  $(OBJ_1)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(OBJ_1) > buildlog 2>&1
@@ -30,10 +34,14 @@ $(TARGET_2):  $(OBJ_2)
 $(TARGET_3):  $(OBJ_3)
 	$(CC) -o $(TARGET_3) $(LDFLAGS) $(OBJ_3) > buildlog 2>&1
 
+$(TARGET_4):  $(OBJ_4)
+	$(CC) -o $(TARGET_4) $(LDFLAGS) $(OBJ_4) > buildlog 2>&1
+
 clean:
 	-rm -f $(TARGET_1) $(OBJ_1)
 	-rm -f $(TARGET_2) $(OBJ_2)
 	-rm -f $(TARGET_3) $(OBJ_3)
+	-rm -f $(TARGET_4) $(OBJ_4)
 	-rm -f buildlog
 
 
