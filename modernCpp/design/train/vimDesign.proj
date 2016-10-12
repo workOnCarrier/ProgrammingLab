@@ -1,0 +1,22 @@
+
+topCPP="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train" CD=. filter="*.cpp Makefile" {
+ Monad.cpp
+ OCP.cpp
+ SRP.cpp
+ mixin.cpp
+ Makefile
+ builder="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/builder" CD=. filter="Makefile" {
+  Makefile
+  header="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/builder"  CD=. filter="*.h" {
+   htmlBuilder.h
+   htmlElement.h
+  }
+  CPP="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/builder"  CD=. filter="*.cpp buildlog" {
+   0_noBuilder.cpp
+   htmlBuilder.cpp
+   htmlBuilderDriver.cpp
+   htmlElement.cpp
+   buildlog
+  }
+ }
+}

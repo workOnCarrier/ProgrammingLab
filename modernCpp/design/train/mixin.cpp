@@ -48,16 +48,21 @@ void displayProperties_initializerList ( ) {
     displayVectProp<int> dispObj(vobj);
     dispObj ();
 }
-/*void displayProperties_initializerList ( ) {
+void displayProperties_resize_later ( ) {
     cout << __FUNCTION__ << "----------------------------" << endl;
-    vector<int> vobj{10,20} ;
+    vector<int> vobj(20) ;
+    vobj.reserve(5) ;
 
     displayVectProp<int> dispObj(vobj);
     dispObj ();
-} */
+    vobj.resize(5) ;
+	cout << " after resize ---- > " << endl;
+    dispObj ();
+}
 int main ( int argc, char** argv ) {
     displayProperties_interview  ( ) ;
     displayProperties_intParameter   () ;
     displayProperties_initializerList   () ;
+	displayProperties_resize_later  ();
     return 0;
 }
