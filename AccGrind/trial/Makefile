@@ -1,4 +1,4 @@
-CC = /usr/bin/g++-4.8
+CC = /usr/bin/g++-5
 CFLAGS = -I. -I../include -I../interface -Wall
 CPPFLAGS = -std=c++0x -I. -I../include -I../interface -Wall -ggdb  -c
 LDFLAGS = -export-dynamic -lpthread -ggdb -Wall -L../../bin

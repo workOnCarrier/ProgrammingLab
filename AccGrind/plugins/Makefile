@@ -1,4 +1,4 @@
-CC = /usr/bin/g++-4.8
+CC = /usr/bin/g++-5
 
 CFLAGS = -I. -Wall
 CPPFLAGS = -std=c++0x -I../include -I../blocks -Wall -ggdb -fpic -c

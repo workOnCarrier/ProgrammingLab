@@ -1,5 +1,5 @@
 
-CC = /usr/bin/g++-4.8
+CC = /usr/bin/g++-5
 RANLIB = ranlib
 CFLAGS = -I. -Wall
 CPPFLAGS = -std=c++0x -I. -I../../interface -Wall -ggdb -fpic -c
