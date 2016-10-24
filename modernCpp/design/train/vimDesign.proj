@@ -19,4 +19,16 @@ topCPP="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train" CD=. fi
    buildlog
   }
  }
+ factory="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/factory" CD=. filter="Makefile" {
+  Makefile
+  header="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/factory"  CD=. filter="*.h" {
+   point.h
+  }
+  CPP="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/factory"  CD=. filter="*.cpp buildlog" {
+   0_noFactory.cpp
+   point.cpp
+   buildlog
+
+  }
+ }
 }
