@@ -25,6 +25,8 @@ OBJ_5 = test_hacker_rank_pointer.o
 SRC_6 = try_leftShift.cpp
 OBJ_6 = try_leftShift.o
 
+SRC_7 = try_HR_codeD2.cpp
+OBJ_7 = try_HR_codeD2.o
  
 TARGET_1 = try
 TARGET_2 = test_assert
@@ -32,14 +34,17 @@ TARGET_3 = test_mixin
 TARGET_4 = test_exam
 TARGET_5 = test_hacker_rank_pointer
 TARGET_6 = test_shifting
+TARGET_7 = test_HR_CD2
 
-all:  $(TARGET_6)
-
+all:  $(TARGET_7)
+# $(TARGET_6)
 # $(TARGET_5)
 # $(TARGET_4)
 #$(TARGET_1) $(TARGET_2) 
 #$(TARGET_3)
 
+run:
+	./$(TARGET_7)
 $(TARGET_1):  $(OBJ_1)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(OBJ_1) > buildlog 2>&1
 
@@ -61,6 +66,10 @@ $(TARGET_6):  $(OBJ_6)
 	$(CC) -o $(TARGET_6) $(LDFLAGS) $(OBJ_6) > buildlog 2>&1
 	./$(TARGET_6)
 
+$(TARGET_7):  $(OBJ_7)
+	$(CC) -o $(TARGET_7) $(LDFLAGS) $(OBJ_7) > buildlog 2>&1
+	./$(TARGET_7)
+
 
 clean:
 	-rm -f $(TARGET_1) $(OBJ_1)
@@ -69,6 +78,7 @@ clean:
 	-rm -f $(TARGET_4) $(OBJ_4)
 	-rm -f $(TARGET_5) $(OBJ_5)
 	-rm -f $(TARGET_6) $(OBJ_6)
+	-rm -f $(TARGET_7) $(OBJ_7)
 	-rm -f buildlog
 
 
