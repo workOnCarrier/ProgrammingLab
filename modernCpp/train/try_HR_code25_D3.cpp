@@ -111,7 +111,8 @@ int solveQuery ( const userInput::Query & q ) {
 
     if ( gap == 0 ) return steps ;
     if  ( gap == qObj.smallStep ) return steps + 1 ;
-    return steps + 2 ;
+    if ( steps == 0 ) return 2;
+    return steps + 1 ;
 }
 void solveQueries ( const userInput::Queries& queries ){
     for ( auto q :  queries ) {
