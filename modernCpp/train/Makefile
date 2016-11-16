@@ -34,6 +34,15 @@ OBJ_8 = try_HR_code25_D3.o
 SRC_9 = try_HR_RadleyJames.cpp
 OBJ_9 = try_HR_RadleyJames.o
  
+SRC_10 = test_tricks.cpp
+OBJ_10 = test_tricks.o
+ 
+SRC_11 = test_dynamic_cast.cpp
+OBJ_11 = test_dynamic_cast.o
+ 
+SRC_12 = try_HR_virtual.cpp
+OBJ_12 = try_HR_virtual.o
+ 
 TARGET_1 = try
 TARGET_2 = test_assert
 TARGET_3 = test_mixin
@@ -43,8 +52,14 @@ TARGET_6 = test_shifting
 TARGET_7 = test_HR_CD2
 TARGET_8 = test_HR_CD3
 TARGET_9 = test_HR_RJ
+TARGET_10 = test_tricks
+TARGET_11 = test_dc
+TARGET_12 = test_HR_virt
 
-all:  $(TARGET_9)
+all:    $(TARGET_12)
+#  $(TARGET_11)
+#  $(TARGET_10)
+# $(TARGET_9)
 # $(TARGET_8)
 # $(TARGET_7)
 # $(TARGET_6)
@@ -55,13 +70,14 @@ all:  $(TARGET_9)
 # $(TARGET_1)
 
 run:
-	./$(TARGET_9)
+	./$(TARGET_12)
 
 $(TARGET_1):  $(OBJ_1)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(OBJ_1) > buildlog 2>&1
 
 $(TARGET_2):  $(OBJ_2)
 	$(CC) -o $(TARGET_2) $(LDFLAGS) $(OBJ_2) > buildlog 2>&1
+	$(TARGET_2)
 
 $(TARGET_3):  $(OBJ_3)
 	$(CC) -o $(TARGET_3) $(LDFLAGS) $(OBJ_3) > buildlog 2>&1
@@ -90,6 +106,18 @@ $(TARGET_9):  $(OBJ_9)
 	$(CC) -o $(TARGET_9) $(LDFLAGS) $(OBJ_9) > buildlog 2>&1
 	./$(TARGET_9)
 
+$(TARGET_10):  $(OBJ_10)
+	$(CC) -o $(TARGET_10) $(LDFLAGS) $(OBJ_10) > buildlog 2>&1
+	./$(TARGET_10)
+
+$(TARGET_11):  $(OBJ_11)
+	$(CC) -o $(TARGET_11) $(LDFLAGS) $(OBJ_11) > buildlog 2>&1
+	./$(TARGET_11)
+
+$(TARGET_12):  $(OBJ_12)
+	$(CC) -o $(TARGET_12) $(LDFLAGS) $(OBJ_12) > buildlog 2>&1
+	./$(TARGET_12)
+
 clean:
 	-rm -f $(TARGET_1) $(OBJ_1)
 	-rm -f $(TARGET_2) $(OBJ_2)
@@ -100,6 +128,9 @@ clean:
 	-rm -f $(TARGET_7) $(OBJ_7)
 	-rm -f $(TARGET_8) $(OBJ_8)
 	-rm -f $(TARGET_9) $(OBJ_9)
+	-rm -f $(TARGET_10) $(OBJ_10)
+	-rm -f $(TARGET_11) $(OBJ_11)
+	-rm -f $(TARGET_12) $(OBJ_12)
 	-rm -f buildlog
 
 

@@ -74,7 +74,7 @@ int main_8 () {
 return 0;}
 
 int main_9 () {
-    char* const p = "nice";
+    // char* const p = "nice";
  //   p  = "new nice";
 return 0;
 }
@@ -121,10 +121,65 @@ T max(T x, T y)
 {
     return (x > y)? x : y;
 }
-int main()
+int main_13()
 {
-    cout << max(3, 7) << std::endl;
+/*    cout << max(3, 7) << std::endl;
     cout << max(3.0, 7.0) << std::endl;
     cout << max(3, 7.0) << std::endl;
-    return 0;
+ */   return 0;
+}
+
+class dummy_class_14{
+    public:
+        static int data;
+};
+int dummy_class_14::data = 0;
+
+void test_static_dc_14() {
+   dummy_class_14 obj;
+   cout << dummy_class_14::data  << endl;
+//    cout << obj::data << endl;
+ //  cout << dummy_class_14::obj.data << endl;
+//   cout << obj->data << endl;
+}
+enum Day { Mon=11, Tue=12 };
+void test_enum_scope () {
+    enum Day var = Day::Mon;
+    Day var1 = Day::Mon;
+    enum Day var2 = Mon;
+}
+void test_const () {
+    double val = 0.0;
+    double val_orig = 0.0;
+  //   double *ptr const = &val_orig;
+  //   ptr = &val;
+    cout << "Hello" << endl;
+}
+class car {
+    public: car(){}
+    virtual ~car() {}
+};
+class t : public car {
+};
+class l : public car {
+};
+void test_typeid () {
+    car c1;
+    // t c1_2;
+    l c3;
+    car *cars[3] = { &c1,&c1_2,&c3 };
+    car *cp;
+    for ( int i = 0; i < 3; i++ ){
+        cp = cars[i];
+        if ( typeid(*cp) == typeid(c2) ) { cout << "obj" << endl; }
+        if ( typeid(cp) == typeid(c2) ) { cout << "ptr" << endl; }
+        if ( typeid(*cp) == typeid(t) ) { cout << "obj_name" << endl; }
+        if ( rtti(*cp).name == "t" ) { cout << "rtti" << endl; }
+    }
+}
+int main () {
+// test_static_dc_14();
+// test_enum_scope () ;
+// test_const () ;
+return 0;
 }

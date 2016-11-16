@@ -3,6 +3,9 @@ trainCPP=/home/genius3/work/github/ProgrammingLab/modernCpp/train CD=/home/geniu
  test_hacker_rank_pointer.cpp
  test_lambda.cpp
  test_tricks.cpp
+ test_exam.cpp
+ try_HR_virtual.cpp
+ try_HR_operOverLoad.cpp
  try_HR_code25_D3.cpp
  try_HR_code25_D4.cpp
  try_HR_code25_D5.cpp

@@ -4,7 +4,7 @@ using namespace std;
 
 int check_static_assert ( int a, int b ) {
     // thie works
-    static_assert ( sizeof(int) <= 4, "Int is 4 bytes or less" );
+    static_assert ( sizeof(int) <= a, "Int is 4 bytes or less" );
 
     // this does not
     // static_assert ( sizeof(int) >= 3, "Int is 3 bytes or less" );

@@ -17,7 +17,9 @@ int exor ( int n , int start ) {
     cout << changed << endl;
     int a = n & changed;
     int b = ~n & ~changed;
-    int final_ =  ~a & ~b;
+    // int final_ =  ~a & ~b;
+    int final_ =  changed ^ n;
+    int final_ =  changed ^ n;
     return final_;
 }
 void test_msb () {
@@ -96,11 +98,11 @@ void test_vectorInts() {
 int main () {
     // test_msb ();
     // test_sizeof () ;
-    //  test_exor () ;
+      test_exor () ;
     // test_class_a() ;
     // testaa();
     // test_sizeOf_c ();
     // test_wierd () ;
-    test_vectorInts();
+    // test_vectorInts();
     return 0;
 }
