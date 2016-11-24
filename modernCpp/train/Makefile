@@ -43,6 +43,9 @@ OBJ_11 = test_dynamic_cast.o
 SRC_12 = try_HR_virtual.cpp
 OBJ_12 = try_HR_virtual.o
  
+SRC_13 = try_HR_maxSubArray.cpp
+OBJ_13 = try_HR_maxSubArray.o
+ 
 TARGET_1 = try
 TARGET_2 = test_assert
 TARGET_3 = test_mixin
@@ -55,8 +58,10 @@ TARGET_9 = test_HR_RJ
 TARGET_10 = test_tricks
 TARGET_11 = test_dc
 TARGET_12 = test_HR_virt
+TARGET_13 = test_HR_maxSubArray
 
-all:    $(TARGET_12)
+all:    $(TARGET_13)
+# $(TARGET_12)
 #  $(TARGET_11)
 #  $(TARGET_10)
 # $(TARGET_9)
@@ -70,7 +75,7 @@ all:    $(TARGET_12)
 # $(TARGET_1)
 
 run:
-	./$(TARGET_12)
+	./$(TARGET_13)
 
 $(TARGET_1):  $(OBJ_1)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(OBJ_1) > buildlog 2>&1
@@ -118,6 +123,10 @@ $(TARGET_12):  $(OBJ_12)
 	$(CC) -o $(TARGET_12) $(LDFLAGS) $(OBJ_12) > buildlog 2>&1
 	./$(TARGET_12)
 
+$(TARGET_13):  $(OBJ_13)
+	$(CC) -o $(TARGET_13) $(LDFLAGS) $(OBJ_13) > buildlog 2>&1
+	./$(TARGET_13)
+
 clean:
 	-rm -f $(TARGET_1) $(OBJ_1)
 	-rm -f $(TARGET_2) $(OBJ_2)
@@ -131,6 +140,7 @@ clean:
 	-rm -f $(TARGET_10) $(OBJ_10)
 	-rm -f $(TARGET_11) $(OBJ_11)
 	-rm -f $(TARGET_12) $(OBJ_12)
+	-rm -f $(TARGET_13) $(OBJ_13)
 	-rm -f buildlog
 
 

@@ -14,6 +14,7 @@ trainCPP=/home/genius3/work/github/ProgrammingLab/modernCpp/train CD=/home/geniu
  try_HR_codeD2.cpp
  try_leftShift.cpp
  trying_assert.cpp
+ try_HR_maxSubArray.cpp
  trying_move.cpp
  try_HR_RadleyJames.cpp
  Makefile
