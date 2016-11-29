@@ -1,7 +1,7 @@
 # ~/.tmuxinator/cppDesign.yml
 
 name: cppDesign
-root: /home/genius3/work/github/ProgrammingLab/modernCpp/design/train
+root: /home/genius3/work/github/ProgrammingLab/modernCpp/train
 
 # Optional tmux socket
 # socket_name: foo
@@ -31,7 +31,7 @@ windows:
   - editor:
       layout: main-vertical
       panes:
-        - vim ../notes.md -C "Project vimDesign.proj"
+        - vim Makefile -c "Project vimGenTrain.vimproj"
         - 
 #Readme.txt
-  - makeRun:
+  - buildRun:

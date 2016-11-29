@@ -1,7 +1,7 @@
-# ~/.tmuxinator/cppDesign.yml
+# ~/.tmuxinator/cppExams.yml
 
-name: cppDesign
-root: /home/genius3/work/github/ProgrammingLab/modernCpp/design/train
+name: cppExams
+root: /home/genius3/work/github/ProgrammingLab/modernCpp/exams
 
 # Optional tmux socket
 # socket_name: foo
@@ -31,7 +31,7 @@ windows:
   - editor:
       layout: main-vertical
       panes:
-        - vim ../notes.md -C "Project vimDesign.proj"
+        - vim Makefile -c "Project vimTest_JM.vimproj"
         - 
 #Readme.txt
-  - makeRun:
+  - buildRun:
