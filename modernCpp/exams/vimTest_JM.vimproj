@@ -1,0 +1,9 @@
+
+
+top=/home/genius3/work/github/ProgrammingLab/modernCpp/exams CD=/home/genius3/work/github/ProgrammingLab/modernCpp/exams filter="*" {
+  JT_codility_20161129=/home/genius3/work/github/ProgrammingLab/modernCpp/exams/JT_Codility_20161129 CD=/home/genius3/work/github/ProgrammingLab/modernCpp/exams/JT_Codility_20161129 filter="*.cpp Makefile buildlog" {
+  HelloWorld.cpp
+  Makefile
+  buildlog
+ }
+}

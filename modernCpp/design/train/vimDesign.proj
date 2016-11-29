@@ -23,12 +23,25 @@ topCPP="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train" CD=. fi
   Makefile
   header="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/factory"  CD=. filter="*.h" {
    point.h
+   newPoint.h
+   newPointFactory.h
   }
-  CPP="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/factory"  CD=. filter="*.cpp buildlog" {
+  CPP="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/factory"  CD="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/factory" filter="*.cpp buildlog" {
    0_noFactory.cpp
    point.cpp
+   newPoint.cpp
+   newPointFactory.cpp
    buildlog
-
+   main.cpp
+   newMain.cpp
   }
  }
+ prototype="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/prototype" CD=. filter="Makefile" {
+  Makefile
+  header="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/prototype"  CD=. filter="*.h" {
+  }
+  CPP="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/prototype"  filter="*.cpp buildlog" {
+  }
+ }
+
 }

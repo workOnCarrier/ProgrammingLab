@@ -8,3 +8,8 @@
 
 
 OCP -- well implemented via "Specification Pattern" not GOF but quite popular
+
+
+Other principles:
+Meyers Uniform Access Principle
+Aspect oriented programming

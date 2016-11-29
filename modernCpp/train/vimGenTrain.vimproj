@@ -19,4 +19,11 @@ trainCPP=/home/genius3/work/github/ProgrammingLab/modernCpp/train CD=/home/geniu
  try_HR_RadleyJames.cpp
  Makefile
  buildlog
+ 
+ algo=/home/genius3/work/github/ProgrammingLab/modernCpp/train/algo CD=/home/genius3/work/github/ProgrammingLab/modernCpp/train/algo filter="*.cpp Makefile buildlog" {
+  try_randomInputGen.cpp
+  try_maxSubArray.cpp
+  Makefile
+  buildlog
+ }
 }

@@ -14,7 +14,6 @@ class myThreadPool {
 
 	std::atomic<bool>										m_done;
 	ThreadSafeStack <Task> 									m_taskQueue;
-	std::shared_ptr<TextInterpreter> 						m_textInterpret;
 	TaskCreater <KeyInputSource,ThreadSafeStack<Task>,TextInterpreter >		m_taskCreation;
 	std::vector<std::thread>								m_threads;
 	JoinThreads<std::vector<std::thread>>					m_joiner;
