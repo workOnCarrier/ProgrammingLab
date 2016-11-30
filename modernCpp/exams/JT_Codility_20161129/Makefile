@@ -9,8 +9,8 @@ LDFLAGS =   -ggdb -lboost_system -lpthread
 SRC_1 = HelloWorld.cpp
 OBJ_1 = HelloWorld.o
 
-SRC_2 = .cpp
-OBJ_2 = .o
+SRC_2 = question1.cpp
+OBJ_2 = question1.o
 
 SRC_3 = .cpp
 OBJ_3 = .o
@@ -45,9 +45,9 @@ OBJ_12 = .o
 SRC_13 = .cpp
 OBJ_13 = .o
  
-TARGET_1 = try_first
-TARGET_2 = try_second
-TARGET_3 = test_mixin
+TARGET_1 = try_helloworld
+TARGET_2 = try_q1
+TARGET_3 = try_q2
 TARGET_4 = test_exam
 TARGET_5 = test_hacker_rank_pointer
 TARGET_6 = test_shifting
@@ -59,7 +59,9 @@ TARGET_11 = test_dc
 TARGET_12 = test_HR_virt
 TARGET_13 = test_HR_maxSubArray
 
-all:  $(TARGET_1)  
+all:   $(TARGET_2) 
+# $(TARGET_1)  -- only used to get makefile work
+# $(TARGET_3)
 #	$(TARGET_13)
 # $(TARGET_12)
 #  $(TARGET_11)
@@ -70,9 +72,6 @@ all:  $(TARGET_1)
 # $(TARGET_6)
 # $(TARGET_5)
 # $(TARGET_4)
-# $(TARGET_3)
-# $(TARGET_2) 
-# $(TARGET_1)
 
 run:
 	./$(TARGET_1)
@@ -82,7 +81,7 @@ $(TARGET_1):  $(OBJ_1)
 
 $(TARGET_2):  $(OBJ_2)
 	$(CC) -o $(TARGET_2) $(LDFLAGS) $(OBJ_2) > buildlog 2>&1
-	$(TARGET_2)
+	./$(TARGET_2)
 
 $(TARGET_3):  $(OBJ_3)
 	$(CC) -o $(TARGET_3) $(LDFLAGS) $(OBJ_3) > buildlog 2>&1
