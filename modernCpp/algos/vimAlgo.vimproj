@@ -1,0 +1,11 @@
+
+Algos=/home/genius3/work/github/ProgrammingLab/modernCpp/algos CD=/home/genius3/work/github/ProgrammingLab/modernCpp/algos filter="Makefile buildlog" {
+ buildlog
+ Makefile
+ CPP=. CD=. filter="*.cpp" {
+  test_insertionSort.cpp
+ }
+ headers=. CD=. filter="*.h" {
+  insertionSort.h
+ }
+}
