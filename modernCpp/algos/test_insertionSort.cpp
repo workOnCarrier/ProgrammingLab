@@ -19,9 +19,14 @@ void test1 () {
 	for ( auto val : testArray ) {
 	    cout << val << " " ;
 	} cout << endl;
+	insertion_sort <int>( testArray, false );
+	for ( auto val : testArray ) {
+	    cout << val << " " ;
+	} cout << endl;
 	insertion_sort <int>( testArray );
 	for ( auto val : testArray ) {
 	    cout << val << " " ;
 	} cout << endl;
+
 }
 

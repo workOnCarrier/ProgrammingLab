@@ -11,14 +11,23 @@
 #ifndef __INSERTION_SORT_H__
 #define __INSERTION_SORT_H__
 
+template <typename T>
+bool order ( T left, T right, bool increasing ) {
+    if  ( increasing == true ) {
+	    return left > right;
+	} else {
+	    return left < right;
+	}
+}
 template <typename T, typename C = T[]>
 void insertion_sort ( C &input
-                        , int itemCount = sizeof(C)/sizeof(T) 
-						, bool increasingOrder = true ) {
+                        , bool increasingOrder = true
+						, int itemCount = sizeof(C)/sizeof(T) 
+						 ) {
     for ( int j = 1; j < itemCount; j++ ) {
 	    int i = j -1;
 		T key = input [j];
-		while ( i >= 0 && input [i] > key ) {
+		while ( i >= 0 && order ( input [i] , key, increasingOrder ) ) {
 		    input [i+1] = input [i];
 			i -= 1;
 		}
