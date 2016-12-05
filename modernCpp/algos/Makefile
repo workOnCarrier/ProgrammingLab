@@ -10,8 +10,8 @@ SRC_1 = test_insertionSort.cpp
 OBJ_1 = test_insertionSort.o
 
 # SRC_1 = 1.cpp
-SRC_2 = .cpp
-OBJ_2 = .o
+SRC_2 = test_SelectionSort.cpp
+OBJ_2 = test_SelectionSort.o
 
 SRC_3 = .cpp
 OBJ_3 = .o
@@ -47,7 +47,7 @@ SRC_13 = .cpp
 OBJ_13 = .o
  
 TARGET_1 = test_insertSort
-TARGET_2 = test_
+TARGET_2 = test_selectionSort
 TARGET_3 = test_
 TARGET_4 = test_
 TARGET_5 = test_
@@ -60,7 +60,7 @@ TARGET_11 = test_
 TARGET_12 = test_
 TARGET_13 = test_
 
-all:    $(TARGET_1)
+all:    $(TARGET_1)  $(TARGET_2) 
 # $(TARGET_12)
 #  $(TARGET_11)
 #  $(TARGET_10)
@@ -75,7 +75,7 @@ all:    $(TARGET_1)
 # $(TARGET_1)
 
 run:
-	./$(TARGET_1)
+	./$(TARGET_2)
 
 $(TARGET_1):  $(OBJ_1)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(OBJ_1) > buildlog 2>&1

@@ -11,6 +11,10 @@
 #ifndef __INSERTION_SORT_H__
 #define __INSERTION_SORT_H__
 
+#include <iostream>
+
+using namespace std;
+
 template <typename T>
 bool order ( T left, T right, bool increasing ) {
     if  ( increasing == true ) {
@@ -22,8 +26,9 @@ bool order ( T left, T right, bool increasing ) {
 template <typename T, typename C = T[]>
 void insertion_sort ( C &input
                         , bool increasingOrder = true
-						, int itemCount = sizeof(C)/sizeof(T) 
+						, int itemCount = sizeof(C)/sizeof(T)
 						 ) {
+	 cout << "itemCount:" << itemCount<< endl;
     for ( int j = 1; j < itemCount; j++ ) {
 	    int i = j -1;
 		T key = input [j];
