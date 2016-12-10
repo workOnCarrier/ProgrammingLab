@@ -16,8 +16,8 @@ OBJ_2 = test_SelectionSort.o
 SRC_3 = test_mergeSort.cpp
 OBJ_3 = test_mergeSort.o
 
-SRC_4 = .cpp
-OBJ_4 = .o
+SRC_4 = test_heapSort.cpp
+OBJ_4 = test_heapSort.o
 
 SRC_5 = .cpp
 OBJ_5 = .o
@@ -49,7 +49,7 @@ OBJ_13 = .o
 TARGET_1 = test_insertSort
 TARGET_2 = test_selectionSort
 TARGET_3 = test_mergeSort
-TARGET_4 = test_
+TARGET_4 = test_heapSort
 TARGET_5 = test_
 TARGET_6 = test_
 TARGET_7 = test_
@@ -60,7 +60,7 @@ TARGET_11 = test_
 TARGET_12 = test_
 TARGET_13 = test_
 
-all:    $(TARGET_1)  $(TARGET_2)  $(TARGET_3)
+all:    $(TARGET_1)  $(TARGET_2)  $(TARGET_3)  $(TARGET_4)
 # $(TARGET_12)
 #  $(TARGET_11)
 #  $(TARGET_10)
@@ -69,26 +69,22 @@ all:    $(TARGET_1)  $(TARGET_2)  $(TARGET_3)
 # $(TARGET_7)
 # $(TARGET_6)
 # $(TARGET_5)
-# $(TARGET_4)
 # $(TARGET_3)
 
 run:
-	./$(TARGET_3)
+	./$(TARGET_4)
 
 $(TARGET_1):  $(OBJ_1)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(OBJ_1) > buildlog 2>&1
 
 $(TARGET_2):  $(OBJ_2)
 	$(CC) -o $(TARGET_2) $(LDFLAGS) $(OBJ_2) > buildlog 2>&1
-	./$(TARGET_2)
 
 $(TARGET_3):  $(OBJ_3)
 	$(CC) -o $(TARGET_3) $(LDFLAGS) $(OBJ_3) > buildlog 2>&1
-	#./$(TARGET_3)
 
 $(TARGET_4):  $(OBJ_4)
 	$(CC) -o $(TARGET_4) $(LDFLAGS) $(OBJ_4) > buildlog 2>&1
-	./$(TARGET_4)
 
 $(TARGET_5):  $(OBJ_5)
 	$(CC) -o $(TARGET_5) $(LDFLAGS) $(OBJ_5) > buildlog 2>&1

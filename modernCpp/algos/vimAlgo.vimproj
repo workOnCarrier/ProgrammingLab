@@ -6,10 +6,12 @@ Algos=/home/genius3/work/github/ProgrammingLab/modernCpp/algos CD=/home/genius3/
   test_insertionSort.cpp
   test_SelectionSort.cpp
   test_mergeSort.cpp
+  test_heapSort.cpp
  }
  headers=. CD=. filter="*.h" {
   insertionSort.h
   selectionSort.h
   mergeSort.h
+  heapSort.h
  }
 }
