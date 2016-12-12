@@ -2,19 +2,20 @@
 #ifndef __HEAPSORT_H__
 #define __HEAPSORT_H__
 
+inline int Parent ( int index )  { return index /  2 ; }
+inline int Left ( int index )  { return index *  2 ; }
+inline int Right ( int index )  { return (index*2 + 1 ) ; }
+inline int& valueat (int* array, int index ) { return array[index-1]; }
+
+
 void	HeapSort ( int* array, int size );
 void	MaxHeapify ( int* array, int arraySize,  int index );
 void	BuildMaxHeap (int* array, int arraySize );
 
 void MaxHeapInsert ( );
-void HeapExtractMax ( );
+int HeapExtractMax ( int *array, int size );
 void HeapIncreaseKey ( );
-void HeapMax ( );
-
-inline int Parent ( int index )  { return index /  2 ; }
-inline int Left ( int index )  { return index *  2 ; }
-inline int Right ( int index )  { return (index*2 + 1 ) ; }
-inline int& valueat (int* array, int index ) { return array[index-1]; }
+int HeapMax ( int *array  ) { return valueat ( array, 1 );}
 
 void heap_swap ( int* array, int lIndex, int rIndex ) {
     int temp = valueat(array, lIndex);
@@ -51,5 +52,21 @@ void HeapSort(int* array, int size) {
 	}
 }
 
+int HeapExtractMax ( int *array, int size ){
+    int max = valueat ( array, 1 );
+	heap_swap ( array, 1, size );
+	MaxHeapify ( array, size - 1, 1 );
+	return max;
+}
+
+void HeapIncreaseKey ( int* array, int size, int index, int value) {
+    if ( index > size ) { // this is error condition
+	}
+	valueat ( array, index ) = value;
+	while ( index > 1 &&  valueat ( array, index ) > valueat(array, Parent ( index ))  ) {
+	    heap_swap ( array, index, Parent ( index ) );
+		index = Parent ( index );
+	}
+}
 #endif // __HEAPSORT_H__
 

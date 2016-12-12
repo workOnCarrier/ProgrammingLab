@@ -21,7 +21,7 @@ void test_valueat() {
 	for ( auto val : array ) { cout << val << " " ; } cout << endl;
 	cout << " value at " << 1 << ":" << valueat ( array, 1 ) << endl;;
 	valueat ( array, 1 ) = 21 ;
-	for ( val : array ) { cout << val << " " ; } cout << endl;
+	for ( auto val_ : array ) { cout << val_ << " " ; } cout << endl;
 }
 
 void test_swap() {
@@ -29,9 +29,9 @@ void test_swap() {
     int array[] = {2,5,6,3,8,7 };
 	for ( auto val : array ) { cout << val << " " ; } cout << endl;
 	heap_swap ( array, 1, 6 );
-	for ( val : array ) { cout << val << " " ; } cout << endl;
+	for ( val_ : array ) { cout << val_ << " " ; } cout << endl;
 	heap_swap ( array, 2, 6 );
-	for ( val : array ) { cout << val << " " ; } cout << endl;
+	for (auto val : array ) { cout << val << " " ; } cout << endl;
 }
 
 void test_heapSort () {
