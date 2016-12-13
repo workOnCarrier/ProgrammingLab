@@ -20,3 +20,8 @@ future implementations:
 Misc: -- Ideas
     SignalSlot mechanisms for simplifying application design
 
+
+go very deep
+  https://locklessinc.com/articles/mutex_cv_futex/
+  https://locklessinc.com/articles/futex_cheat_sheet/
+  http://www.barrgroup.com/Embedded-Systems/How-To/RTOS-Mutex-Semaphore
