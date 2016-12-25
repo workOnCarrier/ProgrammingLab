@@ -62,4 +62,18 @@ void QuickSort ( C &array, const int startIndex, const int endIndex , bool incre
 		QuickSort<T> ( array, pivot +1, endIndex , increasingOrder);
 	}
 }
+
+template <typename T, typename C=T[]>
+void TailRecurse_QuickSort ( C &array, const int startIndex, const int endIndex , bool increasingOrder = true ) {
+    int newStartIndex = startIndex;
+    while ( newStartIndex  < endIndex ) {
+		int pivot = partition<T> ( array, newStartIndex , endIndex );
+		cout << "start:" << startIndex << " pivot:" << pivot << " end:" << endIndex << endl;
+		TailRecurse_QuickSort<T> ( array, newStartIndex , pivot -1 , increasingOrder);
+		newStartIndex = pivot+1;
+	}
+}
+
+
+
 #endif  //  __QUICKSORT_H__
