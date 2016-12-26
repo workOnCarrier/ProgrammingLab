@@ -44,4 +44,25 @@ topCPP="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train" CD=. fi
   }
  }
 
+ observer=/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/observer CD=/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/observer filter="Makefile" {
+  Makefile
+  cpp=. CD=. filter="*.cpp ^[(test_)]*.cpp" {
+   numgen.cpp
+   observable_1.cpp
+   observer_1.cpp
+   try_observer_1.cpp
+  }
+   test=./test CD=. filter="*" {
+    Makefile
+    test_numgen.cpp
+    test_numgen.h
+   }
+  header=. CD=. filter="*.h" {
+   IObserver.h
+   numgen.h
+   consoleObserver_1.h
+   observable_1.h
+   observer_1.h
+  }
+ }
 }
