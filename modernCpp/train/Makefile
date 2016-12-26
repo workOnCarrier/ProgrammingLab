@@ -4,7 +4,7 @@ CPPFLAGS = -std=c++14 -I. -I../hdr -Wall -ggdb
 LDFLAGS =   -ggdb -lboost_system -lpthread
 
 .cpp.o:
-		$(CC) -c $(CPPFLAGS) -o $@ $<  > buildlog 2>&1
+		$(CC) -c $(CPPFLAGS) -o $@ $< 
 
 SRC_1 = test_lambda.cpp
 OBJ_1 = test_lambda.o
@@ -46,6 +46,15 @@ OBJ_12 = try_HR_virtual.o
 SRC_13 = try_HR_maxSubArray.cpp
 OBJ_13 = try_HR_maxSubArray.o
  
+SRC_14 = try_HR_101_15_GamingArray.cpp
+OBJ_14 = try_HR_101_15_GamingArray.o
+ 
+SRC_15 = try_call_seq.cpp
+OBJ_15 = try_call_seq.o
+ 
+SRC_16 = try_enable_shared_from_this.cpp
+OBJ_16 = try_enable_shared_from_this.o
+ 
 TARGET_1 = try
 TARGET_2 = test_assert
 TARGET_3 = test_mixin
@@ -59,8 +68,14 @@ TARGET_10 = test_tricks
 TARGET_11 = test_dc
 TARGET_12 = test_HR_virt
 TARGET_13 = test_HR_maxSubArray
+TARGET_14 = test_HR_GA
+TARGET_15 = try_call_seq
+TARGET_16 = try_enable_sft
 
-all:    $(TARGET_13)
+all:    $(TARGET_16)
+#     $(TARGET_15)
+# $(TARGET_14)
+# $(TARGET_13)
 # $(TARGET_12)
 #  $(TARGET_11)
 #  $(TARGET_10)
@@ -75,57 +90,66 @@ all:    $(TARGET_13)
 # $(TARGET_1)
 
 run:
-	./$(TARGET_13)
+	./$(TARGET_16)
 
 $(TARGET_1):  $(OBJ_1)
-	$(CC) -o $(TARGET_1) $(LDFLAGS) $(OBJ_1) > buildlog 2>&1
+	$(CC) -o $(TARGET_1) $(LDFLAGS) $(OBJ_1) 
 
 $(TARGET_2):  $(OBJ_2)
-	$(CC) -o $(TARGET_2) $(LDFLAGS) $(OBJ_2) > buildlog 2>&1
+	$(CC) -o $(TARGET_2) $(LDFLAGS) $(OBJ_2) 
 	$(TARGET_2)
 
 $(TARGET_3):  $(OBJ_3)
-	$(CC) -o $(TARGET_3) $(LDFLAGS) $(OBJ_3) > buildlog 2>&1
+	$(CC) -o $(TARGET_3) $(LDFLAGS) $(OBJ_3) 
 
 $(TARGET_4):  $(OBJ_4)
-	$(CC) -o $(TARGET_4) $(LDFLAGS) $(OBJ_4) > buildlog 2>&1
+	$(CC) -o $(TARGET_4) $(LDFLAGS) $(OBJ_4) 
 	./$(TARGET_4)
 
 $(TARGET_5):  $(OBJ_5)
-	$(CC) -o $(TARGET_5) $(LDFLAGS) $(OBJ_5) > buildlog 2>&1
+	$(CC) -o $(TARGET_5) $(LDFLAGS) $(OBJ_5) 
 	./$(TARGET_5)
 
 $(TARGET_6):  $(OBJ_6)
-	$(CC) -o $(TARGET_6) $(LDFLAGS) $(OBJ_6) > buildlog 2>&1
+	$(CC) -o $(TARGET_6) $(LDFLAGS) $(OBJ_6) 
 	./$(TARGET_6)
 
 $(TARGET_7):  $(OBJ_7)
-	$(CC) -o $(TARGET_7) $(LDFLAGS) $(OBJ_7) > buildlog 2>&1
+	$(CC) -o $(TARGET_7) $(LDFLAGS) $(OBJ_7) 
 	./$(TARGET_7)
 
 $(TARGET_8):  $(OBJ_8)
-	$(CC) -o $(TARGET_8) $(LDFLAGS) $(OBJ_8) > buildlog 2>&1
+	$(CC) -o $(TARGET_8) $(LDFLAGS) $(OBJ_8) 
 	./$(TARGET_8)
 
 $(TARGET_9):  $(OBJ_9)
-	$(CC) -o $(TARGET_9) $(LDFLAGS) $(OBJ_9) > buildlog 2>&1
+	$(CC) -o $(TARGET_9) $(LDFLAGS) $(OBJ_9) 
 	./$(TARGET_9)
 
 $(TARGET_10):  $(OBJ_10)
-	$(CC) -o $(TARGET_10) $(LDFLAGS) $(OBJ_10) > buildlog 2>&1
+	$(CC) -o $(TARGET_10) $(LDFLAGS) $(OBJ_10) 
 	./$(TARGET_10)
 
 $(TARGET_11):  $(OBJ_11)
-	$(CC) -o $(TARGET_11) $(LDFLAGS) $(OBJ_11) > buildlog 2>&1
+	$(CC) -o $(TARGET_11) $(LDFLAGS) $(OBJ_11)
 	./$(TARGET_11)
 
 $(TARGET_12):  $(OBJ_12)
-	$(CC) -o $(TARGET_12) $(LDFLAGS) $(OBJ_12) > buildlog 2>&1
+	$(CC) -o $(TARGET_12) $(LDFLAGS) $(OBJ_12)
 	./$(TARGET_12)
 
 $(TARGET_13):  $(OBJ_13)
-	$(CC) -o $(TARGET_13) $(LDFLAGS) $(OBJ_13) > buildlog 2>&1
+	$(CC) -o $(TARGET_13) $(LDFLAGS) $(OBJ_13)
 	./$(TARGET_13)
+
+$(TARGET_14):  $(OBJ_14)
+	$(CC) -o $(TARGET_14) $(LDFLAGS) $(OBJ_14)
+
+$(TARGET_15):  $(OBJ_15)
+	$(CC) -o $(TARGET_15) $(LDFLAGS) $(OBJ_15)
+
+$(TARGET_16):  $(OBJ_16)
+	$(CC) -o $(TARGET_16) $(LDFLAGS) $(OBJ_16)
 
 clean:
 	-rm -f $(TARGET_1) $(OBJ_1)
@@ -141,6 +165,9 @@ clean:
 	-rm -f $(TARGET_11) $(OBJ_11)
 	-rm -f $(TARGET_12) $(OBJ_12)
 	-rm -f $(TARGET_13) $(OBJ_13)
+	-rm -f $(TARGET_14) $(OBJ_14)
+	-rm -f $(TARGET_15) $(OBJ_15)
+	-rm -f $(TARGET_16) $(OBJ_16)
 	-rm -f buildlog
 
 

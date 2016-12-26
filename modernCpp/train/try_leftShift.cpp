@@ -34,6 +34,32 @@ void test_findFirstSet () {
     cout << afterNumber << endl;
 }
 int main () {
-    test_findFirstSet ();
+    // test_findFirstSet ();
     return 0;
+}
+
+
+int solution(int N) {
+    // write your code in C++11 (g++ 4.8.2)
+	bool started = false;
+	int currentCount = 0;
+	int maxCount = 0;
+	for ( int i  = 0; i < 32; i ++ ) {
+		int shiftedNum = N >> i;
+		int bitcheck = shiftedNum & 1;
+		if ( bitcheck == 1 ) {
+			if ( !started ) { started = true; }
+			else { 
+				if ( currentCount > maxCount ) {
+					maxCount = currentCount;
+				}
+			}
+			currentCount = 0;
+		} else {
+			if ( started ) {
+				currentCount ++;
+			}
+		}
+	}
+	return maxCount;
 }

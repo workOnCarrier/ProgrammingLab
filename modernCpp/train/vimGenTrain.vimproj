@@ -1,25 +1,27 @@
 
 trainCPP=/home/genius3/work/github/ProgrammingLab/modernCpp/train CD=/home/genius3/work/github/ProgrammingLab/modernCpp/train filter="*.cpp Makefile buildlog" {
+ test_classMembers.cpp
+ test_dynamic_cast.cpp
  test_hacker_rank_pointer.cpp
  test_lambda.cpp
  test_tricks.cpp
- test_exam.cpp
- try_HR_virtual.cpp
- try_HR_operOverLoad.cpp
+ try_HR_101_15_GamingArray.cpp
+ try_HR_RadleyJames.cpp
  try_HR_code25_D3.cpp
  try_HR_code25_D4.cpp
  try_HR_code25_D5.cpp
  try_HR_code25_D6.cpp
  try_HR_code25_D7.cpp
  try_HR_codeD2.cpp
+ try_HR_maxSubArray.cpp
+ try_HR_operOverLoad.cpp
+ try_HR_virtual.cpp
  try_leftShift.cpp
  trying_assert.cpp
- try_HR_maxSubArray.cpp
  trying_move.cpp
- try_HR_RadleyJames.cpp
+ try_call_seq.cpp
+ try_enable_shared_from_this.cpp
  Makefile
- buildlog
- 
  algo=/home/genius3/work/github/ProgrammingLab/modernCpp/train/algo CD=/home/genius3/work/github/ProgrammingLab/modernCpp/train/algo filter="*.cpp Makefile buildlog" {
   try_randomInputGen.cpp
   try_maxSubArray.cpp

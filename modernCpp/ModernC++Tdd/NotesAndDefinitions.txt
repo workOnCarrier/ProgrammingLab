@@ -1,0 +1,3 @@
+### Stubs -- the piece of code that fills in the role of data provider as setup for testing something else.
+### Mocks -- the piece of code, that is being tested, via the application code, to allow for containment of test code - avoiding dependency on other elements like DB, WS, FS, Middleware.
+### Mocks and Stubs usage -- these are usable only in cases where, the code uses virtual or interfaces

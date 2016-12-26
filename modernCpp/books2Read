@@ -27,3 +27,10 @@ std::get -- function template
 threading / concurrency
 std::async
 thread_local
+
+
+Candidates for contribution
+lib__kafka
+notepadqq
+logforcpp
+
