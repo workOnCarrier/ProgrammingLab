@@ -15,12 +15,15 @@ trainCPP=/home/genius3/work/github/ProgrammingLab/modernCpp/train CD=/home/geniu
  try_HR_codeD2.cpp
  try_HR_maxSubArray.cpp
  try_HR_operOverLoad.cpp
+ try_HR_treeLevelDisplay.cpp
  try_HR_virtual.cpp
- try_leftShift.cpp
- trying_assert.cpp
- trying_move.cpp
  try_call_seq.cpp
  try_enable_shared_from_this.cpp
+ try_leftShift.cpp
+ try_loopinList.cpp
+ try_nestedConstructor.cpp
+ trying_assert.cpp
+ trying_move.cpp
  Makefile
  algo=/home/genius3/work/github/ProgrammingLab/modernCpp/train/algo CD=/home/genius3/work/github/ProgrammingLab/modernCpp/train/algo filter="*.cpp Makefile buildlog" {
   try_randomInputGen.cpp

@@ -54,6 +54,9 @@ OBJ_15 = try_call_seq.o
  
 SRC_16 = try_enable_shared_from_this.cpp
 OBJ_16 = try_enable_shared_from_this.o
+
+SRC_17 = try_HR_treeLevelDisplay.cpp
+OBJ_17 = try_HR_treeLevelDisplay.o
  
 TARGET_1 = try
 TARGET_2 = test_assert
@@ -71,8 +74,9 @@ TARGET_13 = test_HR_maxSubArray
 TARGET_14 = test_HR_GA
 TARGET_15 = try_call_seq
 TARGET_16 = try_enable_sft
+TARGET_17 = try_tree_bf
 
-all:    $(TARGET_16)
+all:    $(TARGET_17)
 #     $(TARGET_15)
 # $(TARGET_14)
 # $(TARGET_13)
@@ -90,7 +94,7 @@ all:    $(TARGET_16)
 # $(TARGET_1)
 
 run:
-	./$(TARGET_16)
+	./$(TARGET_17)
 
 $(TARGET_1):  $(OBJ_1)
 	$(CC) -o $(TARGET_1) $(LDFLAGS) $(OBJ_1) 
@@ -151,6 +155,9 @@ $(TARGET_15):  $(OBJ_15)
 $(TARGET_16):  $(OBJ_16)
 	$(CC) -o $(TARGET_16) $(LDFLAGS) $(OBJ_16)
 
+$(TARGET_17):  $(OBJ_17)
+	$(CC) -o $(TARGET_17) $(LDFLAGS) $(OBJ_17)
+
 clean:
 	-rm -f $(TARGET_1) $(OBJ_1)
 	-rm -f $(TARGET_2) $(OBJ_2)
@@ -168,6 +175,7 @@ clean:
 	-rm -f $(TARGET_14) $(OBJ_14)
 	-rm -f $(TARGET_15) $(OBJ_15)
 	-rm -f $(TARGET_16) $(OBJ_16)
+	-rm -f $(TARGET_17) $(OBJ_17)
 	-rm -f buildlog
 
 
