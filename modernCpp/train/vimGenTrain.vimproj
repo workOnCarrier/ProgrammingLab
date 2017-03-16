@@ -19,6 +19,7 @@ trainCPP=/home/genius3/work/github/ProgrammingLab/modernCpp/train CD=/home/geniu
  try_HR_virtual.cpp
  try_call_seq.cpp
  try_enable_shared_from_this.cpp
+ try_hr_subTreeSwap.cpp
  try_leftShift.cpp
  try_loopinList.cpp
  try_nestedConstructor.cpp
