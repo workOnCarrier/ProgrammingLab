@@ -54,7 +54,7 @@ readInputFormTree::readInputFormTree () : m_treeroot(NULL) {
     cin >> father >> child;
     m_treeroot = new node { father };
     m_treeroot->children.push_back ( new node { child } );
-    for ( int nc = 1; nc < nodeCount; nc++ ) {
+    for ( int nc = 2; nc < nodeCount; nc++ ) {
         int father, child;
         cin >> father >> child;
         node* pos = find ( m_treeroot, father );
