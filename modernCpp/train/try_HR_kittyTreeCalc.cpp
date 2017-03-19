@@ -65,7 +65,7 @@ readInputFormTree::readInputFormTree () : m_treeroot(NULL) {
         }
         pos->children.push_back ( new node { child } );
     }
-    cout << "Starting sets" << endl;
+    // cout << "Starting sets" << endl;
     for ( int sc = 0; sc < setCount; sc++ ) {
         int setsize = 0;
         cin >> setsize;
@@ -96,19 +96,13 @@ Permutes    getPermutes ( Myset &ms ) {
     }
     return permts;
 }
-long    computeCalc ( node* tree, Permutes &permutes ){
-    if ( tree != NULL ) {
-        for ( size_t index = 0; index < permutes.size() ; index ++ ) {
-            cout << "\n{" << permutes[index].first << "," << permutes[index].second << "}" << endl;
-        }
-    }
-    return -1;
-}
+long    computeCalc ( node* tree, Permutes &permutes );
+
 
 int main ( int argc, char** argv ) {
     readInputFormTree rift;
-     displayTree ( rift.getTree() );
-     displaySets ( rift.getSets() );
+    // displayTree ( rift.getTree() );
+    // displaySets ( rift.getSets() );
     node*   tree = rift.getTree();
     Mysets  sets = rift.getSets();
     for ( size_t i = 0; i < sets.size(); i++ ) {
@@ -126,6 +120,16 @@ class pathQueue {
     } ;
     pqNode*     m_head;
     pqNode*     m_tail;
+
+    int length() {
+        int val = 0;
+        pqNode*   pos = m_head;
+        while ( pos != m_tail ) {
+            val++;
+            pos = pos->next;
+        }
+        return val;
+    }
 public:
     pathQueue():m_head(NULL),m_tail(NULL){}
     ~pathQueue(){}
@@ -140,12 +144,34 @@ public:
             m_head = pos;
         }
     }
+    int getSharedPathLength ( pathQueue& rightQueue) {
+        pqNode* lpos = this->begin();
+        pqNode* rpos = rightQueue.begin();
+        int     val = -1; // roots should match so we increment to 0 when roots are compared
+        while ( lpos != NULL && rpos != NULL ){
+            if ( lpos->data->value == rpos->data->value ) {
+                val++;
+            }else{
+                break;
+            }
+            lpos = lpos->next;
+            rpos = rpos->next;
+        }
+        return val;
+    }
+    int getEdgesBetween ( pathQueue& rightQueue) {
+        int mylength = this->length();
+        int urlength = rightQueue.length();
+        int sharedLen = this->getSharedPathLength ( rightQueue );
+        int len = mylength + urlength - (2*sharedLen);
+        return len;
+    }
     node* getFarthestMatchingNode ( pathQueue& rightQueue) {
         pqNode* lpos = this->begin();
         pqNode* rpos = rightQueue.begin();
         node*   nodepos = NULL;
         while ( lpos != NULL && rpos != NULL ){
-            if ( lpos->data->data == rpos->data->data ) {
+            if ( lpos->data->value == rpos->data->value ) {
                 nodepos = lpos->data;
             }else{
                 break;
@@ -155,23 +181,54 @@ public:
         }
         return nodepos;
     }
-
+    void display() { 
+        pqNode*   pos = m_head;
+        while ( pos != m_tail ) {
+            cout << " " << pos->data->value ;
+            pos = pos->next;
+        }
+ 
+    }
 };
-
-
 bool getPathFrom ( node* root, int value, pathQueue& queue ){
     if ( root == NULL ){return false;}
-    if ( root->data == value ){
+    if ( root->value == value ){
         queue.push_back ( root );
         return true;
     }else{
-        bool leftRes = false, rightRes = false;
-        if ( root->left != NULL ) leftRes = getPathFrom ( root->left, value, queue);
-        if ( leftRes != true && root->right != NULL  ) rightRes = getPathFrom ( root->right, value, queue);
-        if ( leftRes || rightRes ) {
+        bool findresult = false;
+        for ( size_t index = 0; findresult == false && index <  root->children.size()
+                    ; index ++ ) {
+            findresult = getPathFrom ( root->children[index], value, queue );
+        }
+        if ( findresult ) {
             queue.push_back ( root );
             return true;
         }else { return false;}
     }
 }
+
+long    computeCalc ( node* tree, Permutes &permutes ){
+    long    sum = 0;
+    long    finalNum = 0;
+    if ( tree != NULL ) {
+        // cout << permutes.size() << " no of rows to find distance" << endl;
+        for ( size_t index = 0; index < permutes.size() ; index ++ ) {
+            // cout << "\n{" << permutes[index].first << "," << permutes[index].second << "}" << endl;
+            pathQueue lpath , rpath;
+            getPathFrom ( tree, permutes[index].first, lpath );
+            // lpath.display();
+            // cout << endl;
+            getPathFrom ( tree, permutes[index].second, rpath );
+            // rpath.display();
+            int distance = lpath.getEdgesBetween ( rpath );
+            sum += distance * permutes[index].first * permutes[index].second;
+            // cout << "sum:" << sum << endl;
+        }
+        long quotent = 1000000007;
+        finalNum = sum % quotent;
+    }
+    return finalNum ;
+}
+
 
