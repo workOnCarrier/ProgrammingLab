@@ -24,4 +24,23 @@ namespace testHelloWorld
             Assert.AreEqual("Hello World!", _consoleOutput);
         }
     }
+
+    [TestClass]
+    public class whenUsingImmutableCounter
+    {
+        private ImmutableCounter m_counter;
+        [TestInitialize]
+        public void Initialize()
+        {
+            m_counter = new ImmutableCounter();
+        }
+        [TestMethod]
+        public void countImmutable()
+        {
+            ImmutableCounter c2 = m_counter;
+            m_counter = m_counter.getNextVal();
+            Assert.AreEqual(2, m_counter.count);
+        }
+    }
+
 }
