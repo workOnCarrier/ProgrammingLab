@@ -22,3 +22,20 @@ void AsioWorker::operator()(){
 	}
 }
 
+AsioServiceBP::AsioServiceBP ()
+:m_service(std::make_shared<AsioService>())
+,m_work(std::make_shared<AsioWork>(*m_service))
+,m_strand(std::make_shared<AsioStrand>(*m_service))  {}
+
+AsioServiceBP::~AsioServiceBP (){
+    if ( !m_service->stopped() ) m_service->stop();
+	m_work.reset();
+	m_strand.reset();
+	m_service.reset();
+}
+AsioServicePtr	AsioServiceBP::getServicePtr(){
+	return m_service;
+}
+void AsioServiceBP::stopService(){
+    m_service->stop();
+}

@@ -23,4 +23,17 @@ private:
 	AsioServicePtr	m_service;
 	AsioWork		m_workObj;
 };
+
+// boiler place service object creation and work object creation
+class AsioServiceBP{
+public:
+	AsioServiceBP ();
+	~AsioServiceBP ();
+	AsioServicePtr	getServicePtr();
+	void 			stopService();
+private:
+	AsioServicePtr	m_service;
+	AsioWrokPtr		m_work;
+	AsioStrandPtr	m_strand;
+};
 #endif //__COMMONUTILS_H__
