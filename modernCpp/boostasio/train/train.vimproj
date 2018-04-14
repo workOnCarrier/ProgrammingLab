@@ -2,6 +2,8 @@
 train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. filter="*.h *.cpp Makefile build.log" {
  lockedcout.h
  blocked.cpp
+ commonUtils.h
+ commonUtils.cpp
  dispatch.cpp
  exceptHandle.cpp
  mutexbind.cpp
@@ -10,7 +12,16 @@ train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. fi
  post.cpp
  strand.cpp
  strandwrap.cpp
+ strandwithTimer.cpp
  workBlocked.cpp
+ utilBlocks.cpp
  Makefile
  build.log
 }
+train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train/test CD=. filter="test*.h test*.cpp Makefile build.log" {
+ test_commonUtils.cpp
+ Makefile
+ build.log
+}
+
+

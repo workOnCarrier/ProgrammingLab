@@ -37,6 +37,9 @@ STRANDWRAP_OBJ = strandwrap.o
 EXCEPTHANDLE_SRC = exceptHandle.cpp
 EXCEPTHANDLE_OBJ =  exceptHandle.o
 
+STRANDTIMER_SRC = strandwithTimer.cpp
+STRANDTIMER_OBJ = strandwithTimer.o
+
 TARGET_1 = 1_block
 TARGET_2 = 2_poll
 TARGET_3 = 3_workBlk
@@ -47,11 +50,13 @@ TARGET_7 = 7_nonStrand
 TARGET_8 = 8_strand
 TARGET_9 = 9_strandwrap
 TARGET_10 = 10_except
+TARGET_11 = 11_strandTimer
+TARGET_12 = 12_client
 
 all: $(TARGET_1) $(TARGET_2) $(TARGET_3) $(TARGET_4) $(TARGET_5)\
 	$(TARGET_6) $(TARGET_7) $(TARGET_8) \
-	$(TARGET_9) \
-	$(TARGET_10)
+	$(TARGET_9)  $(TARGET_10) \
+	$(TARGET_11)
 	# $(TARGET_1) $(TARGET_2) $(TARGET_3) $(TARGET_4) $(TARGET_5) $(TARGET_6) $(TARGET_7) $(TARGET_8) $(TARGET_9) $(TARGET_10)
 
 $(TARGET_1):  $(BLOCK_OBJ)
@@ -93,6 +98,10 @@ $(EXCEPTHANDLE_OBJ): $(EXCEPTHANDLE_SRC)
 $(TARGET_10): $(EXCEPTHANDLE_OBJ)
 	$(CC) -o $(TARGET_10) $(LDFLAGS) -lboost_thread $(EXCEPTHANDLE_OBJ) 2>&1 |tee > build.log 
 
+$(STRANDTIMER_OBJ): $(STRANDTIMER_SRC)
+$(TARGET_11): $(STRANDTIMER_OBJ)
+	$(CC) -o $(TARGET_11) $(LDFLAGS) $(STRANDTIMER_OBJ) 2>&1 |tee > build.log 
+
 clean:
 	-rm -f $(TARGET_1) $(BLOCK_OBJ)
 	-rm -f $(TARGET_2) $(POLL_OBJ)
@@ -104,3 +113,6 @@ clean:
 	-rm -f $(TARGET_8) $(STRAND_OBJ)
 	-rm -f $(TARGET_9) $(STRANDWRAP_OBJ)
 	-rm -f $(TARGET_10) $(EXCEPTHANDLE_OBJ)
+	-rm -f $(TARGET_11) $(STRANDTIMER_OBJ)
+	-rm -f *.o
+
