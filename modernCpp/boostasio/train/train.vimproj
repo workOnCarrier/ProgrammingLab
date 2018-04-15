@@ -18,6 +18,27 @@ train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. fi
  Makefile
  build.log
 }
+ref=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train/ref/http CD=. filter="*.hpp *.cpp Makefile build.log" {
+ connection.hpp
+ connection_manager.hpp
+ header.hpp
+ mime_types.hpp
+ reply.hpp
+ request.hpp
+ request_handler.hpp
+ request_parser.hpp
+ server.hpp
+ connection.cpp
+ connection_manager.cpp
+ main.cpp
+ mime_types.cpp
+ reply.cpp
+ request_handler.cpp
+ request_parser.cpp
+ server.cpp
+ Makefile
+ build.log
+}
 test=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train/test CD=. filter="test*.h test*.cpp Makefile build.log" {
  test_commonUtils.cpp
  Makefile
