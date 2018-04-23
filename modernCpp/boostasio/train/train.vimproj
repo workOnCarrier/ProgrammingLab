@@ -1,5 +1,6 @@
 
 train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. filter="*.h *.cpp Makefile build.log" {
+ asyncClient.cpp
  lockedcout.h
  blocked.cpp
  commonUtils.h
@@ -12,7 +13,6 @@ train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. fi
  post.cpp
  strand.cpp
  strandwrap.cpp
- strandwithTimer.cpp
  workBlocked.cpp
  utilBlocks.cpp
  Makefile

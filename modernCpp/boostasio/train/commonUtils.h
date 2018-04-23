@@ -13,6 +13,11 @@ typedef std::shared_ptr<AsioWork> AsioWrokPtr;
 typedef boost::asio::io_service::strand AsioStrand;
 typedef std::shared_ptr<AsioStrand> AsioStrandPtr;
 
+typedef boost::system::error_code BoostEC;
+
+typedef boost::asio::ip::tcp::socket AsioSocket;
+typedef std::shared_ptr<AsioSocket> AsioSocketPtr;
+
 class AsioWorker {
 public:
 	AsioWorker ( AsioServicePtr );
@@ -36,4 +41,5 @@ private:
 	AsioWrokPtr		m_work;
 	AsioStrandPtr	m_strand;
 };
+
 #endif //__COMMONUTILS_H__
