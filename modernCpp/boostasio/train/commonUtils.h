@@ -8,7 +8,7 @@ typedef boost::asio::io_service AsioService;
 typedef std::shared_ptr<AsioService> AsioServicePtr;
 
 typedef boost::asio::io_service::work AsioWork;
-typedef std::shared_ptr<AsioWork> AsioWrokPtr;
+typedef std::shared_ptr<AsioWork> AsioWorkPtr;
 
 typedef boost::asio::io_service::strand AsioStrand;
 typedef std::shared_ptr<AsioStrand> AsioStrandPtr;
@@ -17,6 +17,15 @@ typedef boost::system::error_code BoostEC;
 
 typedef boost::asio::ip::tcp::socket AsioSocket;
 typedef std::shared_ptr<AsioSocket> AsioSocketPtr;
+
+typedef boost::asio::ip::tcp::acceptor AsioAcceptor;
+typedef std::shared_ptr<AsioAcceptor> AsioAcceptorPtr;
+
+typedef boost::asio::ip::tcp::resolver AsioResolver;
+typedef std::shared_ptr<AsioResolver> AsioResolverPtr;
+
+typedef boost::asio::ip::tcp::resolver::query AsioQuery;
+typedef std::shared_ptr<AsioQuery> AsioQueryPtr;
 
 class AsioWorker {
 public:
@@ -38,7 +47,7 @@ public:
 	void 			stopService();
 private:
 	AsioServicePtr	m_service;
-	AsioWrokPtr		m_work;
+	AsioWorkPtr		m_work;
 	AsioStrandPtr	m_strand;
 };
 
