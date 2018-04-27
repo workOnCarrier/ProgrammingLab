@@ -45,6 +45,9 @@ ASYNCSERVER_OBJ = asyncServer.o
 UTIL_SRC = commonUtils.cpp
 UTIL_OBJ = commonUtils.o
 
+ASYNCECHOSERVER_SRC = asyncEchoServer.cpp
+ASYNCECHOSERVER_OBJ = asyncEchoServer.o
+
 
 TARGET_1 = 1_block
 TARGET_2 = 2_poll
@@ -58,6 +61,13 @@ TARGET_9 = 9_strandwrap
 TARGET_10 = 10_except
 TARGET_11 = 11_client
 TARGET_12 = 12_server
+TARGET_13 = 13_EchoServer
+
+$(TARGET_13): $(ASYNCECHOSERVER_OBJ) $(UTIL_OBJ)
+	$(CC)   $(ASYNCECHOSERVER_OBJ) $(UTIL_OBJ) $(LDFLAGS) -o $(TARGET_13) 2>&1 > build.log 
+
+$(ASYNCECHOSERVER_OBJ): $(ASYNCECHOSERVER_SRC)
+
 
 $(TARGET_12): $(ASYNCSERVER_OBJ) $(UTIL_OBJ)
 	$(CC)   $(ASYNCSERVER_OBJ) $(UTIL_OBJ) $(LDFLAGS) -o $(TARGET_12) 2>&1 > build.log 
@@ -73,7 +83,7 @@ $(ASYNCCLIENT_OBJ): $(ASYNCCLIENT_SRC)
 all: $(TARGET_1) $(TARGET_2) $(TARGET_3) $(TARGET_4) $(TARGET_5)\
 	$(TARGET_6) $(TARGET_7) $(TARGET_8) \
 	$(TARGET_9)  $(TARGET_10) \
-	$(TARGET_11) $(TARGET_12)
+	$(TARGET_11) $(TARGET_12) $(TARGET_13)
 
 
 $(TARGET_1):  $(BLOCK_OBJ)
@@ -127,7 +137,8 @@ clean:
 	-rm -f $(TARGET_9) $(STRANDWRAP_OBJ)
 	-rm -f $(TARGET_10) $(EXCEPTHANDLE_OBJ)
 	-rm -f $(TARGET_11) $(ASYNCCLIENT_OBJ)
-	-rm -f $(TARGET_12): $(ASYNSERVER) $(UTIL_OBJ)
+	-rm -f $(TARGET_12) $(ASYNSERVER) $(UTIL_OBJ)
+	-rm -f $(TARGET_13) $(ASYNECHOSERVER) $(UTIL_OBJ)
 	-rm -f *.o
 	-rm -f build.log
 

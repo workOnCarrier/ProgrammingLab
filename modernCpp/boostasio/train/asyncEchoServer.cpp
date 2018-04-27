@@ -12,10 +12,11 @@ void OnAccept ( const BoostEC &ec, AsioServicePtr svcPtr, AsioAcceptorPtr accept
 		std::cout << " error in On Accept " << ec << std::endl;
 	}else{
 		std::cout << " normal in On Accept " << std::endl;
-		AsioSocketPtr 	socktPtr = std::make_shared<AsioSocket>(*svcPtr);
-		acceptorPtr->async_accept(*socktPtr,boost::bind(OnAccept,_1,svcPtr, acceptorPtr));
 	}
+	AsioSocketPtr 	socktPtr = std::make_shared<AsioSocket>(*svcPtr);
+	acceptorPtr->async_accept(*socktPtr,boost::bind(OnAccept,_1,svcPtr, acceptorPtr));
 }
+
 
 void run_server(){
 	std::vector<std::thread> threadList;

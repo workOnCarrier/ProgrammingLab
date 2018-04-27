@@ -2,6 +2,8 @@
 #define __COMMONUTILS_H__
 
 #include <memory>
+#include <vector>
+#include <list>
 #include <boost/asio.hpp>
 
 typedef boost::asio::io_service AsioService;
@@ -49,6 +51,25 @@ private:
 	AsioServicePtr	m_service;
 	AsioWorkPtr		m_work;
 	AsioStrandPtr	m_strand;
+};
+
+
+class IClientContext: public std::shared_from_this {
+public:
+		IclientContext(AsioServicePtr svcPtr);
+		void recv();
+		void send(const void* buffer, size_t length);
+		void close();
+protected:
+		void OnSend( BoostEC& ec, std::list<std::vector<boost::uint8_t>>::iterator it );
+		void OnRecv(BoostEC& ec, size_t length);
+		// void registerDataListener ( std::functional<(void)(std::vector<boost::uint8_t>)>);
+private:
+
+	AsioSocketPtr		m_socket;
+	std::vector<size_t>	m_recvBuffer;
+	std::list<std::vector<size_t>>	m_sendBuffer;
+	size_t				m_bufferPosition;
 };
 
 #endif //__COMMONUTILS_H__

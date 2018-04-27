@@ -1,10 +1,11 @@
 
 train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. filter="*.h *.cpp Makefile build.log" {
- asyncClient.cpp
- asyncServer.cpp
- lockedcout.h
- blocked.cpp
  commonUtils.h
+ lockedcout.h
+ asyncClient.cpp
+ asyncEchoServer.cpp
+ asyncServer.cpp
+ blocked.cpp
  commonUtils.cpp
  dispatch.cpp
  exceptHandle.cpp
@@ -14,10 +15,9 @@ train=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train CD=. fi
  post.cpp
  strand.cpp
  strandwrap.cpp
- workBlocked.cpp
  utilBlocks.cpp
+ workBlocked.cpp
  Makefile
- build.log
 }
 ref=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train/ref/http CD=. filter="*.hpp *.cpp Makefile build.log" {
  connection.hpp
