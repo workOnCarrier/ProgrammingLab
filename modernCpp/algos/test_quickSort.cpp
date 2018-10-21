@@ -2,8 +2,13 @@
 
 #include "quickSort.h"
 
+int test_quicksort_1();
 
 int main () {
+	test_quicksort_1();
+	return 0;
+}
+int test_quicksort_1(){
     int array[] = {13,19,9,5,12,8};
 	for ( auto val : array ) { cout << " " << val; }cout << endl;
 	QuickSort<int> ( array, 0, (sizeof(array)/sizeof(int)) - 1 );
