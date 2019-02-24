@@ -44,6 +44,15 @@ topCPP="/home/genius3/work/github/ProgrammingLab/modernCpp/design/train" CD=. fi
   }
  }
 
+  Eventbus=/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/EventBus CD=/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/EventBus filter="Makefile" {
+  Makefile
+  cpp=. CD=. filter="*.cpp" {
+  }
+  header=. CD=. filter="*.h" {
+    IEvent.h
+    EventBus.h
+  }
+  }
  observer=/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/observer CD=/home/genius3/work/github/ProgrammingLab/modernCpp/design/train/observer filter="Makefile" {
   Makefile
   cpp=. CD=. filter="*.cpp ^[(test_)]*.cpp" {

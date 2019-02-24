@@ -1,0 +1,7 @@
+[
+    {
+        "command": "c++ -c -std=c++0x -I/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train -I/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/hdr -Wall -ggdb -D_GLIBCXX_USE_NANOSLEEP -o commonUtils.o /home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train/commonUtils.cpp",
+        "directory": "/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train",
+        "file": "/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/train/commonUtils.cpp"
+    }
+]
