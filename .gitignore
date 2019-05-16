@@ -8,3 +8,5 @@
 */bin/*
 buildlog
 .vscode
+/java/train/first/nbproject/private/
+/java/train/first/build/
