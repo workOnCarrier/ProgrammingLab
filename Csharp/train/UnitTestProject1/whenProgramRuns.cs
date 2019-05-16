@@ -14,7 +14,7 @@ namespace testHelloWorld
             var w = new System.IO.StringWriter();
             Console.SetOut(w);
 
-            Program.Main(new string[0]);
+            Program.Main1(new string[0]);
 
             _consoleOutput = w.ToString().Trim();
         }
@@ -39,7 +39,7 @@ namespace testHelloWorld
         {
             ImmutableCounter c2 = m_counter;
             m_counter = m_counter.getNextVal();
-            Assert.AreEqual(2, m_counter.count);
+            Assert.AreEqual(1, m_counter.count);
         }
     }
 

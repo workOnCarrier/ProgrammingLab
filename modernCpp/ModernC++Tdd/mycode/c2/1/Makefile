@@ -1,4 +1,4 @@
-CC = g++-5
+CC = g++
 
 CPPFLAGS = -std=c++0x -I. -I../hdr -Wall -ggdb \
 	-I ../../../framewrk/usr/local/include 

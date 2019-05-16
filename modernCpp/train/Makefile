@@ -1,7 +1,8 @@
-CC = g++-5
+CC = g++
 
 CPPFLAGS = -std=c++14 -I. -I../hdr -Wall -ggdb
 LDFLAGS =   -ggdb -lboost_system -lpthread
+LDFLAGS2 =   -ggdb -lpthread
 
 .cpp.o:
 		$(CC) -c $(CPPFLAGS) -o $@ $< 
@@ -64,6 +65,9 @@ OBJ_18 = try_hr_subTreeSwap.o
 SRC_19 = try_HR_kittyTreeCalc.cpp
 OBJ_19 = try_HR_kittyTreeCalc.o
 
+SRC_20 = codeSignal_thread.cpp
+OBJ_20 = codeSignal_thread.o
+
 TARGET_1 = try
 TARGET_2 = test_assert
 TARGET_3 = test_mixin
@@ -83,8 +87,10 @@ TARGET_16 = try_enable_sft
 TARGET_17 = try_tree_bf
 TARGET_18 = try_subTreeSwap
 TARGET_19 = try_kitty
+TARGET_20 = try_codeSignal
 
-all:    $(TARGET_19)
+all: $(TARGET_20)
+# $(TARGET_19)
 #     $(TARGET_15)
 # $(TARGET_14)
 # $(TARGET_13)
@@ -172,6 +178,9 @@ $(TARGET_18):  $(OBJ_18)
 $(TARGET_19):  $(OBJ_19)
 	$(CC) -o $(TARGET_19) $(LDFLAGS) $(OBJ_19)
 
+$(TARGET_20):  $(OBJ_20)
+	$(CC) -o $(TARGET_20) $(OBJ_20) $(LDFLAGS2) 
+
 clean:
 	-rm -f $(TARGET_1) $(OBJ_1)
 	-rm -f $(TARGET_2) $(OBJ_2)
@@ -192,6 +201,7 @@ clean:
 	-rm -f $(TARGET_17) $(OBJ_17)
 	-rm -f $(TARGET_18) $(OBJ_18)
 	-rm -f $(TARGET_19) $(OBJ_19)
+	-rm -f $(TARGET_20) $(OBJ_20)
 	-rm -f buildlog
 
 
