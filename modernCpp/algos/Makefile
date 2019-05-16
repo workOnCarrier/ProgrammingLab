@@ -128,12 +128,12 @@ clean:
 	-rm -f $(TARGET_4) $(OBJ_4)
 	-rm -f $(TARGET_5) $(OBJ_5)
 	-rm -f $(TARGET_6) $(OBJ_6)
-	-rm -f $(TARGET_7) $(OBJ_7)
-	-rm -f $(TARGET_8) $(OBJ_8)
-	-rm -f $(TARGET_9) $(OBJ_9)
-	-rm -f $(TARGET_10) $(OBJ_10)
-	-rm -f $(TARGET_11) $(OBJ_11)
-	-rm -f $(TARGET_12) $(OBJ_12)
+#	-rm -f $(TARGET_7) $(OBJ_7) \
+	-rm -f $(TARGET_8) $(OBJ_8) \
+	-rm -f $(TARGET_9) $(OBJ_9) \
+	-rm -f $(TARGET_10) $(OBJ_10) \
+	-rm -f $(TARGET_11) $(OBJ_11) \
+	-rm -f $(TARGET_12) $(OBJ_12) \
 	-rm -f $(TARGET_13) $(OBJ_13)
 	-rm -f buildlog
 

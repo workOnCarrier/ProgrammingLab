@@ -1,0 +1,9 @@
+
+sources=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/project1 . CD=/home/genius3/work/github/ProgrammingLab/modernCpp/boostasio/project1 . filter="*.cpp" {
+ serverMain.cpp
+ clientMain.cpp
+
+}
+
+ headers=`pwd` CD=`pwd` filter="*.h" {
+ }

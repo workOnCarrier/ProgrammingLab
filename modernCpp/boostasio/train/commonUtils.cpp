@@ -40,17 +40,17 @@ void AsioServiceBP::stopService(){
     m_service->stop();
 }
 
-IClientContext::IclientContext(AsioServicePtr svcPtr)
-	:m_socket(*svcPtr),m_bufferPosition(0) {
+IClientContext::IClientContext(AsioServicePtr svcPtr)
+	:m_socket(std::make_shared<AsioSocket>(*svcPtr)),m_bufferPosition(0) {
 	m_recvBuffer.resize(4096);
 }
 
 void IClientContext::close(){
 	BoostEC ec;
-	m_socket.shutdown(AsioSocket::shutdown_both,ec);
-#pragma message "Todo : handle error cases";
-	m_socket.close(ec);
-#pragma message "Todo : handle error cases";
+	m_socket->shutdown(AsioSocket::shutdown_both,ec);
+#pragma message "Todo : handle error cases"
+	m_socket->close(ec);
+#pragma message "Todo : handle error cases"
 }
 
 void IClientContext::OnSend( BoostEC& ec, std::list<std::vector<boost::uint8_t>>::iterator it ){

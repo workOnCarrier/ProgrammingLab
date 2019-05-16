@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include <boost/asio.hpp>
+#include <memory>
 
 typedef boost::asio::io_service AsioService;
 typedef std::shared_ptr<AsioService> AsioServicePtr;
@@ -54,9 +55,9 @@ private:
 };
 
 
-class IClientContext: public std::shared_from_this {
+class IClientContext: public std::enable_shared_from_this<IClientContext> {
 public:
-		IclientContext(AsioServicePtr svcPtr);
+		IClientContext(AsioServicePtr svcPtr);
 		void recv();
 		void send(const void* buffer, size_t length);
 		void close();
@@ -68,7 +69,7 @@ private:
 
 	AsioSocketPtr		m_socket;
 	std::vector<size_t>	m_recvBuffer;
-	std::list<std::vector<size_t>>	m_sendBuffer;
+	std::list<std::vector<boost::uint8_t>>	m_sendBuffer;
 	size_t				m_bufferPosition;
 };
 

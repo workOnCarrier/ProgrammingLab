@@ -1,0 +1,10 @@
+
+*.o
+*.a
+*.lib
+*.exe
+*.so
+*.zip
+*/bin/*
+buildlog
+.vscode

@@ -1,6 +1,6 @@
 CC = g++
 
-CPPFLAGS = -std=c++14 -I. -I../hdr -Wall -ggdb
+CPPFLAGS = -std=c++11 -I. -I../hdr -Wall -ggdb
 LDFLAGS =   -ggdb -lboost_system -lpthread
 LDFLAGS2 =   -ggdb -lpthread
 

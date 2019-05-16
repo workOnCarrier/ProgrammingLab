@@ -31,7 +31,6 @@ void test1 () {
 	} cout << endl;
 
 }
-
 void test2 () {
     vector<int> testArray  = {5,2,4,6,1,3};
 	for ( auto val : testArray ) {
@@ -53,4 +52,6 @@ void test2 () {
 	} cout << endl;
 
 }
+
+
 
